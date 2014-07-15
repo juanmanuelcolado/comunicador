@@ -1,0 +1,50 @@
+/* Empty. Add your own CSS if you like */
+
+#homePage .title {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.faseList {
+	height: 180px;
+	border-bottom: 2px solid #CCC;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20%;
+}
+
+.faseList .list .item.selected {
+	background-color: #CCC;
+}
+
+#homePage .button {
+	border-radius: 40px;
+	margin-top: 10%;
+}
+
+#homePage .buttonContainer {
+	text-align: center;
+}
+
+.cardList .list {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.cardList .list .item {
+	margin-bottom: 25px;
+}
+
+.cardList .list .item .cardTitle {
+	border-top: 1px solid #CCC;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.card-form-buttons {
+	padding-top: 20px;
+}
+
+.card-form-buttons #accept {
+	float: right;
+}

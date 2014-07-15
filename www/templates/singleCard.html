@@ -1,0 +1,13 @@
+<ion-view title="{{creating? 'Nueva tarjeta' : 'Editar tarjeta'}}">
+    <ion-content class="has-header">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" ng-model="card.Title" placeholder="Título">
+            </label>
+            <div class="card-form-buttons">
+                <a id="cancel" class="button icon-left ion-close-round button-assertive" ng-click="goBack();">Cancelar</a>
+                <a id="accept" class="button icon-left ion-checkmark-round button-balanced" ng-click="save();">Aceptar</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

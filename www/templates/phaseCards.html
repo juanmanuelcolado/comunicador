@@ -1,0 +1,10 @@
+<ion-view title="Phase Cards">
+  <ion-content class="has-header cardList">
+  		<ion-list class="list-inset">
+  			<ion-item class="item-image" ng-repeat="card in cards" href="#/app/phaseSingleCard/{{card.title}}/{{card.img}}">
+				<img src="img/{{card.img}}" alt="{{card.title}}">
+				<div class="cardTitle">{{card.title}}</div>
+  			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>
