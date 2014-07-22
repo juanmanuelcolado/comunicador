@@ -1,32 +1,14 @@
-communicatorApp.service('dbService', function($q) {
+communicatorApp.service('dbService', function(dbMigrationsService, $q) {
 	var dbService = {};
 
 	var db = window.openDatabase('comunicatorDB', '1.0', 'comunicator database', 2*1024*1024);
 
-	// Create tables
-	db.transaction(function(tx) {
-		tx.executeSql('CREATE TABLE IF NOT EXISTS Card (Id INTEGER PRIMARY KEY ASC, Title TEXT)');
+	// Run migrations
+	dbMigrationsService.migrations.forEach(function(migration) {
+		db.transaction(function(tx) {
+			tx.executeSql(migration.query);
+		});	
 	});
-
-	var dbOnError = function(tx, error) {
-		console.log('DB ERROR! \nThe following transaction failed: ', tx);
-		throw(error);
-	};
-
-	var dbOnSuccess = function(tx, results) {
-		// yay!
-	};
-
-	var parseResults = function(results) {
-		var set = [];
-		for (var i = 0; i < results.rows.length; i++) {
-			var item = {};
-			// copy is necessary to avoid readonly objects getting passed around
-			angular.copy(results.rows.item(i), item);
-			set.push(item);
-		};
-		return set;
-	};
 
 	// Transactions
 	dbService.executeTransaction = function(query) {
@@ -52,6 +34,26 @@ communicatorApp.service('dbService', function($q) {
 		});
 
 		return deferred.promise;
+	};
+
+	var parseResults = function(results) {
+		var set = [];
+		for (var i = 0; i < results.rows.length; i++) {
+			var item = {};
+			// copy is necessary to avoid readonly objects getting passed around
+			angular.copy(results.rows.item(i), item);
+			set.push(item);
+		};
+		return set;
+	};
+
+	var dbOnSuccess = function(tx, results) {
+		// yay!
+	};
+
+	var dbOnError = function(tx, error) {
+		console.log('DB ERROR! \nThe following transaction failed: ', tx);
+		throw(error);
 	};
 
 	return dbService;
