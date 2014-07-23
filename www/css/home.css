@@ -1,0 +1,25 @@
+#homePage .title {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.phaseList {
+	height: 180px;
+	border-bottom: 2px solid #CCC;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20%;
+}
+
+.phaseList .list .item.selected {
+	background-color: #CCC;
+}
+
+#homePage .button {
+	border-radius: 40px;
+	margin-top: 10%;
+}
+
+#homePage .buttonContainer {
+	text-align: center;
+}

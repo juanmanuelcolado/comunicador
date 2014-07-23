@@ -5,10 +5,10 @@
 
   <ion-content id="homePage" class="has-header" padding="true">
     <h1 class="title">PECS</h1>
-    <ion-scroll class="faseList">
+    <ion-scroll class="phaseList">
       <ion-list>
-        <ion-item ng-class="{'selected': fase.selected}" ng-repeat="fase in fases" ng-click="selectFase(fase)">
-          {{fase.name}}
+        <ion-item ng-class="{'selected': phase.selected}" ng-repeat="phase in phases" ng-click="selectPhase(phase)">
+          {{phase.name}}
         </ion-item>
       </ion-list>
     </ion-scroll>

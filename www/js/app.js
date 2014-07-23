@@ -26,13 +26,13 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
     .state('app', {
       url: "/app",
       abstract: true,
-      templateUrl: "templates/menu.html"
+      templateUrl: "templates/home/menu.html"
     })
     .state('app.home', {
       url: "/home",
       views: {
         'menuContent' :{
-          templateUrl: "templates/home.html",
+          templateUrl: "templates/home/home.html",
           controller: 'homeCtrl'
         }
       }
@@ -41,7 +41,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
       url: "/phaseCards",
       views: {
         'menuContent' :{
-          templateUrl: "templates/phaseCards.html",
+          templateUrl: "templates/phase/phaseCards.html",
           controller: 'phaseCardsCtrl'
         }
       }
@@ -50,7 +50,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
       url: "/phaseSingleCard/:cardTitle/:cardImg",
       views: {
         'menuContent' :{
-          templateUrl: "templates/phaseSingleCard.html",
+          templateUrl: "templates/phase/phaseSingleCard.html",
           controller: 'phaseSingleCardCtrl'
         }
       }
@@ -59,7 +59,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
       url: "/cards",
       views: {
         'menuContent' :{
-          templateUrl: "templates/cards.html",
+          templateUrl: "templates/card/cards.html",
           controller: 'cardsCtrl'
         }
       }
@@ -68,7 +68,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
       url: "/singleCard/:id",
       views: {
         'menuContent' :{
-          templateUrl: "templates/singleCard.html",
+          templateUrl: "templates/card/singleCard.html",
           controller: 'singleCardCtrl'
         }
       }

@@ -1,0 +1,15 @@
+<ion-view title="Cards">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a href="#/app/singleCard/" class="button button-icon icon ion-plus-circled"></a>
+  </ion-nav-buttons>
+  <ion-content class="has-header cardList">
+  		<ion-list class="list-inset">
+  			<ion-item class="item-image" ng-repeat="card in cards" href="#/app/singleCard/{{card.Id}}">
+  				{{card.Title}}
+  			</ion-item>
+		</ion-list>
+  </ion-content>
+</ion-view>
