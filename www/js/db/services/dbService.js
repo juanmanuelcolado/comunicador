@@ -11,13 +11,13 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
     });
 
     // Transactions
-    dbService.executeTransaction = function(query) {
+    dbService.executeTransaction = function(transaction) {
         // start a promise
         var deferred = $q.defer();
 
-        // get all query args
-        var text = query.text || '';
-        var args = query.args || [];
+        // get all transaction args
+        var query = transaction.query || '';
+        var args = transaction.args || [];
         var success = function(tx, results) {
             var dbSet = parseResults(results);
             deferred.resolve(dbSet);
@@ -30,7 +30,7 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
 
         // execute transaction
         db.transaction(function(tx) {
-            tx.executeSql(text, args, success, error);
+            tx.executeSql(query, args, success, error);
         });
 
         return deferred.promise;
