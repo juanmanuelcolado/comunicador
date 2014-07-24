@@ -1,14 +1,14 @@
-.cardList .list {
-	width: 90%;
-	margin: 0 auto;
+.card-list .list {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.cardList .list .item {
-	margin-bottom: 25px;
+.card-list .list .item {
+    margin-bottom: 25px;
 }
 
-.cardList .list .item .cardTitle {
-	border-top: 1px solid #CCC;
-	padding: 10px;
-	margin-top: 10px;
+.card-list .list .item .card-title {
+    border-top: 1px solid #CCC;
+    padding: 10px;
+    margin-top: 10px;
 }
