@@ -43,7 +43,7 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
             // copy is necessary to avoid readonly objects getting passed around
             angular.copy(results.rows.item(i), item);
             set.push(item);
-        };
+        }
         return set;
     };
 
