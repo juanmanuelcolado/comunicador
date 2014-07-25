@@ -10,34 +10,37 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     sh = require('shelljs');
 
-var paths = {
-  sass: ['./scss/**/*.scss']
-};
-
 gulp.task('clean', function() {
-  rimraf.sync('www/js/main*.js')
+  rimraf.sync('www/js/main.js')
+  rimraf.sync('www/js/main.min.js')
 });
 
-gulp.task('concat', function () {
+gulp.task('concat', ['clean'], function () {
   gulp.src(['www/js/**/module.js', 'www/js/**/*.js'])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('www/js'))
 });
 
 gulp.task('compress', function() {
-  gulp.src(['www/js/**/module.js', 'www/js/**/*.js'])
+  gulp.src(['www/js/main.js'])
     .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('www/js'))
 });
 
-gulp.task('lint', function() {
-  gulp.src('www/js/main.js')
+gulp.task('lint', ['clean'], function() {
+  gulp.src('www/js/**/*.js')
   .pipe(jshint())
   .pipe(jshint.reporter('default'));
 });
 
-gulp.task('default', ['clean', 'concat', 'lint', 'compress']);
+gulp.task('all', ['clean', 'lint', 'concat']);
+
+gulp.task('default', function() {
+  gulp.watch('www/js/**/*.js', ['all']);
+});
+
+// Ionic
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -50,12 +53,6 @@ gulp.task('sass', function(done) {
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
-
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-});
-
-// Ionic
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
