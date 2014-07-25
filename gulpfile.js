@@ -11,27 +11,27 @@ var gulp = require('gulp'),
     sh = require('shelljs');
 
 gulp.task('clean', function() {
-  rimraf.sync('www/js/main.js')
-  rimraf.sync('www/js/main.min.js')
+  rimraf.sync('www/dist/main.js')
+  rimraf.sync('www/dist/main.min.js')
 });
 
-gulp.task('concat', ['clean'], function () {
-  gulp.src(['www/js/**/module.js', 'www/js/**/*.js'])
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('www/js'))
-});
-
-gulp.task('compress', function() {
-  gulp.src(['www/js/main.js'])
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('www/js'))
-});
-
-gulp.task('lint', ['clean'], function() {
+gulp.task('lint', function() {
   gulp.src('www/js/**/*.js')
   .pipe(jshint())
   .pipe(jshint.reporter('default'));
+});
+
+gulp.task('concat', function () {
+  gulp.src(['www/js/**/module.js', 'www/js/**/*.js'])
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('www/dist'))
+});
+
+gulp.task('compress', function() {
+  gulp.src(['www/dist/main.js'])
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('www/dist'))
 });
 
 gulp.task('all', ['clean', 'lint', 'concat']);
