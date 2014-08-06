@@ -22,7 +22,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('concat', function () {
-  gulp.src(['www/js/**/module.js', 'www/js/**/*.js'])
+  gulp.src(['www/js/**/app.js', 'www/js/**/*.js'])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('www/dist'))
 });
