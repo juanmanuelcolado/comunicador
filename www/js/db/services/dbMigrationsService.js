@@ -1,32 +1,30 @@
 communicatorApp.service('dbMigrationsService', function() {
-    var Migration = function(tableName) {
+    var TableMigration = function(tableName) {
         this.tableName = tableName;
-        this.query = '';
+        this.transactions = [];
         this.createTable();
     };
 
-    Migration.prototype = {
+    TableMigration.prototype = {
         createTable: function () {
-           this.query += 'CREATE TABLE IF NOT EXISTS ' + this.tableName + ';\n';
+           this.transactions.push('CREATE TABLE IF NOT EXISTS ' + this.tableName + '(id INTEGER PRIMARY KEY ASC)');
            return this;
         },
         addColumn: function (column) {
-           this.query += 'ALTER TABLE ' + this.tableName + ' ADD COLUMN ' + column + ';\n';
+           this.transactions.push('ALTER TABLE ' + this.tableName + ' ADD COLUMN ' + column);
            return this;
-        },
-        run: function(operations) {
-            operations.call(this);
-            return this;
         }
     };
 
     return {
         migrations: [
-            new Migration('Card')
-                .addColumn('Id INTEGER PRIMARY KEY ASC')
-                .addColumn('Title TEXT')
-
-            // Some other table
-        ]
+            new TableMigration('Card')
+                .addColumn('title TEXT'),
+        ],
+        eachTransaction: function(fn) {
+            this.migrations.forEach(function(migration) {
+                migration.transactions.forEach(fn);
+            });
+        }
     };
 });

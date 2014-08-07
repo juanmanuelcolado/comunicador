@@ -2,7 +2,7 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     $scope.creating = !$stateParams.id;
     
     $scope.card = {
-        Title: ''
+        title: ''
     };
 
     if (!$scope.creating) {

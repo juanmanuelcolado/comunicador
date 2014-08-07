@@ -3,10 +3,20 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
 
     var db = window.openDatabase('comunicatorDB', '1.0', 'comunicator database', 2*1024*1024);
 
+    var dbOnSuccess = function(tx, results) {
+        // yay!
+    };
+
+    var dbOnError = function(tx, error) {
+        console.log('DB ERROR! \nThe following transaction failed: ', error);
+        throw(error);
+    };
+
     // Run migrations
-    dbMigrationsService.migrations.forEach(function(migration) {
+    dbMigrationsService.eachTransaction(function(transaction) {
         db.transaction(function(tx) {
-            tx.executeSql(migration.query);
+            tx.executeSql(transaction);
+            // si se quiere logear los errores, ignorar los errores de 'duplicate column'
         }); 
     });
 
@@ -45,15 +55,6 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
             set.push(item);
         }
         return set;
-    };
-
-    var dbOnSuccess = function(tx, results) {
-        // yay!
-    };
-
-    var dbOnError = function(tx, error) {
-        console.log('DB ERROR! \nThe following transaction failed: ', tx);
-        throw(error);
     };
 
     return dbService;

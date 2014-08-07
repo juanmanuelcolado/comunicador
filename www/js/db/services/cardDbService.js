@@ -7,20 +7,20 @@ communicatorApp.service('cardDbService', function(dbService) {
         },
         getSingleCard: function(id) {
             return dbService.executeTransaction({
-                query: 'SELECT * FROM Card WHERE Id = ?',
+                query: 'SELECT * FROM Card WHERE id = ?',
                 args: [id]
             });
         },
         addCard: function(card) {
             return dbService.executeTransaction({
-                query: 'INSERT INTO Card(Title) VALUES (?)',
-                args: [card.Title]
+                query: 'INSERT INTO Card(title) VALUES (?)',
+                args: [card.title]
             });
         },
         editCard: function(card) {
             return dbService.executeTransaction({
-                query: 'UPDATE Card SET Title = ? WHERE Id = ?',
-                args: [card.Title, card.Id]
+                query: 'UPDATE Card SET title = ? WHERE id = ?',
+                args: [card.title, card.id]
             });
         }
     };
