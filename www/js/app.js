@@ -54,6 +54,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
+    .state('app.patternLock', {
+        url: '/patternLock',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/phase/patternLock.html',
+                controller: 'patternLockCtrl'
+            }
+        }
+    })
     .state('app.cards', {
         url: '/cards',
         views: {

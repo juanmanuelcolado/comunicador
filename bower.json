@@ -1,7 +1,10 @@
 {
-  "name": "HelloIonic",
-  "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-beta.6"
-  }
+    "name": "Comunicador",
+    "private": "true",
+    "dependencies": {
+        "jquery": "~2.1.1"
+    },
+    "devDependencies": {
+        "ionic": "driftyco/ionic-bower#1.0.0-beta.6"
+    }
 }

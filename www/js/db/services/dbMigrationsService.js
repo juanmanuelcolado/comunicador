@@ -19,7 +19,7 @@ communicatorApp.service('dbMigrationsService', function() {
     return {
         migrations: [
             new TableMigration('Card')
-                .addColumn('title TEXT'),
+                .addColumn('title TEXT')
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
