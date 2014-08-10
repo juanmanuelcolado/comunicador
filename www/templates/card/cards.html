@@ -1,15 +1,16 @@
-<ion-view title='Cards'>
-  <ion-nav-buttons side='left'>
-    <button menu-toggle='left' class='button button-icon icon ion-navicon'></button>
-  </ion-nav-buttons>
+<ion-view title='Pictogramas'>
   <ion-nav-buttons side='right'>
-    <a ui-sref='app.cards' class='button button-icon icon ion-plus-circled'></a>
+    <a ui-sref='app.singleCard' class='button button-icon icon ion-plus-circled'></a>
   </ion-nav-buttons>
-  <ion-content class='has-header card-list'>
-    <ion-list class='list-inset'>
-      <ion-item class='item-image' ng-repeat='card in cards' ui-sref='app.cards({ id: card.id })'>
+  <ion-content class='has-header'>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Búsqueda" ng-model='search'>
+    </label>
+    <ion-list class='list'>
+      <ion-checkbox ng-repeat="card in cards | filter: search" ng-model="card.enabled" ng-checked="card.enabled" class="item-checkbox-right">
         {{card.title}}
-      </ion-item>
+      </ion-checkbox>
     </ion-list>
   </ion-content>
 </ion-view>
