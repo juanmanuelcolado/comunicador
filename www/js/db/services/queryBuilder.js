@@ -45,63 +45,45 @@ communicatorApp.service('QueryBuilder', function(dbService) {
         this.tableName = tableName;
     };
     QueryBuilder.prototype = {
-        all: function() {
+        selectAll: function() {
             return this.exec({
                 query: 'SELECT * FROM ' + this.tableName
             });
         },
-        getById: function(id) {
+        find: function(id) {
             return this.exec({
                 query: 'SELECT * FROM ' + this.tableName + ' WHERE id = ?',
                 args: [id]
             });
         },
         delete: function(user) {
-            return this.exec({
+            return this.execute({
                 query: 'DELETE * FROM ' + this.tableName + ' WHERE id = ?',
                 args: [user.id]
             });
         },
         insert: function(model) {
             var queryModel = new QueryModel(model);
-            return this.exec({
+            return this.execute({
                 query: 'INSERT INTO ' + this.tableName + '(' + queryModel.coulmnNames() + ') VALUES (' + queryModel.valueSlots() + ')',
                 args: queryModel.args()
             });
         },
         update: function(model) {
             var queryModel = new QueryModel(model);
-            return this.exec({
+            return this.execute({
                 query: 'UPDATE ' + this.tableName + ' SET ' + queryModel.coulmnNames(' = ?, ') + ' = ? WHERE id = ?',
                 args: queryModel.args({ id: true })
             });
         },
+        define: function(query, args) {
+            return this.execute({
+                query: query,
+                args: args || []
+            });
+        },
         exec: function(transaction) {
             return dbService.executeTransaction(transaction);
-        },
-        default: function(fn) {
-            var self = this;
-            var methods = {
-                get: function() {
-                    return self.all();
-                },
-                getSingle: function(id) {
-                    return self.getById(id);
-                },
-                add: function(model) {
-                    return self.insert(model);
-                },
-                edit: function(model) {
-                    return self.update(model);
-                },
-                delete: function(model) {
-                    return self.delete(model);
-                }
-            };
-            if (fn) {
-                methods = fn.call(this, methods, this) || methods;
-            }
-            return methods;
         }
     };
 
