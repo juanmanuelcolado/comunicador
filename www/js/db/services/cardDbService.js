@@ -2,16 +2,16 @@ communicatorApp.service('cardDbService', function(QueryBuilder) {
     var queryBuilder = new QueryBuilder('Card');
 
     return {
-        getCards: function() {
+        getAll: function() {
             return queryBuilder.all();
         },
-        getSingleCard: function(id) {
+        getSingle: function(id) {
             return queryBuilder.getById(id);
         },
-        addCard: function(card) {
+        add: function(card) {
             return queryBuilder.insert(card);
         },
-        editCard: function(card) {
+        edit: function(card) {
             return queryBuilder.update(card);
         }
     };
