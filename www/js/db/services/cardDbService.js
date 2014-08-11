@@ -1,27 +1,18 @@
-communicatorApp.service('cardDbService', function(dbService) {
+communicatorApp.service('cardDbService', function(QueryBuilder) {
+    var queryBuilder = new QueryBuilder('Card');
+
     return {
         getCards: function() {
-            return dbService.executeTransaction({
-                query: 'SELECT * FROM Card'
-            });
+            return queryBuilder.all();
         },
         getSingleCard: function(id) {
-            return dbService.executeTransaction({
-                query: 'SELECT * FROM Card WHERE id = ?',
-                args: [id]
-            });
+            return queryBuilder.getById(id);
         },
         addCard: function(card) {
-            return dbService.executeTransaction({
-                query: 'INSERT INTO Card(title) VALUES (?)',
-                args: [card.title]
-            });
+            return queryBuilder.insert(card);
         },
         editCard: function(card) {
-            return dbService.executeTransaction({
-                query: 'UPDATE Card SET title = ? WHERE id = ?',
-                args: [card.title, card.id]
-            });
+            return queryBuilder.update(card);
         }
     };
 });
