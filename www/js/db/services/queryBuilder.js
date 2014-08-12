@@ -56,10 +56,10 @@ communicatorApp.service('QueryBuilder', function(dbService) {
                 args: [id]
             });
         },
-        delete: function(user) {
+        delete: function(model) {
             return this.execute({
-                query: 'DELETE * FROM ' + this.tableName + ' WHERE id = ?',
-                args: [user.id]
+                query: 'DELETE FROM ' + this.tableName + ' WHERE id = ?',
+                args: [model.id]
             });
         },
         insert: function(model) {
