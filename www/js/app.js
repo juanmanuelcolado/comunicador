@@ -71,7 +71,26 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
                 controller: 'singleCardCtrl'
             }
         }
+    })
+    .state('app.receptors', {
+        url: '/receptors',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/receptor/receptors.html',
+                controller: 'receptorsCtrl'
+            }
+        }
+    })
+    .state('app.singleReceptor', {
+        url: '/singleReceptor/:id',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/receptor/singleReceptor.html',
+                controller: 'singleReceptorCtrl'
+            }
+        }
     });
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
 });

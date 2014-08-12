@@ -1,0 +1,14 @@
+<ion-view title='Receptores'>
+  <ion-nav-buttons side='right'>
+    <a ui-sref='app.singleReceptor' class='button button-icon icon ion-plus-circled'></a>
+  </ion-nav-buttons>
+  <ion-content class='has-header receptor-list'>
+    <ion-list class='list-inset'>
+      <ion-item class='item-image' ng-repeat='receptor in receptors' ui-sref='app.singleReceptor({ id: receptor.id })'>
+        {{ receptor.name }}
+        {{receptor.advanced? "avanzado" : ""}}
+        <span ng-click='delete(receptor);'>Borrar</a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
