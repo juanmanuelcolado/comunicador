@@ -46,12 +46,12 @@ communicatorApp.service('QueryBuilder', function(dbService) {
     };
     QueryBuilder.prototype = {
         selectAll: function() {
-            return this.exec({
+            return this.execute({
                 query: 'SELECT * FROM ' + this.tableName
             });
         },
         find: function(id) {
-            return this.exec({
+            return this.execute({
                 query: 'SELECT * FROM ' + this.tableName + ' WHERE id = ?',
                 args: [id]
             });
@@ -82,7 +82,7 @@ communicatorApp.service('QueryBuilder', function(dbService) {
                 args: args || []
             });
         },
-        exec: function(transaction) {
+        execute: function(transaction) {
             return dbService.executeTransaction(transaction);
         }
     };
