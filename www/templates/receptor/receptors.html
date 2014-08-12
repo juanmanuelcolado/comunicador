@@ -6,8 +6,9 @@
     <ion-list class='list-inset'>
       <ion-item class='item-image' ng-repeat='receptor in receptors' ui-sref='app.singleReceptor({ id: receptor.id })'>
         {{ receptor.name }}
-        {{receptor.advanced? "avanzado" : ""}}
-        <span ng-click='delete(receptor);'>Borrar</a>
+        {{ receptor.lastName }}
+        {{receptor.advanced? "(receptor avanzado)" : ""}}
+        <span class="receptor-delete" ng-click='delete(receptor)'>borrar</a>
       </ion-item>
     </ion-list>
   </ion-content>

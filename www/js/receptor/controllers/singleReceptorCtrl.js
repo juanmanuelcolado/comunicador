@@ -3,6 +3,7 @@ communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, 
     
     $scope.receptor = {
         name: '',
+        lastName: '',
         advanced: false
     };
 
@@ -18,7 +19,7 @@ communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, 
     };
 
     $scope.save = function() {
-        if ($scope.receptor.name) {
+        if ($scope.receptor.name && $scope.receptor.lastName) {
             if ($scope.creating) {
                 receptorDbService.insert($scope.receptor);
             } else {
