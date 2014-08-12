@@ -1,10 +1,12 @@
 communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receptorDbService) {
     $scope.creating = !$stateParams.id;
-    
+    $scope.defaultImgSrc = 'img/ionic.png';
+
     $scope.receptor = {
         name: '',
         lastName: '',
-        advanced: false
+        advanced: false,
+        imgSrc: ''
     };
 
     if (!$scope.creating) {
@@ -13,6 +15,35 @@ communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, 
             $scope.receptor.advanced = $scope.receptor.advanced === 'true' ? true : false;
         });
     }
+
+    $scope.takePicture = function() {
+        if(navigator.camera) {
+            navigator.camera.getPicture(function(newImageSrc) {
+                $scope.receptor.imgSrc = newImageSrc;
+                $scope.$apply();
+            }, function() {});
+        } else {
+            // alert an error "no camera found" ?
+            // create file input without appending to DOM
+            var fileInput = document.createElement('input');
+            fileInput.setAttribute('type', 'file');
+
+            fileInput.onchange = function() {
+                var file = fileInput.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    var encodedData = reader.result;
+                    $scope.receptor.imgSrc = encodedData;
+                    $scope.$apply();
+                };
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            };
+            document.body.appendChild(fileInput);
+            fileInput.click();
+        }
+    };
 
     $scope.goBack = function() {
         $ionicNavBarDelegate.back();

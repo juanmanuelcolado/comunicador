@@ -1,2 +1,4 @@
 node_modules/
 www/dist/main*.js
+platforms/android/assets/
+platforms/android/ant-build/
