@@ -1,7 +1,7 @@
 communicatorApp.controller('cardsCtrl', function($scope, cardDbService) {
     $scope.cards = [];
     
-    cardDbService.getCards().then(function(results) {
+    cardDbService.selectAll().then(function(results) {
         $scope.cards = results;
     });
 });

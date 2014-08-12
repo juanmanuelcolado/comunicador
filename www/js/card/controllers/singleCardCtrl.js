@@ -6,7 +6,7 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     };
 
     if (!$scope.creating) {
-        cardDbService.getSingleCard($stateParams.id).then(function(results) {
+        cardDbService.find($stateParams.id).then(function(results) {
             $scope.card = results[0];
         });
     }
@@ -17,9 +17,9 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
 
     $scope.save = function() {
         if ($scope.creating) {
-            cardDbService.addCard($scope.card);
+            cardDbService.insert($scope.card);
         } else {
-            cardDbService.editCard($scope.card);
+            cardDbService.update($scope.card);
         }
 
         $scope.goBack();
