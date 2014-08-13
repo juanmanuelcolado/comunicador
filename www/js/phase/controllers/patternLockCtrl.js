@@ -1,4 +1,4 @@
-communicatorApp.controller('patternLockCtrl', function($scope) {
+communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, currentReceptorService) {
 	
 	var lock = new PatternLock("#lock", { 
 		margin: getMarginSize(),
@@ -6,7 +6,26 @@ communicatorApp.controller('patternLockCtrl', function($scope) {
 	});
 
 	function validatePattern (pattern) {
-		lock.error();
+		if (currentReceptorService.receptor.pattern === pattern) {
+			//$state.go('app.patternLock');
+		} else {
+			lock.error();
+			showConfirmPopup();
+		}
+	}
+
+	function showConfirmPopup () {
+     	var confirmPopup = $ionicPopup.confirm({
+       		title: 'Contraseña incorrecta',
+	       	template: '¿Desea intentarlo de nuevo?'
+     	});
+	    confirmPopup.then(function(response) {
+	       	if(response) {
+	        	lock.reset();
+	       	} else {
+				$ionicNavBarDelegate.back();
+	       	}
+     	});
 	}
 
 	function getMarginSize () {
