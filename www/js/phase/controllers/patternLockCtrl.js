@@ -7,7 +7,7 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
 
 	function validatePattern (pattern) {
 		if (currentReceptorService.receptor.pattern === pattern) {
-			//$state.go('app.patternLock');
+			$state.go('app.basicRegistry');
 		} else {
 			lock.error();
 			showConfirmPopup();
@@ -19,6 +19,7 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
        		title: 'Contraseña incorrecta',
 	       	template: '¿Desea intentarlo de nuevo?'
      	});
+
 	    confirmPopup.then(function(response) {
 	       	if(response) {
 	        	lock.reset();

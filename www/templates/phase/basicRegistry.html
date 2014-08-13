@@ -1,0 +1,62 @@
+<ion-view title='Registro del intercambio'>
+  <ion-content class='has-header'>
+    <div class="list list-inset">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Receptor
+        </div>
+        <select>
+          <option>Jose Rosas</option>
+          <option selected>Juan Perez</option>
+          <option>Pedro Troglio</option>
+        </select>
+      </label>
+      <div class="item item-divider">
+        Intercambio
+      </div>
+      <label class="item item-input item-toggle">
+        <div class="input-label">
+          <i class="icon ion-android-arrow-up-left"></i>
+          Recojer
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+          <i class="icon ion-help-circled"></i>
+        </label>
+      </label>
+      <label class="item item-input item-toggle">
+        <div class="input-label">
+          <i class="icon ion-android-arrow-up-right"></i>
+          Alcanzar
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+          <i class="icon ion-help-circled"></i>
+        </label>
+      </label>
+      <label class="item item-input item-toggle">
+        <div class="input-label">
+          <i class="icon ion-android-arrow-down-right"></i>
+          Dejar
+        </div>
+        <label class="toggle toggle-positive">
+          <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+          <i class="icon ion-help-circled"></i>
+        </label>
+      </label>
+      <div class='registry-form-buttons'>
+        <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
+        <a id='accept' class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

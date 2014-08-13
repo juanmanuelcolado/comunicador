@@ -63,6 +63,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
+    .state('app.basicRegistry', {
+        url: '/basicRegistry',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/phase/basicRegistry.html',
+                controller: 'basicRegistryCtrl'
+            }
+        }
+    })
     .state('app.cards', {
         url: '/cards',
         views: {
