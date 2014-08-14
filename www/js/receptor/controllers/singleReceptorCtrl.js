@@ -1,6 +1,6 @@
-communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receptorDbService) {
+communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receptorDbService, imageUploader) {
     $scope.creating = !$stateParams.id;
-    $scope.defaultAvatar = 'img/ionic.png';
+    $scope.defaultAvatar = imageUploader.defaultSrc;
 
     $scope.receptor = {
         name: '',
@@ -18,32 +18,10 @@ communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, 
     }
 
     $scope.takePicture = function() {
-        if(navigator.camera) {
-            navigator.camera.getPicture(function(newImageSrc) {
-                $scope.receptor.avatar = newImageSrc;
-                $scope.$apply();
-            }, function() {});
-        } else {
-            // alert an error "no camera found" ?
-            // create file input without appending to DOM
-            var fileInput = document.createElement('input');
-            fileInput.setAttribute('type', 'file');
-
-            fileInput.onchange = function() {
-                var file = fileInput.files[0];
-                var reader = new FileReader();
-                reader.onloadend = function () {
-                    var encodedData = reader.result;
-                    $scope.receptor.avatar = encodedData;
-                    $scope.$apply();
-                };
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
-            };
-            document.body.appendChild(fileInput);
-            fileInput.click();
-        }
+        imageUploader.takePicture(function(newImageSrc) {
+            $scope.receptor.avatar = newImageSrc;
+            $scope.$apply();
+        });
     };
 
     $scope.goBack = function() {
