@@ -21,4 +21,9 @@ communicatorApp.controller('phaseCardsCtrl', function($scope) {
             img: 'peace-out.png'
         }
     ];
+
+    cardDbService.selectEnabled().then(function(results) {
+        $scope.cards = results;
+    });
+
 });

@@ -1,7 +1,7 @@
 <ion-view title='APADEA'>
   <ion-content id='home-page' class='has-header' padding='true'>
-    <h1 class='title'>PECS</h1>
-    <ion-scroll class='phase-list'>
+    <h1 class='title'>Comunicador</h1>
+    <ion-scroll class='phase-list' style="width: 250px; height: 250px; margin-top:10%">
       <ion-list>
         <ion-item ng-class='{"selected": phase.selected}' ng-repeat='phase in phases' ng-click='selectPhase(phase)'>
           {{phase.name}}

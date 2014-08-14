@@ -84,6 +84,11 @@ communicatorApp.service('QueryBuilder', function(dbService) {
         },
         execute: function(transaction) {
             return dbService.executeTransaction(transaction);
+        },
+        selectEnabled: function() {
+            return this.execute({
+                query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = 1'
+            });
         }
     };
 
