@@ -1,0 +1,20 @@
+<ion-view title='Receptores'>
+  <ion-nav-buttons side='right'>
+    <a ui-sref='app.singleReceptor' class='button button-icon icon ion-plus-circled'></a>
+  </ion-nav-buttons>
+  <ion-content class='has-header receptor-list'>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Búsqueda" ng-model='search'>
+    </label>
+    <ion-list class='list-inset'>
+        <ion-item class='' ng-repeat='receptor in receptors | filter: search' ui-sref='app.singleReceptor({ id: receptor.id })'>
+        {{ receptor.name }}
+        {{ receptor.lastName }}
+        {{receptor.advanced? "(receptor avanzado)" : ""}}
+        <span class="receptor-delete" ng-click='delete(receptor)'>borrar</span>
+        <img width="50" height="50" ng-src='{{receptor.avatar}}' alt="Receptor photo" >
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

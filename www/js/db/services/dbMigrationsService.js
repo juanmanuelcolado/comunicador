@@ -20,6 +20,13 @@ communicatorApp.service('dbMigrationsService', function() {
         migrations: [
             new TableMigration('Card')
                 .addColumn('title TEXT'),
+
+            new TableMigration('Receptor')
+                .addColumn('name TEXT')
+                .addColumn('lastName TEXT')
+                .addColumn('avatar TEXT')
+                .addColumn('pattern TEXT')
+                .addColumn('advanced BOOLEAN')
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
