@@ -24,6 +24,7 @@ communicatorApp.service('dbMigrationsService', function() {
             new TableMigration('Receptor')
                 .addColumn('name TEXT')
                 .addColumn('lastName TEXT')
+                .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
                 .addColumn('advanced BOOLEAN')
 

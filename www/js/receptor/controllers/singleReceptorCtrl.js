@@ -1,25 +1,26 @@
 communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receptorDbService) {
     $scope.creating = !$stateParams.id;
-    $scope.defaultImgSrc = 'img/ionic.png';
+    $scope.defaultAvatar = 'img/ionic.png';
 
     $scope.receptor = {
         name: '',
         lastName: '',
-        advanced: false,
-        imgSrc: ''
+        avatar: '',
+        advanced: false
     };
 
     if (!$scope.creating) {
         receptorDbService.find($stateParams.id).then(function(results) {
             $scope.receptor = results[0];
             $scope.receptor.advanced = $scope.receptor.advanced === 'true' ? true : false;
+            $scope.receptor.avatar = $scope.receptor.avatar || $scope.defaultAvatar;
         });
     }
 
     $scope.takePicture = function() {
         if(navigator.camera) {
             navigator.camera.getPicture(function(newImageSrc) {
-                $scope.receptor.imgSrc = newImageSrc;
+                $scope.receptor.avatar = newImageSrc;
                 $scope.$apply();
             }, function() {});
         } else {
@@ -33,7 +34,7 @@ communicatorApp.controller('singleReceptorCtrl', function($scope, $stateParams, 
                 var reader = new FileReader();
                 reader.onloadend = function () {
                     var encodedData = reader.result;
-                    $scope.receptor.imgSrc = encodedData;
+                    $scope.receptor.avatar = encodedData;
                     $scope.$apply();
                 };
                 if (file) {
