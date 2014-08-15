@@ -81,21 +81,21 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
-    .state('app.receptors', {
-        url: '/receptors',
+    .state('app.receivers', {
+        url: '/receivers',
         views: {
             'menuContent': {
-                templateUrl: 'templates/receptor/receptors.html',
-                controller: 'receptorsCtrl'
+                templateUrl: 'templates/receiver/receivers.html',
+                controller: 'receiversCtrl'
             }
         }
     })
-    .state('app.singleReceptor', {
-        url: '/singleReceptor/:id',
+    .state('app.singleReceiver', {
+        url: '/singleReceiver/:id',
         views: {
             'menuContent': {
-                templateUrl: 'templates/receptor/singleReceptor.html',
-                controller: 'singleReceptorCtrl'
+                templateUrl: 'templates/receiver/singleReceiver.html',
+                controller: 'singleReceiverCtrl'
             }
         }
     });

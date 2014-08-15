@@ -2,16 +2,16 @@
   <ion-content class='has-header'>
     <div class='list list-inset'>
       <label class='item item-input' ng-click="takePicture()">
-        <img width="128" height="128" ng-src='{{receptor.avatar || defaultAvatar}}' alt="Receptor photo" >
+        <img width="128" height="128" ng-src='{{receiver.avatar || defaultAvatar}}' alt="Receptor photo" >
       </label>
       <label class='item item-input'>
-        <input type='text' ng-model='receptor.name' placeholder='Nombre'>
+        <input type='text' ng-model='receiver.name' placeholder='Nombre'>
       </label>
       <label class='item item-input'>
-        <input type='text' ng-model='receptor.lastName' placeholder='Apellido'>
+        <input type='text' ng-model='receiver.lastName' placeholder='Apellido'>
       </label>
-      <ion-checkbox ng-model="receptor.advanced">Puntuación avanzada</ion-checkbox>
-      <div class='receptor-form-buttons'>
+      <ion-checkbox ng-model="receiver.advanced">Puntuación avanzada</ion-checkbox>
+      <div class='receiver-form-buttons'>
         <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
         <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
       </div>

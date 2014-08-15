@@ -21,7 +21,7 @@ communicatorApp.service('dbMigrationsService', function() {
             new TableMigration('Card')
                 .addColumn('title TEXT'),
 
-            new TableMigration('Receptor')
+            new TableMigration('Receiver')
                 .addColumn('name TEXT')
                 .addColumn('lastName TEXT')
                 .addColumn('avatar TEXT')
