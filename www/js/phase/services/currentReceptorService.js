@@ -13,4 +13,4 @@ communicatorApp.service('currentReceptorService', function() {
 	};
 
 	return currentReceptorService;
-})
+});
