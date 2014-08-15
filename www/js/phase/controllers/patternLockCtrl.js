@@ -1,4 +1,4 @@
-communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, currentReceptorService) {
+communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, currentReceiverService) {
 	
 	var lock = new PatternLock("#lock", { 
 		margin: getMarginSize(),
@@ -6,7 +6,7 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
 	});
 
 	function validatePattern (pattern) {
-		if (currentReceptorService.receptor.pattern === pattern) {
+		if (currentReceiverService.receiver.pattern === pattern) {
 			$state.go('app.basicRegistry');
 		} else {
 			lock.error();

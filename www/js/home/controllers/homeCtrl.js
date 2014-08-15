@@ -1,27 +1,27 @@
 communicatorApp.controller('homeCtrl', function($scope) {
     $scope.phases = [
         { 
-            name: 'Fase 1',
+            name: 'Nivel 1: Cómo comunicarse',
             selected: true
         },{ 
-            name: 'Fase 2',
+            name: 'Nivel 2: Distancia y persistencia',
             selected: false
         },{ 
-            name: 'Fase 3',
+            name: 'Nivel 3: Discriminar imágenes',
             selected: false
         },{ 
-            name: 'Fase 4',
+            name: 'Nivel 4: Estructura oración',
             selected: false
         },{ 
-            name: 'Fase 5',
+            name: 'Nivel 5: Responder preguntas',
             selected: false
         },{ 
-            name: 'Fase 6',
+            name: 'Nivel 6: Comentar',
             selected: false
         }];
 
     $scope.selectPhase = function(phase) {
-        $scope.phases.map(function(item) { item.selected = false; });
-        phase.selected = true;
+        if(phase.name == 'Nivel 1: Cómo comunicarse') {phase.selected = true;}
+        else {phase.selected = false;}
     };
 });

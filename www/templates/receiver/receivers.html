@@ -1,0 +1,20 @@
+<ion-view title='Receptores'>
+  <ion-nav-buttons side='right'>
+    <a ui-sref='app.singleReceiver' class='button button-icon icon ion-plus-circled'></a>
+  </ion-nav-buttons>
+  <ion-content class='has-header receiver-list'>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Búsqueda" ng-model='search'>
+    </label>
+    <ion-list class='list-inset'>
+        <ion-item class='' ng-repeat='receiver in receivers | filter: search' ui-sref='app.singleReceiver({ id: receiver.id })'>
+        {{ receiver.name }}
+        {{ receiver.lastName }}
+        {{ receiver.advanced? "(receiver avanzado)" : "" }}
+        <span class="receiver-delete" ng-click='delete(receiver)'>borrar</span>
+        <img width="50" height="50" ng-src='{{receiver.avatar}}' alt="Receptor photo" >
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

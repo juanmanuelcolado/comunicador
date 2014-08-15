@@ -1,0 +1,14 @@
+.receiver-list .receiver-delete {
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #666;
+}
+
+.receiver-form-buttons {
+    padding-top: 20px;
+}
+
+.receiver-form-buttons #accept {
+    float: right;
+}
