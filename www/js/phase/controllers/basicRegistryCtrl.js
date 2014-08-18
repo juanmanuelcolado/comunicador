@@ -6,8 +6,10 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbServi
 
 	// get receivers
     receiverDbService.selectAll().then(function(results) {
-        $scope.receivers = results;
-		$scope.selectedReceiver = $scope.receivers[0].id;
+        if (results.length) {
+	        $scope.receivers = results;
+			$scope.selectedReceiver = $scope.receivers[0].id;
+        }
     });
 
 	$scope.saveRegistry = function() {
