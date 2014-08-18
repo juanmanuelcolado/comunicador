@@ -1,4 +1,4 @@
-communicatorApp.controller('phaseCardsCtrl', function($scope) {
+communicatorApp.controller('phaseCardsCtrl', function($scope, cardDbService) {
     $scope.cards = [
         {
             title: 'Hello world',

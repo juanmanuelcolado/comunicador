@@ -5,8 +5,8 @@
         <div class="input-label">
           Receptor
         </div>
-        <select>
-          <option ng-repeat="user in users" ng-change="changeUser()">{{user.name + " " + user.lastName}}</option>
+        <select ng-options="receiver.id as receiver.name + ' ' + receiver.lastName for receiver in receivers" ng-model="selectedReceiver">
+          {{receiver.name + " " + receiver.lastName}}
         </select>
       </label>
       <div class="item item-divider">

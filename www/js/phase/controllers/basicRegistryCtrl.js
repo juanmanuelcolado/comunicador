@@ -1,27 +1,14 @@
-communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceptorService) {
+communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbService, currentReceiverService) {
 	$scope.registry = {
-
 	};
 
-	$scope.users = [
-		{
-			name: "Juan",
-			lastName: "Perez",
-			advanced: false
-		},
-		{
-			name: "Pedro",
-			lastName: "Troglio",
-			advanced: true
-		}
-	];
+	$scope.receivers = [];
 
-	// get users
-	// select current user?
-
-	$scope.changeUser = function() {
-		currentReceptorService.change($scope)
-	};
+	// get receivers
+    receiverDbService.selectAll().then(function(results) {
+        $scope.receivers = results;
+		$scope.selectedReceiver = $scope.receivers[0].id;
+    });
 
 	$scope.saveRegistry = function() {
 
