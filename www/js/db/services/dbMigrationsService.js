@@ -19,7 +19,8 @@ communicatorApp.service('dbMigrationsService', function() {
     return {
         migrations: [
             new TableMigration('Card')
-                .addColumn('title TEXT'),
+                .addColumn('title TEXT')
+                .addColumn('enabled BOOLEAN'),
 
             new TableMigration('Receiver')
                 .addColumn('name TEXT')
@@ -27,6 +28,7 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
                 .addColumn('advanced BOOLEAN')
+
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
