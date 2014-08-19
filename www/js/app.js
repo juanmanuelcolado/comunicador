@@ -107,6 +107,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
                 controller: 'singleReceiverCtrl'
             }
         }
+    })
+    .state('app.configuration', {
+        url: '/configuration',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configuration.html',
+                controller: 'configurationsCtrl'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback

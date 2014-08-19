@@ -32,7 +32,11 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('lastName TEXT')
                 .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
-                .addColumn('advanced BOOLEAN')
+                .addColumn('advanced BOOLEAN'),
+
+            new TableMigration('Configuration')
+                .addColumn('key TEXT').createIndex('UNIQUE', 'key')
+                .addColumn('value TEXT')
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
