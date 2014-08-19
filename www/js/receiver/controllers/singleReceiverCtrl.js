@@ -1,6 +1,6 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receiverDbService, imageUploader) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receiverDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
-    $scope.defaultAvatar = imageUploader.defaultSrc;
+    $scope.defaultAvatar = imageUploaderService.defaultSrc;
 
     $scope.receiver = {
         name: '',
@@ -18,7 +18,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
     }
 
     $scope.takePicture = function() {
-        imageUploader.takePicture(function(newImageSrc) {
+        imageUploaderService.takePicture(function(newImageSrc) {
             $scope.receiver.avatar = newImageSrc;
             $scope.$apply();
         });

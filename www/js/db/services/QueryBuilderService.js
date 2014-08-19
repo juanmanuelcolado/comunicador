@@ -1,4 +1,14 @@
-communicatorApp.service('QueryBuilder', function(dbService) {
+// Note:
+//  If you want a specific method for your service, you can add it here or you could use 'define()' like this:
+//
+//  return new QueryBuilderService('SomeTableName').define('myCustomSelect', function() {
+//      return {
+//          query: 'SELECT FROM ' + this.tableName + ' WHERE something = ?',
+//          args: [some argument]
+//      };
+//  }).define(...);
+
+communicatorApp.service('QueryBuilderService', function(dbService) {
     var QueryModel = function(model) {
         if (!model) {
             throw 'A model should be provided to the QueryBuilder instance';
@@ -76,19 +86,19 @@ communicatorApp.service('QueryBuilder', function(dbService) {
                 args: queryModel.args({ id: true })
             });
         },
-        define: function(query, args) {
-            return this.execute({
-                query: query,
-                args: args || []
-            });
-        },
-        execute: function(transaction) {
-            return dbService.executeTransaction(transaction);
-        },
         selectEnabled: function() {
             return this.execute({
                 query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = 1'
             });
+        },
+        define: function(name, transactionFunction) {
+            this[name] = function() {
+                return this.execute(transactionFunction.apply(this, arguments));
+            };
+            return this;
+        },
+        execute: function(transaction) {
+            return dbService.executeTransaction(transaction);
         }
     };
 

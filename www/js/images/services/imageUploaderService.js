@@ -1,4 +1,4 @@
-communicatorApp.service('imageUploader', function() {
+communicatorApp.service('imageUploaderService', function() {
 	var hiddenFileInpuId = "-hidden-file-input";
 
 	var createHiddenFileInput = function() {

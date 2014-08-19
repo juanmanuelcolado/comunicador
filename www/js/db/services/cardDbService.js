@@ -1,3 +1,3 @@
-communicatorApp.service('cardDbService', function(QueryBuilder) {
-    return new QueryBuilder('Card');
+communicatorApp.service('cardDbService', function(QueryBuilderService) {
+    return new QueryBuilderService('Card');
 });
