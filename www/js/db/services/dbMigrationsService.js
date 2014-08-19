@@ -25,6 +25,7 @@ communicatorApp.service('dbMigrationsService', function() {
         migrations: [
             new TableMigration('Card')
                 .addColumn('title TEXT')
+                .addColumn('img TEXT')
                 .addColumn('enabled BOOLEAN'),
 
             new TableMigration('Receiver')

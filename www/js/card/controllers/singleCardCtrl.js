@@ -2,7 +2,9 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     $scope.creating = !$stateParams.id;
     
     $scope.card = {
-        title: ''
+        title: '',
+        enabled: true,
+        img: "ionic.png"
     };
 
     if (!$scope.creating) {

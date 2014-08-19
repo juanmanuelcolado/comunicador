@@ -8,9 +8,11 @@
       <input type="text" placeholder="Búsqueda" ng-model='search'>
     </label>
     <ion-list class='list'>
-      <ion-checkbox ng-repeat="card in cards | filter: search" ng-model="card.enabled" ng-checked="card.enabled" class="item-checkbox-right">
-        {{card.title}}
-      </ion-checkbox>
+      <ion-item class="item item-thumbnail-left item-icon-right" ng-repeat="card in cards | filter: search" ng-model="card.enabled" ui-sref='app.singleCard({ id: card.id })'>
+        <img ng-src='img/{{card.img}}'>
+        <p class='text-area'>{{card.title}}</p>
+        <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
