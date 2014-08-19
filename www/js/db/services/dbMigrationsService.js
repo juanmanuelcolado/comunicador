@@ -7,12 +7,17 @@ communicatorApp.service('dbMigrationsService', function() {
 
     TableMigration.prototype = {
         createTable: function () {
-           this.transactions.push('CREATE TABLE IF NOT EXISTS ' + this.tableName + '(id INTEGER PRIMARY KEY ASC)');
-           return this;
+            this.transactions.push('CREATE TABLE IF NOT EXISTS ' + this.tableName + '(id INTEGER PRIMARY KEY ASC)');
+            return this;
         },
         addColumn: function (column) {
-           this.transactions.push('ALTER TABLE ' + this.tableName + ' ADD COLUMN ' + column);
-           return this;
+            this.transactions.push('ALTER TABLE ' + this.tableName + ' ADD COLUMN ' + column);
+            return this;
+        },
+        createIndex: function (indexType, column) {
+            var indexName = this.tableName + column + indexType;
+            this.transactions.push('CREATE ' + indexType + ' INDEX IF NOT EXISTS ' + indexName + ' ON ' + this.tableName + ' (' + column + ')');
+            return this;
         }
     };
 
@@ -28,7 +33,6 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
                 .addColumn('advanced BOOLEAN')
-
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
