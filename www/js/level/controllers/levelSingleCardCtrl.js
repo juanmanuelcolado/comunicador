@@ -1,4 +1,4 @@
-communicatorApp.controller('phaseSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state) {
     $scope.card = {
         title: $stateParams.cardTitle,
         img: $stateParams.cardImg

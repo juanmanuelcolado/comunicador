@@ -1,15 +1,15 @@
 <ion-view title='APADEA'>
   <ion-content id='home-page' class='has-header' padding='true'>
     <h1 class='title'>Comunicador</h1>
-    <ion-scroll class='phase-list' style="width: 250px; height: 250px; margin-top:10%">
+    <ion-scroll class='level-list' style="width: 250px; height: 250px; margin-top:10%">
       <ion-list>
-        <ion-item ng-class='{"selected": phase.selected}' ng-repeat='phase in phases' ng-click='selectPhase(phase)'>
-          {{phase.name}}
+        <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(level)'>
+          {{level.name}}
         </ion-item>
       </ion-list>
     </ion-scroll>
     <div class='button-container'>
-      <a href='#/app/phaseCards' class='button button-positive'>
+      <a href='#/app/levelCards' class='button button-positive'>
         Ir
       </a>
     </div>

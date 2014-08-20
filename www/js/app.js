@@ -36,21 +36,21 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
-    .state('app.phaseCards', {
-        url: '/phaseCards',
+    .state('app.levelCards', {
+        url: '/levelCards',
         views: {
             'menuContent': {
-                templateUrl: 'templates/phase/phaseCards.html',
-                controller: 'phaseCardsCtrl'
+                templateUrl: 'templates/level/levelCards.html',
+                controller: 'levelCardsCtrl'
             }
         }
     })
-    .state('app.phaseSingleCard', {
-        url: '/phaseSingleCard/:cardTitle/:cardImg',
+    .state('app.levelSingleCard', {
+        url: '/levelSingleCard/:cardTitle/:cardImg',
         views: {
             'menuContent': {
-                templateUrl: 'templates/phase/phaseSingleCard.html',
-                controller: 'phaseSingleCardCtrl'
+                templateUrl: 'templates/level/levelSingleCard.html',
+                controller: 'levelSingleCardCtrl'
             }
         }
     })
@@ -58,7 +58,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/patternLock',
         views: {
             'menuContent': {
-                templateUrl: 'templates/phase/patternLock.html',
+                templateUrl: 'templates/level/patternLock.html',
                 controller: 'patternLockCtrl'
             }
         }
@@ -67,7 +67,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/basicRegistry',
         views: {
             'menuContent': {
-                templateUrl: 'templates/phase/basicRegistry.html',
+                templateUrl: 'templates/level/basicRegistry.html',
                 controller: 'basicRegistryCtrl'
             }
         }

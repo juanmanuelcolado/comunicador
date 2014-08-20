@@ -1,5 +1,5 @@
 communicatorApp.controller('homeCtrl', function($scope) {
-    $scope.phases = [
+    $scope.levels = [
         { 
             name: 'Nivel 1: Cómo comunicarse',
             selected: true
@@ -20,8 +20,8 @@ communicatorApp.controller('homeCtrl', function($scope) {
             selected: false
         }];
 
-    $scope.selectPhase = function(phase) {
-        if(phase.name == 'Nivel 1: Cómo comunicarse') {phase.selected = true;}
-        else {phase.selected = false;}
+    $scope.selectLevel = function(level) {
+        if(level.name == 'Nivel 1: Cómo comunicarse') {level.selected = true;}
+        else {level.selected = false;}
     };
 });

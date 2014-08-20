@@ -3,15 +3,15 @@
     margin-top: 5%;
 }
 
-.phase-list {
+.level-list {
     height: 180px;
     border-bottom: 2px solid #CCC;
     width: 80%;
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top:20%
 }
 
-.phase-list .list .item.selected {
+.level-list .list .item.selected {
     background-color: #CCC;
 }
 
