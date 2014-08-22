@@ -27,9 +27,10 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
 
         // get all transaction args
         var query = transaction.query || '';
+        var isInsertQuery = query.indexOf('INSERT') >= 0;
         var args = transaction.args || [];
         var success = function(tx, results) {
-            var dbSet = parseResults(results);
+            var dbSet = parseResults(results, isInsertQuery);
             deferred.resolve(dbSet);
             dbOnSuccess(tx, dbSet);
         };
@@ -46,7 +47,12 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
         return deferred.promise;
     };
 
-    var parseResults = function(results) {
+    var parseResults = function(results, isInsertQuery) {
+        
+        if (isInsertQuery) {
+            return results.insertId;
+        }
+
         var set = [];
         for (var i = 0; i < results.rows.length; i++) {
             var item = {};

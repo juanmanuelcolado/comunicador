@@ -1,5 +1,12 @@
-communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbService, currentReceiverService) {
+communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbService, currentReceiverService, registryService) {
+
+	var basicScores = { true: 'withHelp', false: 'withoutHelp'};
+	
 	$scope.registry = {
+		receiverId: 0,
+		pick: false,
+		reach: false,
+		drop: false
 	};
 
 	$scope.receivers = [];
@@ -8,12 +15,16 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbServi
     receiverDbService.selectAll().then(function(results) {
         if (results.length) {
 	        $scope.receivers = results;
-			$scope.selectedReceiver = $scope.receivers[0].id;
+			$scope.registry.receiverId = currentReceiverService.receiver.id;
         }
     });
 
 	$scope.saveRegistry = function() {
-
+		$scope.registry.pick = basicScores[$scope.registry.pick];
+		$scope.registry.reach = basicScores[$scope.registry.reach];
+		$scope.registry.drop = basicScores[$scope.registry.drop];
+		registryService.saveBasicRegistry($scope.registry);
+		$scope.goBack();
 	};
 
 	$scope.goBack = function() {
