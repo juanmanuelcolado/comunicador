@@ -3,15 +3,16 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     
     $scope.card = {
         title: '',
-        enabled: true,
-        img: "ionic.png"
+        img: "ionic.png",
+        enabled: true
     };
 
     if (!$scope.creating) {
         cardDbService.find($stateParams.id).then(function(results) {
             $scope.card = results[0];
+            $scope.card.enabled = $scope.card.enabled === 'true' ? true : false;
         });
-    }
+    };
 
     $scope.goBack = function() {
         $ionicNavBarDelegate.back();
