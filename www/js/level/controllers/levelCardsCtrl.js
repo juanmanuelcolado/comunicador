@@ -1,5 +1,5 @@
 communicatorApp.controller('levelCardsCtrl', function($scope, cardDbService) {
-    $scope.cards = [
+    var defaultCards = [
         {
             title: 'Hello world',
             img: 'hello-world.png'
@@ -23,7 +23,7 @@ communicatorApp.controller('levelCardsCtrl', function($scope, cardDbService) {
     ];
 
     cardDbService.selectEnabled().then(function(results) {
-        $scope.cards = results;
+        $scope.cards = results.concat(defaultCards);
     });
 
 });

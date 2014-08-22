@@ -1,27 +1,39 @@
-communicatorApp.controller('homeCtrl', function($scope) {
-    $scope.levels = [
+communicatorApp.controller('homeCtrl', function($scope, levelDbService) {
+
+    var defaultLevels = [
         { 
-            name: 'Nivel 1: Cómo comunicarse',
+            levelNumber: 1,
+            description: 'Cómo comunicarse',
             selected: true
         },{ 
-            name: 'Nivel 2: Distancia y persistencia',
+            levelNumber: 2,
+            description: 'Distancia y persistencia',
             selected: false
         },{ 
-            name: 'Nivel 3: Discriminar imágenes',
+            levelNumber: 3,
+            description: 'Discriminar imágenes',
             selected: false
         },{ 
-            name: 'Nivel 4: Estructura oración',
+            levelNumber: 4,
+            description: 'Estructura oración',
             selected: false
         },{ 
-            name: 'Nivel 5: Responder preguntas',
+            levelNumber: 5,
+            description: 'Responder preguntas',
             selected: false
         },{ 
-            name: 'Nivel 6: Comentar',
+            levelNumber: 6,
+            description: 'Comentar',
             selected: false
+
         }];
 
+    levelDbService.selectAll().then(function(results) {
+		$scope.levels = results.concat(defaultLevels);
+    });
+
     $scope.selectLevel = function(level) {
-        if(level.name == 'Nivel 1: Cómo comunicarse') {level.selected = true;}
+        if(level.description == 'Cómo comunicarse') {level.selected = true;}
         else {level.selected = false;}
     };
 });

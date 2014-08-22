@@ -88,7 +88,8 @@ communicatorApp.service('QueryBuilderService', function(dbService) {
         },
         selectEnabled: function() {
             return this.execute({
-                query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = 1'
+                query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = ?',
+                args: [true]
             });
         },
         define: function(name, transactionFunction) {

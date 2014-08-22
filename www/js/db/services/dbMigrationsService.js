@@ -55,8 +55,15 @@ communicatorApp.service('dbMigrationsService', function() {
             new TableMigration('Level')
                 .addColumn('levelNumber INTEGER')
                 .addColumn('description TEXT')
-                .addColumn('initDate DATETIME'),
-
+                .addColumn('initDate TEXT')
+                .addColumn('enabled BOOLEAN')
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[1, '\'Cómo comunicarse\'', '', true])
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[2, '\'Distancia y persistencia\'', null, false])
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[3, '\'Discriminar imágenes\'', null, false])
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[4, '\'Estructura oración\'', null, false])
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[5, '\'Responder preguntas\'', null, false])
+                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[6, '\'Comentar\'', null, false]),
+                
             new TableMigration('Exchange')
                 .addColumn('receiverId INTEGER')
                 .addColumn('userId INTEGER')

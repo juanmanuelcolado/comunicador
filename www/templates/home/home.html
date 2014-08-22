@@ -4,7 +4,7 @@
     <ion-scroll class='level-list'>
       <ion-list>
         <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(level)'>
-          {{level.name}}
+          Nivel {{level.levelNumber}}: {{level.description}}
         </ion-item>
       </ion-list>
     </ion-scroll>
