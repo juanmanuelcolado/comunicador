@@ -32,7 +32,12 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('lastName TEXT')
                 .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
-                .addColumn('advanced BOOLEAN')
+                .addColumn('advanced BOOLEAN'),
+            
+            new TableMigration('Level')
+                .addColumn('levelNumber INTEGER')
+                .addColumn('description TEXT')
+                .addColumn('initDate DATETIME')
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {

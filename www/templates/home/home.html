@@ -1,7 +1,7 @@
 <ion-view title='APADEA'>
   <ion-content id='home-page' class='has-header' padding='true'>
     <h1 class='title'>Comunicador</h1>
-    <ion-scroll class='level-list' style="width: 250px; height: 250px; margin-top:10%">
+    <ion-scroll class='level-list'>
       <ion-list>
         <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(level)'>
           {{level.name}}
