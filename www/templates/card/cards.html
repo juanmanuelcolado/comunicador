@@ -1,16 +1,28 @@
 <ion-view title='Pictogramas'>
   <ion-nav-buttons side='right'>
-    <a ui-sref='app.singleCard' class='button button-icon icon ion-plus-circled'></a>
+    <a ui-sref='app.singleCard' class='button button-icon icon ion-plus-circled' ng-hide='showConfirm'></a>
   </ion-nav-buttons>
   <ion-content class='has-header'>
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="text" placeholder="Búsqueda" ng-model='search'>
     </label>
-    <ion-list class='list'>
-      <ion-checkbox ng-repeat="card in cards | filter: search" ng-model="card.enabled" ng-checked="card.enabled" class="item-checkbox-right">
-        {{card.title}}
-      </ion-checkbox>
+    <ion-list class='list' show-delete="showDelete" ng-model="showDelete">
+      <ion-item class='item item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' ng-model='card.enabled' delete-hold ui-sref='app.singleCard({ id: card.id })'>
+        <ion-delete-button class="ion-minus-circled" ng-click='deleteCard(card)'></ion-delete-button>
+        <img ng-src='img/{{card.img}}'>
+        <p class='text-area'>{{card.title}}</p>
+        <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
+      </ion-item>
     </ion-list>
   </ion-content>
+    <ion-footer-bar class='bar-stable' ng-show='showConfirm'>
+      <div class='buttons' ng-click="undo()">
+        <button class='button'>Cancelar</button>
+      </div>
+      <h1 class='title'>¿Borrar permanentemente?</h1>
+      <div class='buttons' ng-click='permanentlyDelete()'>
+        <button class='button'>Aceptar</button>
+      </div>
+    </ion-footer-bar>
 </ion-view>

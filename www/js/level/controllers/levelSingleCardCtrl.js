@@ -1,5 +1,6 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state, registryService) {
     $scope.card = {
+        id: 1, // pasar por parámetro el id y obtener los datos de la tarjeta desde la base
         title: $stateParams.cardTitle,
         img: $stateParams.cardImg
     };
@@ -14,6 +15,7 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
             cancelText: 'Cancelar',
             buttonClicked: function(index) {
                 if (index === 0) {
+                    registryService.pickedCardId = $scope.card.id;
                     $state.go('app.patternLock');
                 }
                 return true;

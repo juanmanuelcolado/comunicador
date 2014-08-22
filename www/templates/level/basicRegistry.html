@@ -5,7 +5,7 @@
         <div class="input-label">
           Receptor
         </div>
-        <select ng-options="receiver.id as receiver.name + ' ' + receiver.lastName for receiver in receivers" ng-model="selectedReceiver">
+        <select ng-options="receiver.id as receiver.name + ' ' + receiver.lastName for receiver in receivers" ng-model="registry.receiverId">
           {{receiver.name + " " + receiver.lastName}}
         </select>
       </label>
@@ -18,11 +18,10 @@
           Recojer
         </div>
         <label class="toggle toggle-positive">
-          <input type="checkbox">
+          <input type="checkbox" ng-model="registry.pick">
           <div class="track">
             <div class="handle"></div>
           </div>
-          <i class="icon ion-help-circled"></i>
         </label>
       </label>
       <label class="item item-input item-toggle">
@@ -31,11 +30,10 @@
           Alcanzar
         </div>
         <label class="toggle toggle-positive">
-          <input type="checkbox">
+          <input type="checkbox" ng-model="registry.reach">
           <div class="track">
             <div class="handle"></div>
           </div>
-          <i class="icon ion-help-circled"></i>
         </label>
       </label>
       <label class="item item-input item-toggle">
@@ -44,16 +42,15 @@
           Dejar
         </div>
         <label class="toggle toggle-positive">
-          <input type="checkbox">
+          <input type="checkbox" ng-model="registry.drop">
           <div class="track">
             <div class="handle"></div>
           </div>
-          <i class="icon ion-help-circled"></i>
         </label>
       </label>
       <div class='registry-form-buttons'>
         <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-        <a id='accept' class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+        <a id='accept' class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='saveRegistry();'>Aceptar</a>
       </div>
     </div>
   </ion-content>
