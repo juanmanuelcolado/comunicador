@@ -19,22 +19,22 @@ communicatorApp.controller('cardsCtrl', function($scope, $ionicGesture, $timeout
     	$scope.deletedCards.push(card);
     	$scope.cards.splice($scope.cards.indexOf(card),1);
     	$scope.showConfirm = true;
-    }
+    };
 
     $scope.permanentlyDelete = function(){
     	$scope.deletedCards.forEach(function(card){
     		cardDbService.delete(card);
-    	})
+    	});
     	$scope.showDelete = false;
     	$scope.showConfirm = false;
-    }
+    };
 
     $scope.undo = function(){
     	$scope.cards = $scope.cards.concat($scope.deletedCards);
     	$scope.deletedCards = [];
     	$scope.showDelete = false;
     	$scope.showConfirm = false;
-    }
+    };
 })
 
 .directive('deleteHold', function($ionicGesture) {
@@ -42,5 +42,5 @@ communicatorApp.controller('cardsCtrl', function($scope, $ionicGesture, $timeout
 		link : function(scope, elem, attrs) {
 			$ionicGesture.on('hold', scope.showDeleteButton, elem);
 		}
-	}
+	};
 });

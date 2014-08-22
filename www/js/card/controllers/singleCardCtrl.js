@@ -12,7 +12,7 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
             $scope.card = results[0];
             $scope.card.enabled = $scope.card.enabled === 'true' ? true : false;
         });
-    };
+    }
 
     $scope.goBack = function() {
         $ionicNavBarDelegate.back();
