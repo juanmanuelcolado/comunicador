@@ -25,7 +25,7 @@ communicatorApp.service('registryService', function(exchangeDbService, stepDbSer
 
 	function insertNewExchange (registryInfo) {
 		return exchangeDbService.insert({
-			receiverId: registryInfo.receiverId,
+			receiverId: registryInfo.receiver.id,
 			userId: 1, // usuario con TEA
 			date: (new Date()).toISOString()
 		});

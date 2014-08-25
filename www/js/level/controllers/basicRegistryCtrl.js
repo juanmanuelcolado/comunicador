@@ -3,21 +3,11 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbServi
 	var basicScores = { true: 'withHelp', false: 'withoutHelp'};
 	
 	$scope.registry = {
-		receiverId: 0,
+		receiver: currentReceiverService.receiver,
 		pick: false,
 		reach: false,
 		drop: false
 	};
-
-	$scope.receivers = [];
-
-	// get receivers
-    receiverDbService.selectAll().then(function(results) {
-        if (results.length) {
-	        $scope.receivers = results;
-			$scope.registry.receiverId = currentReceiverService.receiver.id;
-        }
-    });
 
 	$scope.saveRegistry = function() {
 		$scope.registry.pick = basicScores[$scope.registry.pick];

@@ -1,13 +1,13 @@
 <ion-view title='Registro del intercambio'>
   <ion-content class='has-header'>
     <div class="list list-inset">
-      <label class="item item-input item-select">
+      <label class="item item-input">
         <div class="input-label">
           Receptor
         </div>
-        <select ng-options="receiver.id as receiver.name + ' ' + receiver.lastName for receiver in receivers" ng-model="registry.receiverId">
-          {{receiver.name + " " + receiver.lastName}}
-        </select>
+        <div class="receiverName">
+          {{registry.receiver.name + " " + registry.receiver.lastName}}
+        </div>
       </label>
       <div class="item item-divider">
         Intercambio
