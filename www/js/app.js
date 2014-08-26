@@ -112,8 +112,16 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/configuration',
         views: {
             'menuContent': {
-                templateUrl: 'templates/configuration/configuration.html',
-                controller: 'configurationsCtrl'
+                templateUrl: 'templates/configuration/configuration.html'
+            }
+        }
+    })
+    .state('app.configurationCurrentUser', {
+        url: '/configuration/user',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationCurrentUser.html',
+                controller: 'configurationsCurrentUserCtrl'
             }
         }
     })

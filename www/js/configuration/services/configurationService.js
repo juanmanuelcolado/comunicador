@@ -30,7 +30,7 @@ communicatorApp.service('configurationService', function(configurationDbService,
             $q.all(promises).then(function(results) {
                 var mergedResult = results.reduce(function(memo, current) {
                     return angular.extend(memo, current);
-                });
+                }, {});
                 deferred.resolve(mergedResult);
             });
 
