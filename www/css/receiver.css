@@ -12,3 +12,9 @@
 .receiver-form-buttons #accept {
     float: right;
 }
+
+.receiver-edit-pattern-button {
+	top: -40px;
+	z-index: 100;
+	left: calc(100% - 105px);
+}
