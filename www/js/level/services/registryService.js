@@ -27,10 +27,10 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		return deferred.promise;
 	};
 
-	registryService.saveBasicRegistry = function(basicRegistryInfo) {
-		insertNewExchange(basicRegistryInfo).then(function(exchangeId) {
+	registryService.saveRegistry = function(registryInfo) {
+		insertNewExchange(registryInfo).then(function(exchangeId) {
 			steps.forEach(function(step) {
-				insertNewScore(exchangeId, step.id, basicRegistryInfo[step.name]);
+				insertNewScore(exchangeId, step.id, registryInfo[step.name]);
 			});
 			insertNewExchangeByCard(exchangeId);
 		});

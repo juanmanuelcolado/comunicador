@@ -72,6 +72,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
+    .state('app.advancedRegistry', {
+        url: '/advancedRegistry',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/level/advancedRegistry.html',
+                controller: 'advancedRegistryCtrl'
+            }
+        }
+    })
     .state('app.cards', {
         url: '/cards',
         views: {

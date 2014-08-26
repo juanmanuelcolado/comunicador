@@ -1,7 +1,7 @@
-communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbService, currentReceiverService, registryService) {
+communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiverService, registryService) {
 
-	var basicScoreValues = { true: 'withHelp', false: 'withoutHelp'};
-	var basicScores = { 'withHelp': true, 'withoutHelp': false};
+	var basicScoreValues = { true: 'withoutHelp', false: 'withHelp' };
+	var basicScores = { 'withoutHelp': true, 'withPartialHelp': false, 'withHelp': false};
 	
 	$scope.registry = {
 		receiver: currentReceiverService.receiver,
@@ -19,7 +19,7 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, receiverDbServi
 		$scope.registry.pick = basicScoreValues[$scope.registry.pick];
 		$scope.registry.reach = basicScoreValues[$scope.registry.reach];
 		$scope.registry.drop = basicScoreValues[$scope.registry.drop];
-		registryService.saveBasicRegistry($scope.registry);
+		registryService.saveRegistry($scope.registry);
 		$scope.goBack();
 	};
 

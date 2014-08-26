@@ -46,8 +46,7 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
 
 	function selectReceiver (receiver) {
 		currentReceiverService.receiver = receiver;
-		$state.go('app.basicRegistry');
-		// $state.go(receiver.advanced == 'true'? 'app.advancedRegistry' : 'app.basicRegistry');
+		$state.go(receiver.advanced == 'true'? 'app.advancedRegistry' : 'app.basicRegistry');
 	}
 
 	function showConflictPopup (conflictingReceivers) {
