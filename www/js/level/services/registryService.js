@@ -1,6 +1,8 @@
 communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService) {
 	var registryService = {};
 
+	registryService.pickedCardId = 0;
+	
 	var steps = [];
 	stepDbService.selectAll().then(function(results) {
 		steps = results;
@@ -10,37 +12,36 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 	scoreDbService.selectAll().then(function(results) {
 		scores = results;
 	});
-	
-	registryService.pickedCardId = 0;
 
 	registryService.getLastRegistry = function() {
 		var deferred = $q.defer();
-		var exchangeScores = {};
 		exchangeDbService.getLastExchange().then(function(exchangeResults) {
 			if (exchangeResults.length) {
-				var lastExchange = exchangeResults[0];
-				scoreByExchangeDbService.getLastScoresByExchange(lastExchange.id).then(function(results) {
-					for (var i = 0; i < results.length; i++) {
-						exchangeScores[getStepName(results[i].stepId)] = getScoreName(results[i].scoreId);
-					}
-					deferred.resolve(exchangeScores);
+				scoreByExchangeDbService.getLastScoresByExchange(exchangeResults[0].id).then(function(results) {
+					deferred.resolve(makeRegistryScores(results));
 				});
 			} else {
-				deferred.resolve(exchangeScores);
+				deferred.resolve({});
 			}
 		});
 		return deferred.promise;
 	};
 
 	registryService.saveBasicRegistry = function(basicRegistryInfo) {
-		insertNewExchange(basicRegistryInfo).then(function(insertId) {
-			var exchangeId = insertId;
-			insertNewScore(exchangeId, 'pick', basicRegistryInfo.pick);
-			insertNewScore(exchangeId, 'reach', basicRegistryInfo.reach);
-			insertNewScore(exchangeId, 'drop', basicRegistryInfo.drop);
+		insertNewExchange(basicRegistryInfo).then(function(exchangeId) {
+			steps.forEach(function(step) {
+				insertNewScore(exchangeId, step.id, basicRegistryInfo[step.name]);
+			});
 			insertNewExchangeByCard(exchangeId);
 		});
 	};
+
+	function makeRegistryScores(scores) {
+		return scores.reduce(function(memo, score) {
+			memo[getStepName(score.stepId)] = getScoreName(score.scoreId);
+			return memo;
+		}, {});
+	}
 
 	function insertNewExchange (registryInfo) {
 		return exchangeDbService.insert({
@@ -50,10 +51,10 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		});
 	}
 
-	function insertNewScore (exchangeId, stepName, scoreName) {
+	function insertNewScore (exchangeId, stepId, scoreName) {
 		scoreByExchangeDbService.insert({
 			exchangeId: exchangeId,
-			stepId: getStepId(stepName),
+			stepId: stepId,
 			scoreId: getScoreId(scoreName)
 		});		
 	}
