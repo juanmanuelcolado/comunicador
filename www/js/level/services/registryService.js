@@ -1,4 +1,4 @@
-communicatorApp.service('registryService', function(exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService) {
+communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService) {
 	var registryService = {};
 
 	var steps = [];
@@ -12,6 +12,25 @@ communicatorApp.service('registryService', function(exchangeDbService, stepDbSer
 	});
 	
 	registryService.pickedCardId = 0;
+
+	registryService.getLastRegistry = function() {
+		var deferred = $q.defer();
+		var exchangeScores = {};
+		exchangeDbService.getLastExchange().then(function(exchangeResults) {
+			if (exchangeResults.length) {
+				var lastExchange = exchangeResults[0];
+				scoreByExchangeDbService.getLastScoresByExchange(lastExchange.id).then(function(results) {
+					for (var i = 0; i < results.length; i++) {
+						exchangeScores[getStepName(results[i].stepId)] = getScoreName(results[i].scoreId);
+					}
+					deferred.resolve(exchangeScores);
+				});
+			} else {
+				deferred.resolve(exchangeScores);
+			}
+		});
+		return deferred.promise;
+	};
 
 	registryService.saveBasicRegistry = function(basicRegistryInfo) {
 		insertNewExchange(basicRegistryInfo).then(function(insertId) {
@@ -52,10 +71,22 @@ communicatorApp.service('registryService', function(exchangeDbService, stepDbSer
 		})[0].id;
 	}
 
+	function getStepName (stepId) {
+		return steps.filter(function(step) { 
+			return step.id === stepId; 
+		})[0].name;
+	}
+
 	function getScoreId (scoreName) {
 		return scores.filter(function(score) { 
 			return score.name === scoreName; 
 		})[0].id;
+	}
+	
+	function getScoreName (scoreId) {
+		return scores.filter(function(score) { 
+			return score.id === scoreId; 
+		})[0].name;
 	}
 
 	return registryService;
