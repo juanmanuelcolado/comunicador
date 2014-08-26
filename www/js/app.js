@@ -116,6 +116,14 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
                 controller: 'configurationsCtrl'
             }
         }
+    })
+    .state('app.configurationCredits', {
+        url: '/configuration/credits',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationCredits.html'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback
