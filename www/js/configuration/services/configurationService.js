@@ -20,23 +20,6 @@ communicatorApp.service('configurationService', function(configurationDbService,
                     return db.insert(configuration);
                 }
             });
-        },
-        uninitializedApp: function() {
-            var deferred = $q.defer();
-            if (!localStorage.getItem("initialized")) {
-                this.get("initialized").then(function(value) {
-                    if (value) {
-                        localStorage.setItem("initialized", true);
-                    } else {
-                        deferred.resolve();
-                    }
-                });
-            }
-            return deferred.promise;
-        },
-        initializeApp: function() {
-            this.set('initialized', true);
-            localStorage.setItem('initialized', true);
         }
     };
 });
