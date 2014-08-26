@@ -67,7 +67,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/basicRegistry',
         views: {
             'menuContent': {
-                templateUrl: 'templates/level/basicRegistry.html',
+                templateUrl: 'templates/registry/basicRegistry.html',
                 controller: 'basicRegistryCtrl'
             }
         }
@@ -76,7 +76,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/advancedRegistry',
         views: {
             'menuContent': {
-                templateUrl: 'templates/level/advancedRegistry.html',
+                templateUrl: 'templates/registry/advancedRegistry.html',
                 controller: 'advancedRegistryCtrl'
             }
         }
