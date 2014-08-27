@@ -125,6 +125,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
             }
         }
     })
+    .state('app.configurationServer', {
+        url: '/configuration/server',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationServer.html',
+                controller: 'configurationsServerCtrl'
+            }
+        }
+    })
     .state('app.configurationCredits', {
         url: '/configuration/credits',
         views: {
