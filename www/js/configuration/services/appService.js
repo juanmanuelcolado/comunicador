@@ -1,5 +1,5 @@
 communicatorApp.service('appService', function(configurationService, $q) {
-    var initKey = "initialized";
+    var initKey = "app_initialized";
     return {
         uninitialized: function() {
             var deferred = $q.defer();

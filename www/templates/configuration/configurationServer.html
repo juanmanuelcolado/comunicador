@@ -2,8 +2,9 @@
   <ion-content class='has-header'>
     <h4>Configurar conexión al servidor</h4>
     <ion-checkbox>Sinconizar automaticamente</ion-checkbox>
-    <button class="button button-positive">Sincronizar ahora</button>
-    <h5>Última sincronización {{lastSincronization}}</h5>
+    <button class="button button-positive" ng-click='synchronize();'>Sincronizar ahora</button>
+
+    <h5>Última sincronización: {{lastSynchronizationTime ? lastSynchronizationTime : "aún no se ha realizado una sincronización" }}</h5>
 
     <div class='server-form-buttons'>
       <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
