@@ -15,7 +15,6 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
             $scope.receiver = results[0];
             $scope.receiver.advanced = $scope.receiver.advanced === 'true' ? true : false;
             $scope.receiver.avatar = $scope.receiver.avatar || $scope.defaultAvatar;
-            $scope.patternActive = !!$scope.receiver.pattern;
         });
     }
 

@@ -11,10 +11,9 @@
         <input type='text' ng-model='receiver.lastName' placeholder='Apellido'>
       </label>
       <ion-checkbox ng-model="receiver.advanced">Puntuación avanzada</ion-checkbox>
-      <ion-checkbox ng-model="patternActive">Usar patrón de bloqueo</ion-checkbox>
-      <button class="button button-small receiver-edit-pattern-button" ng-disabled="!patternActive" ng-click="editPattern()">
+      <button class="button button-block" ng-click="editPattern()">
         <i class="icon ion-edit"></i>
-        Editar
+        Editar patrón de bloqueo
       </button>
       <div class='receiver-form-buttons'>
         <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>

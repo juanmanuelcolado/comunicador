@@ -13,12 +13,6 @@
     float: right;
 }
 
-.receiver-edit-pattern-button {
-	top: -40px;
-	z-index: 100;
-	left: calc(100% - 70px);
-}
-
 .receiver-pattern-edit ion-content {
 	padding: 0 10px;
 }
