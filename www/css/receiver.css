@@ -16,5 +16,14 @@
 .receiver-edit-pattern-button {
 	top: -40px;
 	z-index: 100;
-	left: calc(100% - 105px);
+	left: calc(100% - 70px);
+}
+
+.receiver-pattern-edit ion-content {
+	padding: 0 10px;
+}
+
+.receiver-pattern-error {
+	color: #EF4E3A;
+	font-weight: bold;
 }

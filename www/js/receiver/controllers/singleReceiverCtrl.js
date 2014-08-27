@@ -1,4 +1,4 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $ionicNavBarDelegate, receiverDbService, imageUploaderService) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
     $scope.defaultAvatar = imageUploaderService.defaultSrc;
 
@@ -18,6 +18,23 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
             $scope.patternActive = !!$scope.receiver.pattern;
         });
     }
+
+    $ionicModal.fromTemplateUrl('templates/receiver/receiverPatternEdit.html', {
+        scope: $scope,
+        animation: 'slide-in-right',
+        backdropClickToClose: true
+    }).then(function(modal) {
+        $scope.patternModal = modal;
+    });
+
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.patternModal.remove();
+    });
+
+    $scope.editPattern = function() {
+        $scope.patternModal.show();
+    };
 
     $scope.takePicture = function() {
         imageUploaderService.takePicture(function(newImageSrc) {
