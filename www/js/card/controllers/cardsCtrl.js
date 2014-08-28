@@ -42,9 +42,11 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
 
     $scope.changeStyle = function(card){
         if(card.selectedToDelete){
-            return {"color":"red"};
+            return {"color":"#909090",
+                "vertical-align": "middle"};
         } else {
-            return {"color":"black"};
+            return {"color":"black",
+                "vertical-align": "middle"};
         }
     };
 
