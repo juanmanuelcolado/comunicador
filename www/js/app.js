@@ -67,8 +67,17 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
         url: '/basicRegistry',
         views: {
             'menuContent': {
-                templateUrl: 'templates/level/basicRegistry.html',
+                templateUrl: 'templates/registry/basicRegistry.html',
                 controller: 'basicRegistryCtrl'
+            }
+        }
+    })
+    .state('app.advancedRegistry', {
+        url: '/advancedRegistry',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/registry/advancedRegistry.html',
+                controller: 'advancedRegistryCtrl'
             }
         }
     })

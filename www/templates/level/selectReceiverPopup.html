@@ -1,0 +1,10 @@
+Se encontró más de un receptor con el patrón ingresado. 
+<br>
+Considere cambiar su patrón para no volver a tener este conflicto. 
+<br><br> 
+Seleccione el receptor deseado: 
+<ion-radio 	ng-repeat="receiver in conflictingReceivers" 
+			ng-value="receiver" 
+			ng-model="radioInputs.selectedReceiver">
+	{{ receiver.name + " " + receiver.lastName }}
+</ion-radio>

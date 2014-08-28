@@ -1,8 +1,7 @@
-communicatorApp.controller('cardsCtrl', function($scope, $ionicGesture, $timeout, cardDbService) {
+communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardDbService) {
     $scope.cards = [];
     $scope.showDelete = false;
     $scope.showConfirm = false;
-    
     
     cardDbService.selectAll().then(function(results) {
         $scope.cards = results;
@@ -11,36 +10,78 @@ communicatorApp.controller('cardsCtrl', function($scope, $ionicGesture, $timeout
     $scope.showDeleteButton = function(){
     	$timeout(function() {
     		$scope.showDelete = true;
-    		$scope.deletedCards = [];
+            $scope.touchedDeleteButton = false;
+    		$scope.selectedCardsToDelete = [];
     	});
     };
 
-    $scope.deleteCard = function(card){
-    	$scope.deletedCards.push(card);
-    	$scope.cards.splice($scope.cards.indexOf(card),1);
-    	$scope.showConfirm = true;
+    $scope.cardTap = function(id){
+        $timeout(function() {
+            if($scope.showDelete){               
+                if($scope.touchedDeleteButton) {   
+                    $scope.touchedDeleteButton = false;
+                } else {
+                    $scope.undo();
+                }
+            } else {
+                $state.go('app.singleCard', {id: id});
+            }
+        });
+    };
+
+    $scope.selectToDelete = function(card){
+        $scope.touchedDeleteButton = true;
+        if($scope.selectedCardsToDelete.indexOf(card) == -1){
+            card.selectedToDelete = true;
+        	$scope.selectedCardsToDelete.push(card);
+        	$scope.showConfirm = true;
+            $scope.changeStyle(card);
+        }
+
+    };
+
+    $scope.changeStyle = function(card){
+        if(card.selectedToDelete){
+            return {"color":"#909090",
+                "margin-top": "25px",
+                "font-size": "20px",
+                "min-height": "25px",
+                "text-decoration": "line-through"};
+        } else {
+            return {"color":"black",
+                "margin-top": "25px",
+                "font-size": "20px",
+                "min-height": "25px"};
+        }
     };
 
     $scope.permanentlyDelete = function(){
-    	$scope.deletedCards.forEach(function(card){
+    	$scope.selectedCardsToDelete.forEach(function(card){
     		cardDbService.delete(card);
+            $scope.cards.splice($scope.cards.indexOf(card),1);
     	});
     	$scope.showDelete = false;
     	$scope.showConfirm = false;
     };
 
     $scope.undo = function(){
-    	$scope.cards = $scope.cards.concat($scope.deletedCards);
-    	$scope.deletedCards = [];
+        angular.forEach($scope.selectedCardsToDelete,function(card){
+            delete card.selectedToDelete;
+            $scope.changeStyle(card);
+        });
+        $scope.selectedCardsToDelete = [];
+        $scope.touchedDeleteButton = false;
     	$scope.showDelete = false;
     	$scope.showConfirm = false;
     };
 })
 
-.directive('deleteHold', function($ionicGesture) {
+.directive('gestures', function($ionicGesture) {
 	return {
 		link : function(scope, elem, attrs) {
-			$ionicGesture.on('hold', scope.showDeleteButton, elem);
+                $ionicGesture.on('hold', scope.showDeleteButton, elem);
+                $ionicGesture.on('tap', function(){scope.cardTap(scope.card.id);}, elem);
 		}
 	};
 });
+
