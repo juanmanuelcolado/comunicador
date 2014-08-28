@@ -3,8 +3,9 @@
     <h1 class='title'>Comunicador</h1>
     <ion-scroll class='level-list'>
       <ion-list>
-        <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(level)'>
-          Nivel {{level.levelNumber}}: {{level.description}}
+        <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(levels, level)'>
+          Nivel {{level.levelNumber}}: {{level.description}} 
+          <ng-show='level.initDate != null' style='color:#808080;'> {{level.initDate}}
         </ion-item>
       </ion-list>
     </ion-scroll>
