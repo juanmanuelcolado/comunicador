@@ -43,10 +43,15 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
     $scope.changeStyle = function(card){
         if(card.selectedToDelete){
             return {"color":"#909090",
-                "vertical-align": "middle"};
+                "margin-top": "25px",
+                "font-size": "20px",
+                "min-height": "25px",
+                "text-decoration": "line-through"};
         } else {
             return {"color":"black",
-                "vertical-align": "middle"};
+                "margin-top": "25px",
+                "font-size": "20px",
+                "min-height": "25px"};
         }
     };
 
