@@ -1,0 +1,19 @@
+<ion-view title='Usuario'>
+  <ion-content class='has-header'>
+    <div class='list list-inset'>
+      <label class='item item-input'>
+        <input type='text' ng-model='user.name' placeholder='Nombre'>
+      </label>
+      <label class='item item-input'>
+        <input type='text' ng-model='user.lastName' placeholder='Apellido'>
+      </label>
+      <label class='item item-input'>
+        <input type='text' ng-model='user.birthdate' placeholder='Fecha de nacimiento'>
+      </label>
+      <div class='current-user-form-buttons'>
+        <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
+        <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -20,7 +20,6 @@ communicatorApp.service('dbMigrationsService', function() {
             return this;
         },
         insertValues: function(columns, values) {
-
             var commaSeparatedColumns = columns.join(',');
             var commaSeparatedValues = values.join(',');
 
@@ -57,12 +56,12 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('description TEXT')
                 .addColumn('initDate TEXT')
                 .addColumn('enabled BOOLEAN')
-                .insertValues(['levelNumber','description', 'initDate', 'enabled'],[1, '\'Cómo comunicarse\'', '\'25/08/2014\'', '\'true\''])
-                .insertValues(['levelNumber','description', 'enabled'],[2, '\'Distancia y persistencia\'', '\'false\''])
-                .insertValues(['levelNumber','description', 'enabled'],[3, '\'Discriminar imágenes\'', '\'false\''])
-                .insertValues(['levelNumber','description', 'enabled'],[4, '\'Estructura oración\'', '\'false\''])
-                .insertValues(['levelNumber','description', 'enabled'],[5, '\'Responder preguntas\'', '\'false\''])
-                .insertValues(['levelNumber','description', 'enabled'],[6, '\'Comentar\'', '\'false\'']),
+                .insertValues(['levelNumber', 'description', 'initDate', 'enabled'], [1, "'Cómo comunicarse'", '"25/08/2014"', '"true"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [2, '"Distancia y persistencia"', '"false"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [3, '"Discriminar imágenes"', '"false"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [4, '"Estructura oración"', '"false"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [5, '"Responder preguntas"', '"false"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [6, '"Comentar"', '"false"']),
                 
             new TableMigration('Exchange')
                 .addColumn('receiverId INTEGER')
@@ -81,16 +80,19 @@ communicatorApp.service('dbMigrationsService', function() {
             new TableMigration('Step')
                 .addColumn('name TEXT')
                 .addColumn('level INTEGER')
-                .insertValues(['name','level'],['\'pick\'', 1])
-                .insertValues(['name','level'],['\'reach\'', 1])
-                .insertValues(['name','level'],['\'drop\'', 1]),
+                .insertValues(['name', 'level'], ['"pick"', 1])
+                .insertValues(['name', 'level'], ['"reach"', 1])
+                .insertValues(['name', 'level'], ['"drop"', 1]),
 
             new TableMigration('Score')
                 .addColumn('name TEXT')
-                .insertValues(['name'],['\'withHelp\''])
-                .insertValues(['name'],['\'withPartialHelp\''])
-                .insertValues(['name'],['\'withoutHelp\''])
+                .insertValues(['name'], ['"withHelp"'])
+                .insertValues(['name'], ['"withPartialHelp"'])
+                .insertValues(['name'], ['"withoutHelp"']),
 
+            new TableMigration('Configuration')
+                .addColumn('key TEXT')
+                .addColumn('value TEXT')
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {

@@ -116,6 +116,40 @@ var communicatorApp = angular.module('communicatorApp', ['ionic'])
                 controller: 'singleReceiverCtrl'
             }
         }
+    })
+    .state('app.configuration', {
+        url: '/configuration',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configuration.html'
+            }
+        }
+    })
+    .state('app.configurationCurrentUser', {
+        url: '/configuration/user',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationCurrentUser.html',
+                controller: 'configurationsCurrentUserCtrl'
+            }
+        }
+    })
+    .state('app.configurationServer', {
+        url: '/configuration/server',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationServer.html',
+                controller: 'configurationsServerCtrl'
+            }
+        }
+    })
+    .state('app.configurationCredits', {
+        url: '/configuration/credits',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationCredits.html'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback
