@@ -9,6 +9,7 @@ communicatorApp.service('configurationService', function(configurationDbService,
     };
 
     return {
+        find: db.find.bind(db),
         get: function(key) {
             var deferred = $q.defer();
             db.find(key).then(function(results) {
@@ -36,6 +37,7 @@ communicatorApp.service('configurationService', function(configurationDbService,
 
             return deferred.promise;
         },
+        insert: db.insert.bind(db),
         set: function(key, value) {
             var configuration = { key: key, value: value };
 
@@ -62,6 +64,7 @@ communicatorApp.service('configurationService', function(configurationDbService,
                 deferred.resolve(results);
             });
             return deferred.promise;
-        }
+        },
+        delete: db.delete.bind(db)
     };
 });

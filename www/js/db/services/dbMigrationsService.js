@@ -35,7 +35,7 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('advanced BOOLEAN'),
 
             new TableMigration('Configuration')
-                .addColumn('key TEXT').createIndex('UNIQUE', 'key')
+                .addColumn('key TEXT')
                 .addColumn('value TEXT')
         ],
         eachTransaction: function(fn) {

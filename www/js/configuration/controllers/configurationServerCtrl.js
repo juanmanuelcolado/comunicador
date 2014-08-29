@@ -1,12 +1,20 @@
 communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNavBarDelegate, serverService) {
-    $scope.lastSynchronizationTime = '';
+    $scope.lastSyncTime = '';
+    $scope.autoSyncEnabled = false;
 
-    serverService.getLastSynchronizationTime().then(function(lastSynchronizationTime) {
-        $scope.lastSynchronizationTime = lastSynchronizationTime;
+    serverService.getCurrentConfiguration().then(function(configuration) {
+        $scope.lastSyncTime = configuration.lastSyncTime;
+        $scope.autoSyncEnabled = configuration.autoSyncEnabled === 'true' ? true : false;
     });
 
-    $scope.synchronize = function() {
-        $scope.lastSynchronizationTime = serverService.synchronize();
+    $scope.toggleAutoSync = function(enabled) {
+        serverService.setAutoSync(enabled);
+    };
+
+    $scope.sync = function() {
+        serverService.sync().then(function(syncTime) {
+            $scope.lastSyncTime = syncTime;
+        });
     };
 
     $scope.goBack = function() {
