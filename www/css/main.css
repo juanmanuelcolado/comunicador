@@ -1,0 +1,102 @@
+/*  ==========================================================================
+  Home
+  ========================================================================== */
+
+#home-page .title {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.level-list {
+    height: 180px;
+    border-bottom: 2px solid #CCC;
+    width: 80%;
+    margin: 0 auto;
+    margin-top:20%
+}
+
+.level-list .list .item.selected {
+    background-color: #CCC;
+}
+
+#home-page .button {
+    border-radius: 40px;
+    margin-top: 10%;
+}
+
+#home-page .button-container {
+    text-align: center;
+}
+
+
+/*  ==========================================================================
+  Cards
+  ========================================================================== */
+
+.card-list .list {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.card-list .list .item {
+    margin-bottom: 25px;
+}
+
+.card-list .list .item .card-title {
+    border-top: 1px solid #CCC;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.card-form-buttons #accept {
+    float: right;
+}
+
+
+/*  ==========================================================================
+  Registry
+  ========================================================================== */
+
+.receiver-form-buttons {
+    padding-top: 20px;
+}
+
+.receiver-form-buttons #accept {
+    float: right;
+}
+
+
+/*  ==========================================================================
+  Registry
+  ========================================================================== */
+
+.registry-form-buttons {
+    padding-top: 20px;
+}
+
+.registry-form-buttons #accept {
+    float: right;
+}
+
+#lock {
+    width: 100%;
+}
+
+
+/*  ==========================================================================
+  Delete from list
+  ========================================================================== */
+
+.list .item-content .normal-item {
+    color:black;
+    margin-top: 25px;
+    font-size: 20px;
+    min-height: 2px;
+}
+.list .item-content .selected-to-delete {
+    color:#909090;
+    margin-top: 25px;
+    font-size: 20px;
+    min-height: 25px;
+    text-decoration: line-through;
+}
