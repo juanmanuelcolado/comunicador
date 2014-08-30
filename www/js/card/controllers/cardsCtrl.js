@@ -9,6 +9,6 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
 
     $scope.$on("delete", function(scope, card) {
         cardDbService.delete(card);
-        $scope.cards.splice($scope.cards.indexOf(card),1);
+        $scope.cards.splice($scope.cards.indexOf(card), 1);
     });
 });
