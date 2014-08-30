@@ -13,7 +13,6 @@
 
     <ion-list class='list' show-delete="showDelete" ng-model="showDelete">
       <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' ng-model='card.enabled' gestures>
-
         <ion-delete-button class="ion-minus-circled" ng-click='selectToDelete(card)' no-gestures></ion-delete-button>
         <img ng-src='img/{{card.img}}'>
         <p class='text-area angular-center-container angular-centered' ng-style="changeStyle(card)">{{card.title}}</p>
@@ -22,14 +21,5 @@
     </ion-list>
   </ion-content>
 
-    <ion-footer-bar class='bar-stable' ng-show='showConfirm'>
-      <div class='buttons' ng-click="undo()">
-        <button class='button icon-left ion-close-round button-calm'>Cancelar</button>
-      </div>
-      <h1 class='title'>¿Borrar para siempre?</h1>
-      <div class='buttons' ng-click='permanentlyDelete()'>
-        <button class='button icon-left ion-checkmark-round button-assertive'>Aceptar</button>
-      </div>
-    </ion-footer-bar>
-
+  <div ng-include="'templates/common/delete_bar.html'" ng-controller="deleteBarCtrl"></div>
 </ion-view>

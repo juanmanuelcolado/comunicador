@@ -1,7 +1,6 @@
 communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardDbService) {
     $scope.cards = [];
     $scope.showDelete = false;
-    $scope.showConfirm = false;
     
     cardDbService.selectAll().then(function(results) {
         $scope.cards = results;
@@ -21,7 +20,7 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
                 if($scope.touchedDeleteButton) {   
                     $scope.touchedDeleteButton = false;
                 } else {
-                    $scope.undo();
+                    $scope.$broadcast('cancelDelete');
                 }
             } else {
                 $state.go('app.singleCard', {id: id});
@@ -34,10 +33,10 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
         if($scope.selectedCardsToDelete.indexOf(card) == -1){
             card.selectedToDelete = true;
         	$scope.selectedCardsToDelete.push(card);
-        	$scope.showConfirm = true;
             $scope.changeStyle(card);
-        }
 
+            $scope.$broadcast("selectedToDelete");
+        }
     };
 
     $scope.changeStyle = function(card){
@@ -55,16 +54,15 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
         }
     };
 
-    $scope.permanentlyDelete = function(){
+    $scope.$on("deleted", function(){
     	$scope.selectedCardsToDelete.forEach(function(card){
     		cardDbService.delete(card);
             $scope.cards.splice($scope.cards.indexOf(card),1);
     	});
     	$scope.showDelete = false;
-    	$scope.showConfirm = false;
-    };
+    });
 
-    $scope.undo = function(){
+    $scope.$on("deleteCanceled", function(){
         angular.forEach($scope.selectedCardsToDelete,function(card){
             delete card.selectedToDelete;
             $scope.changeStyle(card);
@@ -72,15 +70,14 @@ communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardD
         $scope.selectedCardsToDelete = [];
         $scope.touchedDeleteButton = false;
     	$scope.showDelete = false;
-    	$scope.showConfirm = false;
-    };
+    });
 })
 
 .directive('gestures', function($ionicGesture) {
 	return {
 		link : function(scope, elem, attrs) {
-                $ionicGesture.on('hold', scope.showDeleteButton, elem);
-                $ionicGesture.on('tap', function(){scope.cardTap(scope.card.id);}, elem);
+            $ionicGesture.on('hold', scope.showDeleteButton, elem);
+            $ionicGesture.on('tap', function(){scope.cardTap(scope.card.id);}, elem);
 		}
 	};
 });
