@@ -12,7 +12,7 @@
     </label>
 
     <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
-      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' ng-model='card.enabled' cm-deletegestures>
+      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' modelToDelete='card' cm-deletegestures>
         <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(card)' no-gestures></ion-delete-button>
         <img ng-src='img/{{card.img}}'>
         <p class='text-area angular-center-container angular-centered normal-item' ng-class="eraser.currentCSSClass(card)">{{card.title}}</p>

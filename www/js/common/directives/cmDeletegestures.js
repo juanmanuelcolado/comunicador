@@ -2,8 +2,12 @@ communicatorApp.directive('cmDeletegestures', function($ionicGesture, listItemDe
     return {
         link : function(scope, elem, attrs) {
             $ionicGesture.on('hold', listItemDeleteService.showDeleteButton, elem);
-            $ionicGesture.on('tap', function(){
-                listItemDeleteService.modelTap(scope.card.id, scope.redirectState);
+
+            $ionicGesture.on('tap', function() {
+                var model = scope[attrs.modeltodelete];
+                if (model) {
+                    listItemDeleteService.modelTap(model.id, scope.redirectState);
+                }
             }, elem);
         }
     };
