@@ -1,4 +1,4 @@
-communicatorApp.controller('deleteBarCtrl', function($scope) {
+communicatorApp.controller('deleteBarCtrl', function($scope, listItemDeleteService) {
     $scope.showConfirm = false;
 
     var hide = function() {
@@ -10,12 +10,12 @@ communicatorApp.controller('deleteBarCtrl', function($scope) {
 
     $scope.permanentlyDelete = function() {
         hide();
-        $scope.$emit('deleted');
+        listItemDeleteService.delete();
     };
 
     $scope.undo = function() {
         hide();
-        $scope.$emit('deleteCanceled');
+        listItemDeleteService.deleteCanceled();
     };
 
     $scope.$on('selectedToDelete', show);

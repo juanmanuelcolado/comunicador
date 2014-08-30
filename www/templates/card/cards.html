@@ -11,11 +11,11 @@
       <input type="text" placeholder="Búsqueda" ng-model='search'>
     </label>
 
-    <ion-list class='list' show-delete="showDelete" ng-model="showDelete">
-      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' ng-model='card.enabled' gestures>
-        <ion-delete-button class="ion-minus-circled" ng-click='selectToDelete(card)' no-gestures></ion-delete-button>
+    <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
+      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' ng-model='card.enabled' cm-deletegestures>
+        <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(card)' no-gestures></ion-delete-button>
         <img ng-src='img/{{card.img}}'>
-        <p class='text-area angular-center-container angular-centered' ng-style="changeStyle(card)">{{card.title}}</p>
+        <p class='text-area angular-center-container angular-centered normal-item' ng-class="eraser.currentCSSClass(card)">{{card.title}}</p>
         <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
       </ion-item>
     </ion-list>
