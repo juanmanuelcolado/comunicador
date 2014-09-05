@@ -1,0 +1,27 @@
+<ion-modal-view>
+  <div class="modal receiver-pattern-edit" ng-controller="receiverPatternEditCtrl">
+
+    <!-- Modal header bar -->
+    <ion-header-bar>
+      <h1 class="title">Editar patrón de bloqueo</h1>
+      <button class="button button-icon icon ion-close-circled" ng-click="closeModal()"></button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content>
+      <h4>Ingresá el nuevo patrón de bloqueo:</h4>
+      <div class="row row-center">
+        <div class="col">
+          <div id="lock"></div>
+        </div>
+      </div>
+      <div class="receiver-pattern-error" ng-show="patternError">Se debe ingresar una combinación de al menos 4 items</div>
+    </ion-content>
+  </div>
+
+  <!-- <ion-header-bar>
+    <h1 class="title"></h1>
+  </ion-header-bar>
+  <ion-content>
+   </ion-content>-->
+</ion-modal-view>
