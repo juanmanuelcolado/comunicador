@@ -1,12 +1,11 @@
 communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
-    $scope.defaultAvatar = imageUploaderService.defaultSrc;
 
     $scope.receiver = {
         name: '',
         lastName: '',
         relationshipId: 0,
-        avatar: '',
+        avatar: imageUploaderService.defaultSrc,
         advanced: false,
         pattern: ''
     };
@@ -15,7 +14,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         receiverDbService.find($stateParams.id).then(function(results) {
             $scope.receiver = results[0];
             $scope.receiver.advanced = $scope.receiver.advanced === 'true' ? true : false;
-            $scope.receiver.avatar = $scope.receiver.avatar || $scope.defaultAvatar;
+            $scope.receiver.avatar = $scope.receiver.avatar;
         });
     }
 
