@@ -52,17 +52,13 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
     };
 
     $scope.save = function() {
-        if ($scope.receiver.name && $scope.receiver.lastName) {
-            if ($scope.creating) {
-                receiverDbService.insert($scope.receiver);
-            } else {
-                receiverDbService.update($scope.receiver);
-            }
-
-            $scope.goBack();
+        if ($scope.creating) {
+            receiverDbService.insert($scope.receiver);
         } else {
-            // Error! complete all fileds please
+            receiverDbService.update($scope.receiver);
         }
+
+        $scope.goBack();
     };
 
     $scope.checkIfAdvancedByDefault = function() {

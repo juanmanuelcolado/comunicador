@@ -120,10 +120,32 @@
     font-size: 20px;
     min-height: 2px;
 }
+
 .list .item-content .selected-to-delete {
     color:#909090;
     margin-top: 25px;
     font-size: 20px;
     min-height: 25px;
     text-decoration: line-through;
+}
+
+/*  ==========================================================================
+  Validations
+  ========================================================================== */
+
+form .validation-container {
+  margin-right: 4px;
+}
+
+p.validation-valid {
+  font-size: 1.1em;
+  color: green;
+}
+
+p.validation-invalid {
+  color: #bb1f34;
+}
+
+form p.validation-invalid {
+  white-space: normal;
 }
