@@ -1,10 +1,11 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, imageUploaderService) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
     $scope.defaultAvatar = imageUploaderService.defaultSrc;
 
     $scope.receiver = {
         name: '',
         lastName: '',
+        relationshipId: 0,
         avatar: '',
         advanced: false,
         pattern: ''
@@ -17,6 +18,10 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
             $scope.receiver.avatar = $scope.receiver.avatar || $scope.defaultAvatar;
         });
     }
+
+    relationshipDbService.selectAll().then(function(relationships){
+        $scope.relationships = relationships;
+    });
 
     $ionicModal.fromTemplateUrl('templates/receiver/receiverPatternEdit.html', {
         scope: $scope,
@@ -58,5 +63,22 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         } else {
             // Error! complete all fileds please
         }
+    };
+
+    $scope.checkIfAdvancedByDefault = function() {
+        var relationship = getRelationshipById($scope.receiver.relationshipId);
+        $scope.receiver.advanced = relationship.advancedByDefault === 'true';
+    };
+
+    $scope.checkIfHasCustomName = function() {
+        var relationship = getRelationshipById($scope.receiver.relationshipId);
+        $scope.showRelationshipName = relationship.hasCustomName === 'true';
+    };
+
+    var getRelationshipById = function(relationshipId) {
+        var matchedRelationships = $scope.relationships.filter(function(relationship){
+            return relationship.id === relationshipId;
+        });
+        return matchedRelationships.length? matchedRelationships[0] : undefined;
     };
 });

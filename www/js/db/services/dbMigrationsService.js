@@ -49,7 +49,9 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('lastName TEXT')
                 .addColumn('avatar TEXT')
                 .addColumn('pattern TEXT')
-                .addColumn('advanced BOOLEAN'),
+                .addColumn('advanced BOOLEAN')
+                .addColumn('relationshipId INTEGER')
+                .addColumn('relationshipName TEXT'),
             
             new TableMigration('Level')
                 .addColumn('levelNumber INTEGER')
@@ -92,7 +94,17 @@ communicatorApp.service('dbMigrationsService', function() {
 
             new TableMigration('Configuration')
                 .addColumn('key TEXT')
-                .addColumn('value TEXT')
+                .addColumn('value TEXT'),
+
+            new TableMigration('Relationship')
+                .addColumn('name TEXT')
+                .addColumn('advancedByDefault BOOLEAN')
+                .addColumn('hasCustomName BOOLEAN')
+                .insertValues(['name', 'advancedByDefault', 'hasCustomName'], ['"Padre"', '"false"', '"false"'])
+                .insertValues(['name', 'advancedByDefault', 'hasCustomName'], ['"Madre"', '"false"', '"false"'])
+                .insertValues(['name', 'advancedByDefault', 'hasCustomName'], ['"Hermano"', '"false"', '"false"'])
+                .insertValues(['name', 'advancedByDefault', 'hasCustomName'], ['"Terapeuta"', '"true"', '"false"'])
+                .insertValues(['name', 'advancedByDefault', 'hasCustomName'], ['"Otro"', '"false"', '"true"'])
         ],
         eachTransaction: function(fn) {
             this.migrations.forEach(function(migration) {
