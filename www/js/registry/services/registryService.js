@@ -13,20 +13,6 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		scores = results;
 	});
 
-	registryService.getLastRegistry = function() {
-		var deferred = $q.defer();
-		exchangeDbService.getLastExchange().then(function(exchangeResults) {
-			if (exchangeResults.length) {
-				scoreByExchangeDbService.getLastScoresByExchange(exchangeResults[0].id).then(function(results) {
-					deferred.resolve(makeRegistryScores(results));
-				});
-			} else {
-				deferred.resolve({});
-			}
-		});
-		return deferred.promise;
-	};
-
 	registryService.saveRegistry = function(registryInfo) {
 		insertNewExchange(registryInfo).then(function(exchangeId) {
 			steps.forEach(function(step) {
@@ -35,13 +21,6 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 			insertNewExchangeByCard(exchangeId);
 		});
 	};
-
-	function makeRegistryScores(scores) {
-		return scores.reduce(function(memo, score) {
-			memo[getStepName(score.stepId)] = getScoreName(score.scoreId);
-			return memo;
-		}, {});
-	}
 
 	function insertNewExchange (registryInfo) {
 		return exchangeDbService.insert({

@@ -1,7 +1,6 @@
 communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiverService, registryService) {
 
 	var basicScoreValues = { true: 'withoutHelp', false: 'withHelp' };
-	var basicScores = { 'withoutHelp': true, 'withPartialHelp': false, 'withHelp': false};
 	
 	$scope.registry = {
 		receiver: currentReceiverService.receiver,
@@ -9,11 +8,6 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 		reach: false,
 		drop: false
 	};
-
-	registryService.getLastRegistry().then(function(results) {
-		convertToBasicScores(results);
-		angular.extend($scope.registry, results);
-	});
 
 	$scope.saveRegistry = function() {
 		$scope.registry.pick = basicScoreValues[$scope.registry.pick];
@@ -33,10 +27,4 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 	    };
 	    backView.go();
 	};
-
-	function convertToBasicScores (scores) {
-		scores.pick = basicScores[scores.pick];
-		scores.reach = basicScores[scores.reach];
-		scores.drop = basicScores[scores.drop];
-	}
 });

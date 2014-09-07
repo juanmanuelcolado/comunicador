@@ -9,10 +9,6 @@ communicatorApp.controller('advancedRegistryCtrl', function($scope, currentRecei
 		drop: 'withoutHelp'
 	};
 
-	registryService.getLastRegistry().then(function(results) {
-		angular.extend($scope.registry, results);
-	});
-
 	$scope.changeScore = function(step, score) {
 		$scope.registry[step] = score;
 	};
