@@ -14,11 +14,7 @@ communicatorApp.controller('configurationsCurrentUserCtrl', function($scope, $io
     };
 
     $scope.save = function() {
-        if ($scope.user.name && $scope.user.lastName) {
-            currentUserService.set($scope.user);
-            $scope.goBack();
-        } else {
-            // Error! complete all fileds please
-        }
+        currentUserService.set($scope.user);
+        $scope.goBack();
     };
 });
