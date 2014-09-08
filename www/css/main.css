@@ -1,4 +1,16 @@
 /*  ==========================================================================
+  Common
+  ========================================================================== */
+
+.form-buttons {
+    padding-top: 20px;
+}
+
+.form-buttons #accept {
+    float: right;
+}
+
+/*  ==========================================================================
   Home
   ========================================================================== */
 
@@ -48,10 +60,6 @@
     margin-top: 10px;
 }
 
-.card-form-buttons #accept {
-    float: right;
-}
-
 /*  ==========================================================================
   Receiver
   ========================================================================== */
@@ -61,14 +69,6 @@
     font-size: 14px;
     text-decoration: underline;
     color: #666;
-}
-
-.receiver-form-buttons {
-    padding-top: 20px;
-}
-
-.receiver-form-buttons #accept {
-    float: right;
 }
 
 .receiver-pattern-edit ion-content {
@@ -84,26 +84,11 @@
   Registry
   ========================================================================== */
 
-.receiver-form-buttons {
-    padding-top: 20px;
-}
-
-.receiver-form-buttons #accept {
-    float: right;
-}
 
 
 /*  ==========================================================================
   Registry
   ========================================================================== */
-
-.registry-form-buttons {
-    padding-top: 20px;
-}
-
-.registry-form-buttons #accept {
-    float: right;
-}
 
 #lock {
     width: 100%;

@@ -6,10 +6,10 @@
           <img width="128" height="128" ng-src='{{receiver.avatar || defaultAvatar}}' alt="Receptor photo" >
         </label>
         <label class='item item-input'>
-          <input type='text' name="name" ng-model='receiver.name' placeholder='Nombre' validator="required, inRange">
+          <input type='text' name="name" ng-model='receiver.name' placeholder='Nombre *' validator="required, inRange">
         </label>
         <label class='item item-input'>
-          <input type='text' name="lastName" ng-model='receiver.lastName' placeholder='Apellido' validator="required, inRange">
+          <input type='text' name="lastName" ng-model='receiver.lastName' placeholder='Apellido *' validator="required, inRange">
         </label>
         <label class="item item-input item-select">
           <div class="input-label">Vínculo</div>
@@ -23,9 +23,9 @@
           <i class="icon ion-edit"></i>
           Editar patrón de bloqueo
         </div>
-        <div class='receiver-form-buttons'>
+        <div class='form-buttons'>
           <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-          <button validation-submit="receiverForm" ng-click="save()" class='button icon-left ion-checkmark-round button-balanced'>Aceptar</button>
+          <button id='accept' validation-submit="receiverForm" ng-click="save()" class='button icon-left ion-checkmark-round button-balanced'>Aceptar</button>
         </div>
       </div>
     </ion-content>
