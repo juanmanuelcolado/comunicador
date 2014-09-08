@@ -4,9 +4,15 @@ communicatorApp.controller('advancedRegistryCtrl', function($scope, currentRecei
 
 	$scope.registry = {
 		receiver: currentReceiverService.receiver,
-		pick: 'withoutHelp',
-		reach: 'withoutHelp',
-		drop: 'withoutHelp'
+		pick: '',
+		reach: '',
+		drop: ''
+	};
+
+	$scope.stepError = {
+		pick: false,
+		reach: false,
+		drop: false
 	};
 
 	$scope.changeScore = function(step, score) {
@@ -18,8 +24,12 @@ communicatorApp.controller('advancedRegistryCtrl', function($scope, currentRecei
 	};
 
 	$scope.saveRegistry = function() {
-		registryService.saveRegistry($scope.registry);
-		$scope.goBack();
+		if ($scope.registry.pick && $scope.registry.reach && $scope.registry.drop) {
+			registryService.saveRegistry($scope.registry);
+			$scope.goBack();
+		} else {
+			showMissingScoreError();
+		}
 	};
 
 	$scope.goBack = function() {
@@ -31,5 +41,11 @@ communicatorApp.controller('advancedRegistryCtrl', function($scope, currentRecei
 	        navDirection: 'back'
 	    };
 	    backView.go();
+	};
+
+	var showMissingScoreError = function() {
+		['pick', 'reach', 'drop'].forEach(function(step) {
+			$scope.stepError[step] = !$scope.registry[step];
+		});
 	};
 });

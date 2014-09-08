@@ -1,5 +1,5 @@
 <ion-view title='Registro del intercambio'>
-  <ion-content class='has-header'>
+  <ion-content class='has-header' id="advancedRegistry">
     <div class="list list-inset">
       <label class="item item-input">
         <div class="input-label">
@@ -17,6 +17,9 @@
           <i class="icon ion-android-arrow-up-left"></i>
           Recojer
         </div>
+        <span class="validation-container" ng-show="stepError.pick">
+          <p class="validation-invalid">✖ Campo requerido</p>
+        </span>
         <div class="button-bar">
           <a class="button" ng-class="{'button-positive': isScore('pick', 'withoutHelp')}" ng-click="changeScore('pick', 'withoutHelp')">Sin ayuda</a>
           <a class="button" ng-class="{'button-positive': isScore('pick', 'withPartialHelp')}" ng-click="changeScore('pick', 'withPartialHelp')">Ayuda parcial</a>
@@ -28,6 +31,9 @@
           <i class="icon ion-android-arrow-up-right"></i>
           Alcanzar
         </div>
+        <span class="validation-container" ng-show="stepError.reach">
+          <p class="validation-invalid">✖ Campo requerido</p>
+        </span>
         <div class="button-bar">
           <a class="button" ng-class="{'button-positive': isScore('reach', 'withoutHelp')}" ng-click="changeScore('reach', 'withoutHelp')">Sin ayuda</a>
           <a class="button" ng-class="{'button-positive': isScore('reach', 'withPartialHelp')}" ng-click="changeScore('reach', 'withPartialHelp')">Ayuda parcial</a>
@@ -39,6 +45,9 @@
           <i class="icon ion-android-arrow-down-right"></i>
           Dejar
         </div>
+        <span class="validation-container" ng-show="stepError.drop">
+          <p class="validation-invalid">✖ Campo requerido</p>
+        </span>
         <div class="button-bar">
           <a class="button" ng-class="{'button-positive': isScore('drop', 'withoutHelp')}" ng-click="changeScore('drop', 'withoutHelp')">Sin ayuda</a>
           <a class="button" ng-class="{'button-positive': isScore('drop', 'withPartialHelp')}" ng-click="changeScore('drop', 'withPartialHelp')">Ayuda parcial</a>
