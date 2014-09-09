@@ -1,5 +1,6 @@
 communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
+    $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
 
     $scope.receiver = {
         name: '',
@@ -8,6 +9,11 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         avatar: imageUploaderService.defaultSrc,
         advanced: false,
         pattern: ''
+    };
+
+    var updateReceiverAvatar = function(newImageSrc) {
+        $scope.receiver.avatar = newImageSrc;
+        $scope.$apply();
     };
 
     if (!$scope.creating) {
@@ -32,7 +38,9 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
 
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
-      $scope.patternModal.remove();
+        if ($scope.patternModal) {
+            $scope.patternModal.remove();
+        }
     });
 
     $scope.editPattern = function() {
@@ -40,10 +48,11 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
     };
 
     $scope.takePicture = function() {
-        imageUploaderService.takePicture(function(newImageSrc) {
-            $scope.receiver.avatar = newImageSrc;
-            $scope.$apply();
-        });
+        imageUploaderService.takePicture(updateReceiverAvatar);
+    };
+
+    $scope.pictureFromDevice = function() {
+        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
     };
 
     $scope.goBack = function() {

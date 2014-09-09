@@ -1,38 +1,50 @@
 communicatorApp.service('imageUploaderService', function() {
-	var hiddenFileInpuId = "-hidden-file-input";
+    var cameraIsEnabled = !!navigator.camera;
 
-	var createHiddenFileInput = function() {
-        var fileInput = document.createElement('input');
-        fileInput.type = 'file';
-		fileInput.id = hiddenFileInpuId;
-		fileInput.style.visibility = "hidden";
-	    document.body.appendChild(fileInput);
+    var webView = {
+        hiddenFileInpuId: "-hidden-file-input",
+        takePicture: function(success, error) {
+            var fileInput = document.getElementById(webView.hiddenFileInpuId) || webView.createHiddenFileInput();
+            fileInput.onchange = webView.onFileInputChangeEvent(success);
+            fileInput.click();
+        },
+        onFileInputChangeEvent: function(success) {
+            return function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function () { success(reader.result); };
 
-		return fileInput;
-	};
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            };
+        },
+        createHiddenFileInput: function() {
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.id = webView.hiddenFileInpuId;
+            fileInput.style.visibility = "hidden";
+            document.body.appendChild(fileInput);
+            return fileInput;
+        }
+    };
+
+    var device = {
+        takePicture: function(success, error) {
+            navigator.camera.getPicture(success, error);
+        },
+        pictureFromDevice: function(success, error) {
+            navigator.camera.getPicture(success, error, {
+                destinationType: Camera.DestinationType.FILE_URI,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+            });
+        }
+    };
 
     return {
-    	defaultSrc: 'img/ionic.png',
-    	takePicture: function(success, error) {
-	        if(navigator.camera) {
-	            navigator.camera.getPicture(success, error);
-	        } else {
-	        	var fileInput = document.getElementById(hiddenFileInpuId) || createHiddenFileInput();
-
-	            fileInput.onchange = function() {
-	                var file = fileInput.files[0];
-	                var reader = new FileReader();
-	                reader.onloadend = function () {
-	                    var encodedData = reader.result;
-	                    success(encodedData);
-	                };
-	                if (file) {
-	                    reader.readAsDataURL(file);
-	                }
-	            };
-
-	            fileInput.click();
-	        }
-    	}
+    	defaultSrc       : 'img/ionic.png',
+        cameraIsEnabled  : cameraIsEnabled,
+    	takePicture      : cameraIsEnabled ? device.takePicture : webView.takePicture,
+        pictureFromDevice: cameraIsEnabled ? device.pictureFromDevice : webView.takePicture
     };
 });

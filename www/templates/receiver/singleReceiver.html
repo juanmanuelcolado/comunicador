@@ -3,8 +3,9 @@
     <ion-content class='has-header'>
       <div class='list list-inset'>
         <label class='item item-input' ng-click="takePicture()">
-          <img width="128" height="128" ng-src='{{receiver.avatar || defaultAvatar}}' alt="Receptor photo" >
+          <img width="128" height="128" ng-src='{{receiver.avatar || defaultAvatar}}' alt="Receptor photo">
         </label>
+        <a ng-show='cameraIsEnabled' ng-click="pictureFromDevice()">From device</a>
         <label class='item item-input'>
           <input type='text' name="name" ng-model='receiver.name' placeholder='Nombre *' validator="required, inRange">
         </label>
