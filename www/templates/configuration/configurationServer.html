@@ -1,14 +1,19 @@
 <ion-view title='Conexión al servidor'>
   <ion-content class='has-header'>
-    <h4>Configurar conexión al servidor</h4>
-    <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
-    <button class="button button-positive" ng-click='sync();'>Sincronizar ahora</button>
-    
-    <h5>Última sincronización: {{lastSyncTime ? lastSyncTime : "aún no se ha realizado una sincronización" }}</h5>
-
-    <div class='form-buttons'>
-      <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-      <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+    <div class='list list-inset' ng-controller="configurationsServerCtrl">
+      <h4>Configurar conexión al servidor</h4>
+      <label class='item item-input'>
+        <!-- Just for testing -->
+        <input type='text' name="baseURL" ng-model='baseURL' placeholder='Server base URL'>
+      </label>
+      <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
+      <br />
+      <button class="button button-positive" ng-click='sync();'>Sincronizar ahora</button>
+      <h5>Última sincronización: {{lastSyncTime ? lastSyncTime : "aún no se ha realizado una sincronización" }}</h5>
+      <div class='form-buttons'>
+        <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
+        <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+      </div>
     </div>
   </ion-content>
 </ion-view>

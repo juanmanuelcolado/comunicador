@@ -11,10 +11,9 @@ communicatorApp.service('imageUploaderService', function() {
         onFileInputChangeEvent: function(success) {
             return function() {
                 var file = this.files[0];
-                var reader = new FileReader();
-                reader.onloadend = function () { success(reader.result); };
-
                 if (file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function () { success(reader.result); };
                     reader.readAsDataURL(file);
                 }
             };

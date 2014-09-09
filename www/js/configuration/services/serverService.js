@@ -1,7 +1,21 @@
 communicatorApp.service('serverService', function($http, $q, configurationService) {
     return {
-        baseURL: "http://localhost:3000",
         timeout: 20,
+        getBaseURL: function() {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+
+            if (this.baseURL) {
+                deferred.resolve(this.baseURL);
+            } else {
+                promise = configurationService.get("server_base_url"); 
+            }
+            return promise;
+        },
+        setBaseURL: function(baseURL) {
+            this.baseURL = baseURL;
+            configurationService.set("server_base_url", baseURL);
+        },
         send: function(json) {
             var self = this;
             configurationService.get("autosync_enabled").then(function(autoSyncEnabled) {
@@ -41,15 +55,19 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         },
         post: function(configuration) {
             var stringifiedData = JSON.stringify(configuration.value);
-            $.ajax({
-                url: this.baseURL + "/interactions" ,
-                method: "POST",
-                data: stringifiedData,
-                success: function() {
-                    if (configuration.id) {
-                        configurationService.delete(configuration);
+            this.getBaseURL().then(function(baseURL) {
+                $.ajax({
+                    url: baseURL + "/interactions" ,
+                    method: "POST",
+                    data: {
+                        data: stringifiedData
+                    },
+                    success: function() {
+                        if (configuration.id) {
+                            configurationService.delete(configuration);
+                        }
                     }
-                }
+                });
             });
         },
         setAutoSync: function(value) {
