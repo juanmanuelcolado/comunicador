@@ -1,5 +1,12 @@
 communicatorApp.service('imageUploaderService', function() {
     var cameraIsEnabled = !!navigator.camera;
+    var dataToBase64 = function(file, callback) {
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            callback(reader.result);
+        };
+        reader.readAsDataURL(file);
+    };
 
     var webView = {
         hiddenFileInpuId: "-hidden-file-input",
@@ -8,13 +15,11 @@ communicatorApp.service('imageUploaderService', function() {
             fileInput.onchange = webView.onFileInputChangeEvent(success);
             fileInput.click();
         },
-        onFileInputChangeEvent: function(success) {
+        onFileInputChangeEvent: function(callback) {
             return function() {
                 var file = this.files[0];
                 if (file) {
-                    var reader = new FileReader();
-                    reader.onloadend = function () { success(reader.result); };
-                    reader.readAsDataURL(file);
+                    dataToBase64(file, callback);
                 }
             };
         },
@@ -30,12 +35,18 @@ communicatorApp.service('imageUploaderService', function() {
 
     var device = {
         takePicture: function(success, error) {
-            navigator.camera.getPicture(success, error);
+            device._getPicture("FILE_URI", "CAMERA", success, error);
         },
         pictureFromDevice: function(success, error) {
+            device._getPicture("DATA_URL", "PHOTOLIBRARY", function(file) {
+                success("data:image/jpeg;base64," + file);
+            }, error);
+        },
+        _getPicture: function(destinationType, sourceType, success, error) {
             navigator.camera.getPicture(success, error, {
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                destinationType: Camera.DestinationType[destinationType],
+                sourceType: Camera.PictureSourceType[sourceType],
+                saveToPhotoAlbum: true
             });
         }
     };

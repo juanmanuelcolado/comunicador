@@ -5,7 +5,9 @@
         <label class='item item-input' ng-click="takePicture()">
           <img width="128" height="128" ng-src='{{receiver.avatar || defaultAvatar}}' alt="Receptor photo">
         </label>
-        <a ng-show='cameraIsEnabled' ng-click="pictureFromDevice()">From device</a>
+        <label ng-show='cameraIsEnabled' class='item item-input' ng-click="pictureFromDevice()">
+          <a class='button button-positive'>From device</a>
+        </label>
         <label class='item item-input'>
           <input type='text' name="name" ng-model='receiver.name' placeholder='Nombre *' validator="required, inRange">
         </label>
