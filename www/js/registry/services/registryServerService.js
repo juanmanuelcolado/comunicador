@@ -47,7 +47,7 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 		return {
 			date: (new Date()).toISOString(),
 			user: {
-				id: 0,// to be guidj
+				id: user.uuid,
 				name: user.name,
 				last_name: user.lastName,
 				birthdate: user.birthdate
@@ -56,7 +56,7 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 				name: card.title
 			},
 			receiver: {
-				id: receiver.id,
+				id: receiver.uuid,
 				name: receiver.name,
 				last_name: receiver.lastName,
 				relationship: relationshipName

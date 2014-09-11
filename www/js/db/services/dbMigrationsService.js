@@ -45,6 +45,7 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('enabled BOOLEAN'),
 
             new TableMigration('Receiver')
+                .addColumn('uuid TEXT')
                 .addColumn('name TEXT')
                 .addColumn('lastName TEXT')
                 .addColumn('avatar TEXT')

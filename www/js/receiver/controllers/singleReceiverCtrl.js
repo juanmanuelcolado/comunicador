@@ -1,4 +1,4 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
     $scope.creating = !$stateParams.id;
 
     $scope.receiver = {
@@ -52,6 +52,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
 
     $scope.save = function() {
         if ($scope.creating) {
+            $scope.receiver.uuid = uuidService.generate();
             receiverDbService.insert($scope.receiver);
         } else {
             receiverDbService.update($scope.receiver);
