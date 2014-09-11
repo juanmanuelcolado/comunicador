@@ -42,7 +42,7 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 				} else {
 					deferred.reject();
 				}
-			})
+			});
 		} else {
 			deferred.resolve();
 		}

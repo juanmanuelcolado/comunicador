@@ -1,0 +1,82 @@
+communicatorApp.service('registryServerService', function($q, currentUserService, cardDbService, relationshipDbService){
+	var registryServerService = {};
+
+	var promises = [],
+	user = {},
+	card = {},
+	receiver = {},
+	relationshipName = '',
+	level = 0,
+	registry = {};
+
+	registryServerService.sendExchangeToServer = function(registryInfo, levelNumber, cardId) {
+		level = levelNumber;
+		card.id = cardId;
+		registry = registryInfo;
+		receiver = registryInfo.receiver;
+
+		getData().then(function(results) {
+			user = results[0];
+			card = results[1][0];
+			relationshipName = results[2];
+			//serverService.send(makeExchangePackage());
+			console.log(makeExchangePackage());
+		});
+	};
+
+	function getData () {
+		promises.push(currentUserService.get());
+		promises.push(cardDbService.find(card.id));
+		promises.push(getRelationshipName());
+		return $q.all(promises);
+	}
+
+	function getRelationshipName () {
+		var deferred = $q.defer();
+		if (receiver.relationshipName) {
+			deferred.resolve(receiver.relationshipName);
+		} else {
+			relationshipDbService.find(receiver.relationshipId).then(function(relationship){
+				deferred.resolve(relationship.name);
+			});
+		}
+		return deferred.promise;
+	}
+
+	function makeExchangePackage () {
+		return {
+			date: (new Date()).toISOString(),
+			user: {
+				id: 0,// to be guidj
+				name: user.name,
+				last_name: user.lastName,
+				birthdate: user.birthdate
+			},
+			card: {
+				name: card.title
+			},
+			receiver: {
+				id: receiver.id,
+				name: receiver.name,
+				last_name: receiver.lastName,
+				relationship: relationshipName
+			},
+			level: level,
+			registry: getRegistryScores()
+		};
+	}
+
+	function getRegistryScores () {
+		var scores = [];
+		for(var property in registry){
+			if (property != 'receiver') {
+				var score = {};
+				score[property] = registry[property];
+				scores.push(score);
+			}
+		}
+		return scores;
+	}
+
+	return registryServerService;
+});

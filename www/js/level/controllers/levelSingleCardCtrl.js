@@ -1,9 +1,13 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state, registryService) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state, cardDbService, registryService) {
     $scope.card = {
-        id: 1, // pasar por parámetro el id y obtener los datos de la tarjeta desde la base
-        title: $stateParams.cardTitle,
-        img: $stateParams.cardImg
+        id: $stateParams.id,
+        title: '',
+        img: ''
     };
+
+    cardDbService.find($stateParams.id).then(function(results) {
+        $scope.card = results[0];
+    });
 
     $scope.menuButtonPressed = function() {
         $ionicActionSheet.show({
