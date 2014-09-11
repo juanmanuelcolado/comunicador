@@ -1,7 +1,9 @@
-communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService) {
+communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService, registryServerService) {
 	var registryService = {};
 
 	registryService.pickedCardId = 0;
+
+	registryService.pickedLevelNumber = 0;
 	
 	var steps = [];
 	stepDbService.selectAll().then(function(results) {
@@ -19,6 +21,7 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 				insertNewScore(exchangeId, step.id, registryInfo[step.name]);
 			});
 			insertNewExchangeByCard(exchangeId);
+			registryServerService.sendExchangeToServer(registryInfo, registryService.pickedLevelNumber, registryService.pickedCardId);
 		});
 	};
 

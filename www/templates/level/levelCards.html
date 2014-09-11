@@ -2,8 +2,8 @@
 <ion-view title='Nivel 1'>
   <ion-content class='has-header card-list'>
     <ion-list class='list-inset'>
-      <ion-item class='item-image' ng-repeat='card in cards' href='#/app/levelSingleCard/{{card.title}}/{{card.img}}'>
-        <img src='img/{{card.img}}' alt='{{card.title}}'>
+      <ion-item class='item-image' ng-repeat='card in cards' href='#/app/levelSingleCard/{{card.id}}'>
+        <img ng-src='img/{{card.img}}' alt='{{card.title}}'>
         <div class='card-title'>{{card.title}}</div>
       </ion-item>
     </ion-list>

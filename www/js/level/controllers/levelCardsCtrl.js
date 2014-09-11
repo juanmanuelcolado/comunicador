@@ -1,29 +1,9 @@
-communicatorApp.controller('levelCardsCtrl', function($scope, cardDbService) {
-    var defaultCards = [
-        {
-            title: 'Hello world',
-            img: 'hello-world.png'
-        },
-        {
-            title: 'Mamushka',
-            img: 'mamushka.png'
-        },
-        {
-            title: 'Monster',
-            img: 'monster.png'
-        },
-        {
-            title: 'Octo fun!',
-            img: 'octo-fun.png'
-        },
-        {
-            title: 'Peace out!!',
-            img: 'peace-out.png'
-        }
-    ];
+communicatorApp.controller('levelCardsCtrl', function($scope, $stateParams, cardDbService, registryService) {
+
+    registryService.pickedLevelNumber = $stateParams.levelNumber;
 
     cardDbService.selectEnabled().then(function(results) {
-        $scope.cards = results.concat(defaultCards);
+        $scope.cards = results;
     });
 
 });

@@ -8,8 +8,7 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
 	function validatePattern (pattern) {
 		receiverDbService.selectAll().then(function(receivers) {
 			var matchingReceivers = receivers.filter(function(receiver) {
-				//return receiver.pattern === pattern;
-				return '123' === pattern;
+				return receiver.pattern === pattern;
 			});
 
 			switch(matchingReceivers.length){

@@ -9,6 +9,7 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService) {
             }
         }
         $scope.levels[lastLevel].selected = true;
+        $scope.selectedLevel = $scope.levels[lastLevel];
     });
 
     $scope.selectLevel = function(levels, level) {
@@ -21,12 +22,14 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService) {
                 if (results[i].description == level.description && results[i].enabled == "true"){
                     level.selected = true;
                     levelEnabled = true;
+                    $scope.selectedLevel = level;
                 }
             }
         });
         //if the selected level is disabeld then we select the first level
         if(!levelEnabled){
             levels[0].selected = true;
+            $scope.selectedLevel = levels[0];
             //TODO: message "El nivel seleccionado no se encuentra disponible"
         }
     };

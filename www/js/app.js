@@ -38,7 +38,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
         }
     })
     .state('app.levelCards', {
-        url: '/levelCards',
+        url: '/levelCards/:levelNumber',
         views: {
             'menuContent': {
                 templateUrl: 'templates/level/levelCards.html',
@@ -47,7 +47,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
         }
     })
     .state('app.levelSingleCard', {
-        url: '/levelSingleCard/:cardTitle/:cardImg',
+        url: '/levelSingleCard/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/level/levelSingleCard.html',
