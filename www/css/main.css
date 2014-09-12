@@ -109,6 +109,12 @@
     width: 100%;
 }
 
+#advancedRegistry .validation-container {
+  display: inline-block;
+  float: right;
+  margin-right: 5px;
+  margin-top: 7px;
+}
 
 /*  ==========================================================================
   Delete from list
@@ -148,11 +154,4 @@ p.validation-invalid {
 
 form p.validation-invalid {
   white-space: normal;
-}
-
-#advancedRegistry .validation-container {
-  display: inline-block;
-  float: right;
-  margin-right: 5px;
-  margin-top: 7px;
 }
