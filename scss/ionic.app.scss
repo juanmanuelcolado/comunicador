@@ -15,6 +15,49 @@ $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
 
+/* COLOR */
+
+$positive:                        #00fead !default;
+
+/* HEADER */
+
+// header background
+$bar-stable-bg:                   #4d98a4 !default;
+// header border color
+$bar-stable-border:               #00ffae !default;
+// icon color
+$button-stable-text:              #00fead !default;
+// header text color
+$bar-stable-text:                 #FFF !default;
+
+/* MENU */
+
+// menu background color
+$menu-bg:                         rgba(0, 0, 0, 0.4) !default;
+
+/* COMMON */
+
+// text color
+$base-color:                      #FFF !default;
+// buttons borders
+$button-border-width:             0px !default;
+
+/* FONTS */
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../font/Montserrat-Regular.ttf") format("truetype");
+}
+
+$headings-font-family:            "Montserrat" !default;
+
+
+
+
+
+
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

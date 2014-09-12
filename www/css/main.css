@@ -10,6 +10,42 @@
     float: right;
 }
 
+.view, .pane {
+    background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
+    background-image: linear-gradient(top, #198b95, #9cc7a3);
+}
+
+.view .menu-content {
+  border-left: none;
+  border-right: none;
+}
+
+.view .menu-content .bar-header {
+  border-bottom-width: 2px;
+}
+
+.view .menu-content .bar-header .icon {
+  color: #00fead;
+}
+
+.menu .bar-header {
+  border-bottom-width: 2px;
+}
+
+.menu .item {
+  background: transparent;
+  color: #00ffae;
+  border: none;
+}
+
+.menu .item-content {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu .bar-header {
+  background-color: rgba(0,0,0,0);
+}
+
 /*  ==========================================================================
   Home
   ========================================================================== */
