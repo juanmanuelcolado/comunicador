@@ -1,4 +1,4 @@
-communicatorApp.service('registryServerService', function($q, currentUserService, cardDbService, relationshipDbService){
+communicatorApp.service('registryServerService', function($q, currentUserService, cardDbService, relationshipDbService, serverService){
 	var registryServerService = {};
 
 	var promises = [],
@@ -19,8 +19,8 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 			user = results[0];
 			card = results[1][0];
 			relationshipName = results[2];
-			//serverService.send(makeExchangePackage());
-			console.log(makeExchangePackage());
+			delete registry['receiver'];
+			serverService.send(makeExchangePackage());
 		});
 	};
 
@@ -62,20 +62,8 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 				relationship: relationshipName
 			},
 			level: level,
-			registry: getRegistryScores()
+			registry: registry
 		};
-	}
-
-	function getRegistryScores () {
-		var scores = [];
-		for(var property in registry){
-			if (property != 'receiver') {
-				var score = {};
-				score[property] = registry[property];
-				scores.push(score);
-			}
-		}
-		return scores;
 	}
 
 	return registryServerService;

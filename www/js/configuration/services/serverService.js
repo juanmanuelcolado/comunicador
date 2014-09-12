@@ -35,11 +35,7 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             var deferred = $q.defer();
             var syncTime = new Date().toString();
 
-            if (Offline.state === "down") {
-                setTimeout(this.sync.bind(this), this.timeout);
-                this._incrementTimeout();
-                deferred.reject();
-            } else {
+            if (navigator.onLine) {
                 this.timeout = 20;
                 configurationService.find("data_to_sync").then(function(configurations) {
                     configurations.forEach(function(configuration, index) {
@@ -50,6 +46,10 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
                 });
                 configurationService.set("server_last_sync_time", syncTime);
                 deferred.resolve(syncTime);
+            } else {
+                setTimeout(this.sync.bind(this), this.timeout);
+                this._incrementTimeout();
+                deferred.reject();
             }
             return deferred.promise;
         },
@@ -57,7 +57,7 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             var stringifiedData = JSON.stringify(configuration.value);
             this.getBaseURL().then(function(baseURL) {
                 $.ajax({
-                    url: baseURL + "/interactions" ,
+                    url: baseURL + "/exchanges" ,
                     method: "POST",
                     data: {
                         data: stringifiedData
