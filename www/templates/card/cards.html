@@ -17,7 +17,7 @@
     <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
       <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' modelToDelete='card' cm-deletegestures>
         <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(card)' no-gestures></ion-delete-button>
-        <img ng-src='img/{{card.img}}'>
+        <img ng-src='{{card.img}}'>
         <p class='text-area angular-center-container angular-centered normal-item' ng-class="eraser.currentCSSClass(card)">{{card.title}}</p>
         <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
       </ion-item>

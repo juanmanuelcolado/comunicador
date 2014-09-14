@@ -1,9 +1,10 @@
-communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, cardDbService) {
+communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, cardDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
+    $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
     
     $scope.card = {
         title: '',
-        img: "ionic.png",
+        img: imageUploaderService.defaultSrc,
         enabled: true
     };
 
@@ -24,8 +25,15 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         } else {
             cardDbService.update($scope.card);
         }
-
         $scope.goBack();
     };
 
+    var updateCardImage = function(newImageSrc) {
+        $scope.card.img = newImageSrc;
+        $scope.$apply();
+    };
+
+    $scope.takePicture = function() {
+        imageUploaderService.takePicture(updateCardImage);
+    };
 });

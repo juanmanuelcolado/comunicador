@@ -2,13 +2,18 @@
   <ion-view title='{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}'>
     <ion-content class='has-header'>
 
-        <div class='item item-image card'>
-          <img ng-src='img/{{card.img}}'>
+        <div class='item item-image card' ng-click="takePicture()">
+          <img ng-src='{{card.img || defaultImg}}'>
         </div>
 
+        <div ng-show='cameraIsEnabled' class='form-buttons card' ng-click="pictureFromDevice()">
+          <a class='button button-positive'>
+            Cámara
+          </a>
+        </div>
 
         <div class='item item-input card'>
-          <input type='text' ng-model='card.title' placeholder='Nombre del Pictograma'>
+          <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange">
         </div>
 
         <div class='card'>
@@ -18,8 +23,17 @@
         </div>
 
         <div class='form-buttons card'>
-          <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-          <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+          <a id='cancel'
+            class='button icon-left ion-close-round button-assertive'
+            ng-click='goBack();'>
+              Cancelar
+          </a>
+          <a id='accept'
+            class='button icon-left ion-checkmark-round button-balanced'
+            ng-click='save();'
+            validation-submit="cardForm">
+              Aceptar
+          </a>
         </div>
 
     </ion-content>
