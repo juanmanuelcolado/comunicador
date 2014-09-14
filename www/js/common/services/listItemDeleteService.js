@@ -14,7 +14,7 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
         },
         modelTap: function(id, redirectState) {
             $timeout(function() {
-                if(eraser.showDelete){
+                if(eraser.showDelete || touchedDeleteButton){
                     if(touchedDeleteButton) {   
                         touchedDeleteButton = false;
                     } else {
@@ -36,14 +36,9 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
                 this.currentCSSClass(model);
                 eraser.showConfirmAndHideAddButton = true;
             } else {
-                model.selectedToDelete = false;
-                //TO DO:
-                //Sacarlo de la lista para borrar
-                //Verificar que se pueda hacer varias veces.
-                //Si la lista quedó vacía, sacar el footer
+                eraser.itemDeleteCanceled(model);
                 this.currentCSSClass(model);
             }
-
         },
         currentCSSClass: function(model) {
             return model.selectedToDelete ? "selected-to-delete" : "normal-item";
@@ -57,15 +52,21 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
         },
         deleteCanceled: function() {
             selectedModelsToDelete.forEach(function(model) {
-                delete model.selectedToDelete;
-                eraser.currentCSSClass(model);
+                for (var i = selectedModelsToDelete.length - 1; i > -1; i--) {
+                    eraser.itemDeleteCanceled(selectedModelsToDelete[i]);
+                }
             });
-            selectedModelsToDelete = [];
             touchedDeleteButton = false;
-            eraser.showConfirmAndHideAddButton = false;
-            this.showDelete = false;
+        },
+        itemDeleteCanceled: function(model){
+            delete model.selectedToDelete;
+            eraser.currentCSSClass(model);
+            selectedModelsToDelete.splice(selectedModelsToDelete.indexOf(model), 1);
+            if(selectedModelsToDelete.length === 0){
+                eraser.showConfirmAndHideAddButton = false;
+                this.showDelete = false;
+            }
         }
     };
-
     return eraser;
 });
