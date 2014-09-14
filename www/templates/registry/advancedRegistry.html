@@ -1,63 +1,59 @@
-<ion-view title='Registro del intercambio'>
-  <ion-content class='has-header' id="advancedRegistry">
-    <div class="list list-inset">
-      <label class="item item-input">
-        <div class="input-label">
-          Receptor
+<form name="registryForm" novalidate>
+  <ion-view title='Registro del intercambio'>
+    <ion-content class='has-header' id="advancedRegistry">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <div class="input-label">
+            Receptor
+          </div>
+          <div class="receiverName">
+            {{registry.receiver.name + " " + registry.receiver.lastName}}
+          </div>
+        </label>
+        <div class="item item-divider">
+          Intercambio
         </div>
-        <div class="receiverName">
-          {{registry.receiver.name + " " + registry.receiver.lastName}}
+        <label class="item item-input item-stacked-label">
+          <div class="input-label">
+            <i class="icon ion-android-arrow-up-left"></i>
+            Recojer
+          </div>
+          <input type="text" style="display: none;" name="pick" validator="required" ng-model="registry.pick">
+          <div class="button-bar">
+            <a class="button" ng-class="{'button-positive': isScore('pick', 'withoutHelp')}" ng-click="changeScore('pick', 'withoutHelp')">Sin ayuda</a>
+            <a class="button" ng-class="{'button-positive': isScore('pick', 'withPartialHelp')}" ng-click="changeScore('pick', 'withPartialHelp')">Ayuda parcial</a>
+            <a class="button" ng-class="{'button-positive': isScore('pick', 'withHelp')}" ng-click="changeScore('pick', 'withHelp')">Ayuda total</a>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <div class="input-label">
+            <i class="icon ion-android-arrow-up-right"></i>
+            Alcanzar
+          </div>
+          <input type="text" style="display: none;" name="reach" validator="required" ng-model="registry.reach">
+          <div class="button-bar">
+            <a class="button" ng-class="{'button-positive': isScore('reach', 'withoutHelp')}" ng-click="changeScore('reach', 'withoutHelp')">Sin ayuda</a>
+            <a class="button" ng-class="{'button-positive': isScore('reach', 'withPartialHelp')}" ng-click="changeScore('reach', 'withPartialHelp')">Ayuda parcial</a>
+            <a class="button" ng-class="{'button-positive': isScore('reach', 'withHelp')}" ng-click="changeScore('reach', 'withHelp')">Ayuda total</a>
+          </div>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <div class="input-label">
+            <i class="icon ion-android-arrow-down-right"></i>
+            Dejar
+          </div>
+          <input type="text" style="display: none;" name="drop" validator="required" ng-model="registry.drop">
+          <div class="button-bar">
+            <a class="button" ng-class="{'button-positive': isScore('drop', 'withoutHelp')}" ng-click="changeScore('drop', 'withoutHelp')">Sin ayuda</a>
+            <a class="button" ng-class="{'button-positive': isScore('drop', 'withPartialHelp')}" ng-click="changeScore('drop', 'withPartialHelp')">Ayuda parcial</a>
+            <a class="button" ng-class="{'button-positive': isScore('drop', 'withHelp')}" ng-click="changeScore('drop', 'withHelp')">Ayuda total</a>
+          </div>
+        </label>
+        <div class='registry-form-buttons'>
+          <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
+          <a id='accept' validation-submit="registryForm" class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='saveRegistry();'>Aceptar</a>
         </div>
-      </label>
-      <div class="item item-divider">
-        Intercambio
       </div>
-      <label class="item item-input item-stacked-label">
-        <div class="input-label">
-          <i class="icon ion-android-arrow-up-left"></i>
-          Recojer
-        </div>
-        <span class="validation-container" ng-show="stepError.pick">
-          <p class="validation-invalid">✖ Campo requerido</p>
-        </span>
-        <div class="button-bar">
-          <a class="button" ng-class="{'button-positive': isScore('pick', 'withoutHelp')}" ng-click="changeScore('pick', 'withoutHelp')">Sin ayuda</a>
-          <a class="button" ng-class="{'button-positive': isScore('pick', 'withPartialHelp')}" ng-click="changeScore('pick', 'withPartialHelp')">Ayuda parcial</a>
-          <a class="button" ng-class="{'button-positive': isScore('pick', 'withHelp')}" ng-click="changeScore('pick', 'withHelp')">Ayuda total</a>
-        </div>
-      </label>
-      <label class="item item-input item-stacked-label">
-        <div class="input-label">
-          <i class="icon ion-android-arrow-up-right"></i>
-          Alcanzar
-        </div>
-        <span class="validation-container" ng-show="stepError.reach">
-          <p class="validation-invalid">✖ Campo requerido</p>
-        </span>
-        <div class="button-bar">
-          <a class="button" ng-class="{'button-positive': isScore('reach', 'withoutHelp')}" ng-click="changeScore('reach', 'withoutHelp')">Sin ayuda</a>
-          <a class="button" ng-class="{'button-positive': isScore('reach', 'withPartialHelp')}" ng-click="changeScore('reach', 'withPartialHelp')">Ayuda parcial</a>
-          <a class="button" ng-class="{'button-positive': isScore('reach', 'withHelp')}" ng-click="changeScore('reach', 'withHelp')">Ayuda total</a>
-        </div>
-      </label>
-      <label class="item item-input item-stacked-label">
-        <div class="input-label">
-          <i class="icon ion-android-arrow-down-right"></i>
-          Dejar
-        </div>
-        <span class="validation-container" ng-show="stepError.drop">
-          <p class="validation-invalid">✖ Campo requerido</p>
-        </span>
-        <div class="button-bar">
-          <a class="button" ng-class="{'button-positive': isScore('drop', 'withoutHelp')}" ng-click="changeScore('drop', 'withoutHelp')">Sin ayuda</a>
-          <a class="button" ng-class="{'button-positive': isScore('drop', 'withPartialHelp')}" ng-click="changeScore('drop', 'withPartialHelp')">Ayuda parcial</a>
-          <a class="button" ng-class="{'button-positive': isScore('drop', 'withHelp')}" ng-click="changeScore('drop', 'withHelp')">Ayuda total</a>
-        </div>
-      </label>
-      <div class='form-buttons'>
-        <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-        <a id='accept' class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='saveRegistry();'>Aceptar</a>
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+    </ion-content>
+  </ion-view>
+</form>
