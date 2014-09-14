@@ -1,25 +1,27 @@
-<ion-view title='{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}'>
-  <ion-content class='has-header'>
+<form name = "cardForm" novalidate>
+  <ion-view title='{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}'>
+    <ion-content class='has-header'>
 
-      <div class='item item-image card'>
-        <img ng-src='img/{{card.img}}'>
-      </div>
+        <div class='item item-image card'>
+          <img ng-src='img/{{card.img}}'>
+        </div>
 
 
-      <div class='item item-input card'>
-        <input type='text' ng-model='card.title' placeholder='Nombre del Pictograma'>
-      </div>
+        <div class='item item-input card'>
+          <input type='text' ng-model='card.title' placeholder='Nombre del Pictograma'>
+        </div>
 
-      <div class='card'>
-        <ion-checkbox ng-model="card.enabled" ng-checked="card.enabled">
-          <h3>Habilitado</h3>
-        </ion-checkbox>
-      </div>
+        <div class='card'>
+          <ion-checkbox ng-model="card.enabled" ng-checked="card.enabled">
+            <h3>Habilitado</h3>
+          </ion-checkbox>
+        </div>
 
-      <div class='form-buttons card'>
-        <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-        <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
-      </div>
+        <div class='form-buttons card'>
+          <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
+          <a id='accept' class='button icon-left ion-checkmark-round button-balanced' ng-click='save();'>Aceptar</a>
+        </div>
 
-  </ion-content>
-</ion-view>
+    </ion-content>
+  </ion-view>
+</form>

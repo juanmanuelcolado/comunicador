@@ -3,6 +3,7 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
     var selectedModelsToDelete = [];
 
     var eraser = {
+        showConfirmAndHideAddButton: false,
         showDelete: false,
         showDeleteButton: function() {
             $timeout(function() {
@@ -17,7 +18,8 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
                     if(touchedDeleteButton) {   
                         touchedDeleteButton = false;
                     } else {
-                        $rootScope.$broadcast('cancelDelete');
+                        eraser.showConfirmAndHideAddButton = false;
+                        eraser.deleteCanceled();
                     }
                 } else {
                     if (redirectState) {
@@ -32,9 +34,16 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
                 model.selectedToDelete = true;
                 selectedModelsToDelete.push(model);
                 this.currentCSSClass(model);
-
-                $rootScope.$broadcast("selectedToDelete");
+                eraser.showConfirmAndHideAddButton = true;
+            } else {
+                model.selectedToDelete = false;
+                //TO DO:
+                //Sacarlo de la lista para borrar
+                //Verificar que se pueda hacer varias veces.
+                //Si la lista quedó vacía, sacar el footer
+                this.currentCSSClass(model);
             }
+
         },
         currentCSSClass: function(model) {
             return model.selectedToDelete ? "selected-to-delete" : "normal-item";
@@ -43,6 +52,7 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
             selectedModelsToDelete.forEach(function(model){
                 $rootScope.$broadcast("delete", model);
             });
+            eraser.showConfirmAndHideAddButton = false;
             eraser.showDelete = false;
         },
         deleteCanceled: function() {
@@ -52,6 +62,7 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
             });
             selectedModelsToDelete = [];
             touchedDeleteButton = false;
+            eraser.showConfirmAndHideAddButton = false;
             this.showDelete = false;
         }
     };

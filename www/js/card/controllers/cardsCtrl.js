@@ -1,4 +1,4 @@
-communicatorApp.controller('cardsCtrl', function($scope, $state, $timeout, cardDbService, listItemDeleteService) {
+communicatorApp.controller('cardsCtrl', function($scope, cardDbService, listItemDeleteService) {
     $scope.cards = [];
     $scope.eraser = listItemDeleteService;
     $scope.redirectState = "app.singleCard";
