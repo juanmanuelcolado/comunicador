@@ -33,6 +33,7 @@ $item-default-bg:                 rgba(0, 0, 0, 0.3) !default;
 $item-default-text:               #00ffae !default;
 $item-border-width:               0px !default;
 $card-body-bg:                    rgba(0,0,0,0) !default;
+$item-default-active-bg:          rgba(255, 255, 255, 0.5) !default;
 
 /* INPUTS */
 $input-color:                     #FFF !default;
@@ -45,6 +46,7 @@ $input-border:					  #FFF !default;
 /* COMMON */
 $base-color:                      #FFF !default;
 $button-border-width:             0px !default;
+$button-border-radius:            0px !default;
 
 /* FONTS */
 

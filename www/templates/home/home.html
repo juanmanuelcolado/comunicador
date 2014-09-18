@@ -1,18 +1,21 @@
-<ion-view title='APADEA'>
+<ion-view title='COMUNICADOR'>
   <ion-content id='home-page' class='has-header' padding='true'>
-    <h1 class='title'>Comunicador</h1>
     <ion-scroll class='level-list'>
       <ion-list>
-        <ion-item ng-class='{"selected": level.selected}' ng-repeat='level in levels' ng-click='selectLevel(levels, level)'>
-          Nivel {{level.levelNumber}}: {{level.description}} 
-          <ng-show='level.initDate != null' style='color:#808080;'> {{level.initDate}}
+        <ion-item class="item-icon-right level-item" ng-repeat='level in levels' ng-click='selectLevel(levels, level)'>
+          <div class="level-main">
+            NIVEL {{level.levelNumber}}
+            <label class="level-name">{{level.description.toUpperCase()}}</label>
+            <i class="icon ion-chevron-down"></i>
+          </div>
+          <div class="level-detail item-button-right" ng-show="level.selected">
+            <label class="level-init-date" ng-show='level.initDate != null'>Iniciado el {{level.initDate}}</label>
+            <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</label>
+            <a class="button button-positive" href='#/app/levelCards/{{selectedLevel.levelNumber}}'>Ir</a>
+          </div>
         </ion-item>
       </ion-list>
     </ion-scroll>
-    <div class='button-container'>
-      <a href='#/app/levelCards/{{selectedLevel.levelNumber}}' class='button button-positive'>
-        Ir
-      </a>
-    </div>
   </ion-content>
 </ion-view>

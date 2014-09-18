@@ -32,6 +32,11 @@
   color: #00fead;
 }
 
+.view .menu-content .bar-header h1 {
+  text-align: left;
+  margin-left: 0;
+}
+
 .menu .bar-header {
   border-bottom-width: 2px;
 }
@@ -78,33 +83,54 @@ form .input-label {
 /*  ==========================================================================
   Home
   ========================================================================== */
-
-#home-page .title {
-    text-align: center;
-    margin-top: 5%;
+#home-page .level-item {
+  font-size: 12px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
-.level-list {
-    height: 180px;
-    border-bottom: 2px solid #CCC;
-    width: 80%;
-    margin: 0 auto;
-    margin-top:20%
+#home-page .level-item.activated {
+  color: #0C585A;
 }
 
-.level-list .list .item.selected {
-    background-color: #CCC;
+#home-page .level-item .level-main {
+  position: relative;
+  width: 100%;
+  padding-left: 15px;
 }
 
-#home-page .button {
-    border-radius: 40px;
-    margin-top: 10%;
+#home-page .level-item .level-main .level-name {
+  color: #FFF;
+  font-size: 16px;
+  margin-left: 4%;
 }
 
-#home-page .button-container {
-    text-align: center;
+#home-page .level-item .level-main i {
+  font-size: 22px;
 }
 
+#home-page .level-item .level-detail {
+  position: relative;
+  padding: 13px 15px 0 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 13px;
+  white-space: normal;
+}
+
+#home-page .level-item .level-detail .level-init-date {
+  color: #FFF;
+}
+
+#home-page .level-item .level-detail label {
+  width: calc(100% - 70px);
+  display: inline-block;
+}
+
+#home-page .level-item .level-detail .button {
+  margin-top: 0;
+  padding: 25px;
+  line-height: 15px;
+}
 
 /*  ==========================================================================
   Cards
