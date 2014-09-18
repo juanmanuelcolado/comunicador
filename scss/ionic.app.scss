@@ -20,42 +20,30 @@ $dark:                            #444 !default;
 $positive:                        #00fead !default;
 
 /* HEADER */
-
-// header background
 $bar-stable-bg:                   #4d98a4 !default;
-// header border color
 $bar-stable-border:               #00ffae !default;
-// icon color
 $button-stable-text:              #00fead !default;
-// header text color
 $bar-stable-text:                 #FFF !default;
 
 /* MENU */
-
-// menu background color
 $menu-bg:                         rgba(0, 0, 0, 0.4) !default;
 
 /* LISTS */
-// item background color
 $item-default-bg:                 rgba(0, 0, 0, 0.3) !default;
-// item text color
 $item-default-text:               #00ffae !default;
-// item margin width
 $item-border-width:               0px !default;
 $card-body-bg:                    rgba(0,0,0,0) !default;
 
 /* INPUTS */
 $input-color:                     #FFF !default;
+$input-label-color:               #FFF !default;
 $input-color-placeholder:         rgba(255, 255, 255, 0.45) !default;
 $input-bg:						  rgba(255,255,255, 0.15) !default;
 $input-border-width: 			  2px !default;
 $input-border:					  #FFF !default;
 
 /* COMMON */
-
-// text color
 $base-color:                      #FFF !default;
-// buttons borders
 $button-border-width:             0px !default;
 
 /* FONTS */

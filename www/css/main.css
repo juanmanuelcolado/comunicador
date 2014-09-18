@@ -14,11 +14,6 @@
   margin: 2%;
 }
 
-.item-image {
-  width: 50%;
-  margin: 20px auto;
-}
-
 .view, .pane {
     background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
     background-image: linear-gradient(top, #198b95, #9cc7a3);
@@ -72,7 +67,13 @@
 form .item {
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid #FFF;
+  color: #FFF;
 }
+
+form .input-label {
+  font-weight: normal;
+}
+
 
 /*  ==========================================================================
   Home
