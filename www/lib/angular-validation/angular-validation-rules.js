@@ -8,6 +8,11 @@
                 inRange: function(value) {
                     return value.length >= 2 && value.length <= 50;
                 },
+                inList: function(value,scope) {
+                    var equalItems = scope.$parent.$parent.equalItems;
+                    var items = scope.$parent.$parent.$parent.items;
+                    return items.every(function(element, index, array){return !equalItems(value,element)});
+                },
                 number: /^\d+$/
             })
             .setDefaultMsg({
@@ -21,6 +26,10 @@
                 },
                 number: {
                     error: '✖ Debe ser un Número',
+                    success: '✓'
+                },
+                inList: {
+                    error: '✖ Ya existe ese nombre',
                     success: '✓'
                 }
             });

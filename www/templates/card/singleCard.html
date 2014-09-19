@@ -7,7 +7,7 @@
         </div>
 
         <div class='form-buttons card'>
-          <a class='button button-positive' ng-click="takePicture()">
+          <a ng-show='cameraIsEnabled' class='button button-positive' ng-click="takePicture()">
             Tomar foto
           </a>
           <a class='button button-positive' ng-click="pictureFromDevice()">
@@ -16,7 +16,7 @@
         </div>
 
         <div class='item item-input card'>
-          <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange">
+          <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange, inList">
         </div>
 
         <div class='card'>

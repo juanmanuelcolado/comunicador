@@ -40,4 +40,7 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     $scope.pictureFromDevice = function() {
         imageUploaderService.pictureFromDevice(updateCardImage);
     };
+
+    $scope.equalItems = function(value,card){
+        return value.toLowerCase().replace(/\s+/g, '') === card.title.toLowerCase().replace(/\s+/g, '');};
 });

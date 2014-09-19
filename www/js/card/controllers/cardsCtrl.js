@@ -6,7 +6,12 @@ communicatorApp.controller('cardsCtrl', function($scope, cardDbService, listItem
     
     cardDbService.selectAll().then(function(results) {
         $scope.cards = results;
+        $scope.$parent.items = $scope.cards;
     });
+
+    $scope.goBack = function() {
+        $ionicNavBarDelegate.back();
+    };
 
     $scope.$on("delete", function(scope, card) {
         cardDbService.delete(card);
