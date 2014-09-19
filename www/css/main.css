@@ -68,6 +68,10 @@
   color: #00ffae;
 }
 
+.list .item.activated {
+  color: #0C585A;
+}
+
 /* forms */
 form .item {
   background: rgba(255, 255, 255, 0.15);
@@ -90,7 +94,8 @@ form .input-label {
 }
 
 #home-page .level-item.activated {
-  color: #0C585A;
+  background: rgba(0,0,0,0.3);
+  color: #00FFAE;
 }
 
 #home-page .level-item .level-main {
