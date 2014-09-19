@@ -36,4 +36,8 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     $scope.takePicture = function() {
         imageUploaderService.takePicture(updateCardImage);
     };
+
+    $scope.pictureFromDevice = function() {
+        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
+    };
 });
