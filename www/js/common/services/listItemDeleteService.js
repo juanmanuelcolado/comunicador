@@ -14,11 +14,16 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
         },
         modelTap: function(id, redirectState) {
             $timeout(function() {
+                console.log("Tapearon");
+
+
+
                 if(eraser.showDelete || touchedDeleteButton){
                     if(touchedDeleteButton) {   
                         touchedDeleteButton = false;
                     } else {
                         eraser.showConfirmAndHideAddButton = false;
+                        eraser.showDelete = false;
                         eraser.deleteCanceled();
                     }
                 } else {

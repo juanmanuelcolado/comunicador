@@ -10,7 +10,7 @@
 
     <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
       <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='receiver in receivers | filter: search' modelToDelete="receiver" cm-deletegestures>
-        <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(receiver)' no-gestures></ion-delete-button>
+        <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(receiver)'></ion-delete-button>
         <img width="50" ng-src='{{receiver.avatar}}' alt="Receptor photo" >
         <p class='text-area angular-center-container angular-centered' ng-class="eraser.currentCSSClass(receiver)">{{receiver.name}} {{receiver.lastName}}</p>
         <i class='icon ion-checkmark-round' ng-show='receiver.advanced'></i>
