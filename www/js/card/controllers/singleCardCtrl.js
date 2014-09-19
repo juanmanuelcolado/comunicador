@@ -38,6 +38,6 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     };
 
     $scope.pictureFromDevice = function() {
-        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
+        imageUploaderService.pictureFromDevice(updateCardImage);
     };
 });
