@@ -2,6 +2,7 @@ communicatorApp.controller('cardsCtrl', function($scope, cardDbService, listItem
     $scope.cards = [];
     $scope.eraser = listItemDeleteService;
     $scope.redirectState = "app.singleCard";
+    $scope.eraser.showDelete = false;
     
     cardDbService.selectAll().then(function(results) {
         $scope.cards = results;

@@ -2,6 +2,7 @@ communicatorApp.controller('receiversCtrl', function($scope, $state, $timeout, r
     $scope.receivers = [];
     $scope.eraser = listItemDeleteService;
     $scope.redirectState = "app.singleReceiver";
+    $scope.eraser.showDelete = false;
 
     receiverDbService.selectAll().then(function(results) {
         $scope.receivers = results;
