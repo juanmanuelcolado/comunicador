@@ -14,8 +14,6 @@
                     return items.every(function(element, index, array){return !equalItems(value,element)});
                 },
                 photoRequired: function(value,scope) {
-                    console.log(value);
-                    console.log(scope.$parent.$parent.defaultImg);
                     return value != '' && value != scope.$parent.$parent.defaultImg;
                 },
                 number: /^\d+$/
