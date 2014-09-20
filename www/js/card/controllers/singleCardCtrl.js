@@ -1,10 +1,11 @@
 communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, cardDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
+    $scope.defaultImg = imageUploaderService.defaultSrc;
     
     $scope.card = {
         title: '',
-        img: imageUploaderService.defaultSrc,
+        img: '',
         enabled: true
     };
 

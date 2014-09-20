@@ -2,8 +2,9 @@
   <ion-view title='{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}'>
     <ion-content class='has-header'>
 
-        <div class='item item-image card'>
+        <div id= 'image' class='item item-image card'>
           <img ng-src='{{card.img || defaultImg}}'>
+          <input ng-show='false' type='text' name='photoSrc' ng-model='card.img' validator="photoRequired">
         </div>
 
         <div class='form-buttons card'>

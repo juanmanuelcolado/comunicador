@@ -13,6 +13,11 @@
                     var items = scope.$parent.$parent.$parent.items;
                     return items.every(function(element, index, array){return !equalItems(value,element)});
                 },
+                photoRequired: function(value,scope) {
+                    console.log(value);
+                    console.log(scope.$parent.$parent.defaultImg);
+                    return value != '' && value != scope.$parent.$parent.defaultImg;
+                },
                 number: /^\d+$/
             })
             .setDefaultMsg({
@@ -29,7 +34,11 @@
                     success: '✓'
                 },
                 inList: {
-                    error: '✖ Ya existe ese nombre',
+                    error: '✖ Debe ser distinto a otros nombres',
+                    success: '✓'
+                },
+                photoRequired: {
+                    error: '✖ Debe seleccionar una imagen',
                     success: '✓'
                 }
             });
