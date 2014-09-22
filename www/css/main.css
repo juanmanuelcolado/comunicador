@@ -138,7 +138,7 @@ form .input-label {
 }
 
 /*  ==========================================================================
-  Cards
+  Level Cards
   ========================================================================== */
 
 .card-list .list {
@@ -148,12 +148,42 @@ form .input-label {
 
 .card-list .list .item {
     margin-bottom: 25px;
+    color: #000;
+    font-family: Montserrat;
+}
+
+.card-list .list .item .item-content {
+  padding: 10px;
+  background: #FFF;
 }
 
 .card-list .list .item .card-title {
-    border-top: 1px solid #CCC;
-    padding: 10px;
     margin-top: 10px;
+    text-transform: uppercase;
+}
+
+/*  ==========================================================================
+  Level Single Card
+  ========================================================================== */
+
+.level-single-card {
+  background: #FFF;
+}
+
+.level-single-card .card {
+  margin: 0;
+  box-shadow: none;
+}
+
+.level-single-card .card .item-image {
+  margin: 0;
+}
+
+.level-single-card .card .item-divider {
+  text-align: center;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  background: #FFF;
 }
 
 /*  ==========================================================================

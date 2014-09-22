@@ -2,8 +2,8 @@
   <ion-content id='home-page' class='has-header' padding='true'>
     <ion-scroll class='level-list'>
       <ion-list>
-        <ion-item class="item-icon-right level-item" ng-repeat='level in levels' ng-click='selectLevel(level)'>
-          <div class="level-main">
+        <ion-item class="item-icon-right level-item" ng-repeat='level in levels'>
+          <div class="level-main" ng-click='selectLevel(level)'>
             NIVEL {{level.levelNumber}}
             <label class="level-name">{{level.description.toUpperCase()}}</label>
             <i class="icon ion-chevron-down"></i>
