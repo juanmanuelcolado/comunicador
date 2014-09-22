@@ -14,6 +14,32 @@
   margin: 2%;
 }
 
+.action-sheet {
+  background: rgba(74, 74, 74, 0.9);
+  padding: 0 5px;
+}
+
+.action-sheet-group {
+  background: rgba(74, 74, 74, 0.9);
+}
+
+.action-sheet-group .action-sheet-title {
+  font-size: 17px;
+  font-family: montserrat;
+  text-transform: uppercase;
+}
+
+.action-sheet-group:first-child .button {
+  background: #00fead;
+  color: #000;
+  border: none;
+  font-weight: bold;
+}
+
+.action-sheet-group:nth-child(2) .button {
+  background: rgba(40, 40, 40, 0.9);
+}
+
 .view, .pane {
     background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
     background-image: linear-gradient(top, #198b95, #9cc7a3);

@@ -12,8 +12,7 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
     $scope.menuButtonPressed = function() {
         $ionicActionSheet.show({
             buttons: [
-                { text: 'Puntuar' },
-                { text: 'Cerrar Menu'}
+                { text: 'Puntuar' }
             ],
             titleText: 'Tarjeta \''+ $scope.card.title +'\'',
             cancelText: 'Cancelar',
