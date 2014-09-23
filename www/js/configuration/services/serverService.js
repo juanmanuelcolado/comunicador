@@ -56,6 +56,10 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         post: function(configuration) {
             var stringifiedData = JSON.stringify(configuration.value);
             this.getBaseURL().then(function(baseURL) {
+                if (!baseURL) {
+                    return;
+                }
+
                 $.ajax({
                     url: baseURL + "/exchanges" ,
                     method: "POST",
