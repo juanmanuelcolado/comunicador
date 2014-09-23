@@ -1,4 +1,5 @@
 communicatorApp.controller('receiversCtrl', function($scope, $state, $timeout, receiverDbService, listItemDeleteService) {
+    $scope.loaded = false;
     $scope.receivers = [];
     $scope.eraser = listItemDeleteService;
     $scope.redirectState = "app.singleReceiver";
@@ -6,6 +7,7 @@ communicatorApp.controller('receiversCtrl', function($scope, $state, $timeout, r
 
     receiverDbService.selectAll().then(function(results) {
         $scope.receivers = results;
+        $scope.loaded = true;
     });
 
     $scope.$on("delete", function(scope, card) {

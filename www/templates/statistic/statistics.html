@@ -35,8 +35,8 @@
       </div>
     </div>
 
-    <div ng-show="!exchanges">
-      <h4 class="statistic-notice">Aún no se registraron intercambios</h4>
+    <div ng-show="loaded && !exchanges">
+      <h4 class="empty-notice">Aún no se registraron intercambios</h4>
     </div>
 
   </ion-content>

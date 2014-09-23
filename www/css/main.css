@@ -24,6 +24,12 @@
     font-weight: bold;
 }
 
+.empty-notice {
+    text-align: center;
+    color: #666;
+    margin-top: 50%;
+}
+
 /*  ==========================================================================
   Home
   ========================================================================== */
@@ -135,12 +141,6 @@
 .statistic-title {
     text-align: center;
     text-decoration: underline;
-}
-
-.statistic-notice {
-    text-align: center;
-    color: #666;
-    margin-top: 50%;
 }
 
 /*  ==========================================================================

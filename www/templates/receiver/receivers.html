@@ -2,21 +2,27 @@
   <ion-nav-buttons side='right'>
     <a ui-sref='app.singleReceiver' class='button button-icon icon ion-plus-circled'></a>
   </ion-nav-buttons>
+
   <ion-content class='has-header receiver-list'>
-    <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Búsqueda" ng-model='search'>
-    </label>
+    <div ng-show='receivers.length'>
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Búsqueda" ng-model='search'>
+      </label>
 
-    <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
-      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='receiver in receivers | filter: search' modelToDelete="receiver" cm-deletegestures>
-        <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(receiver)'></ion-delete-button>
-        <img width="50" ng-src='{{receiver.avatar}}' alt="Receptor photo" >
-        <p class='text-area angular-center-container angular-centered' ng-class="eraser.currentCSSClass(receiver)">{{receiver.name}} {{receiver.lastName}}</p>
-        <i class='icon ion-checkmark-round' ng-show='receiver.advanced'></i>
-      </ion-item>
-    </ion-list>
+      <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
+        <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='receiver in receivers | filter: search' modelToDelete="receiver" cm-deletegestures>
+          <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(receiver)'></ion-delete-button>
+          <img width="50" ng-src='{{receiver.avatar}}' alt="Receptor photo" >
+          <p class='text-area angular-center-container angular-centered' ng-class="eraser.currentCSSClass(receiver)">{{receiver.name}} {{receiver.lastName}}</p>
+          <i class='icon ion-checkmark-round' ng-show='receiver.advanced'></i>
+        </ion-item>
+      </ion-list>
+    </div>
 
+    <div ng-show='loaded && !receivers.length'>
+      <h4 class="empty-notice">No hay receptores disponibles</h4>
+    </div>
   </ion-content>
 
   <div ng-include="'templates/common/delete_bar.html'" ng-controller="deleteBarCtrl"></div>
