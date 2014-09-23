@@ -84,6 +84,6 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         var matchedRelationships = $scope.relationships.filter(function(relationship){
             return relationship.id === relationshipId;
         });
-        return matchedRelationships.length? matchedRelationships[0] : undefined;
+        return matchedRelationships.length ? matchedRelationships[0] : undefined;
     };
 });

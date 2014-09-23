@@ -5,6 +5,9 @@
                 required: function(value) {
                     return !!value;
                 },
+                requiredSelect: function(value) {
+                    return !!value && value !== "?";
+                },
                 validDate: function(value) {
                     return validDate(value);
                 },
@@ -24,6 +27,10 @@
             .setDefaultMsg({
                 required: {
                     error: '✖ Campo requerido',
+                    success: '✓'
+                },
+                requiredSelect: {
+                    error: '✖',
                     success: '✓'
                 },
                 validDate: {

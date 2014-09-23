@@ -16,7 +16,7 @@
         </label>
         <label class="item item-input item-select">
           <div class="input-label">Vínculo</div>
-          <select ng-model="receiver.relationshipId" ng-options="relationship.id as relationship.name for relationship in relationships" ng-change="checkIfAdvancedByDefault(); checkIfHasCustomName();"></select>
+          <select name='relationshipId' ng-model="receiver.relationshipId" ng-options="relationship.id as relationship.name for relationship in relationships" ng-change="checkIfAdvancedByDefault(); checkIfHasCustomName();" validator="requiredSelect"></select>
         </label>
         <label class='item item-input' ng-show="showRelationshipName">
           <input type='text' ng-model='receiver.relationshipName' placeholder='Nombre del vínculo'>
