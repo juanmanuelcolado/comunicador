@@ -5,22 +5,29 @@
                 required: function(value) {
                     return !!value;
                 },
+                validDate: function(value) {
+                    return validDate(value);
+                },
                 inRange: function(value) {
                     return value.length >= 2 && value.length <= 50;
                 },
                 inList: function(value,scope) {
                     var equalItems = scope.$parent.$parent.equalItems;
                     var items = scope.$parent.$parent.$parent.items;
-                    return items.every(function(element, index, array){return !equalItems(value,element)});
+                    return items.every(function(element, index, array){ return !equalItems(value,element); });
                 },
                 photoRequired: function(value,scope) {
-                    return value != '' && value != scope.$parent.$parent.defaultImg;
+                    return value !== '' && value !== scope.$parent.$parent.defaultImg;
                 },
                 number: /^\d+$/
             })
             .setDefaultMsg({
                 required: {
                     error: '✖ Campo requerido',
+                    success: '✓'
+                },
+                validDate: {
+                    error: '✖ Fecha inválida',
                     success: '✓'
                 },
                 inRange: {
@@ -40,5 +47,30 @@
                     success: '✓'
                 }
             });
+
+        // To be extracted
+        function validDate(text) {
+            var date = Date.parse(text);
+            var splitted, m, d, y;
+
+            if (isNaN(date)) {
+                return false;
+            }
+
+            splitted = text.search('/') > -1 ? text.split('/') : text.split('-');
+
+            if (splitted.length !== 3) {
+                return false;
+            }
+
+            d = parseInt(splitted[0], 10);
+            m = parseInt(splitted[1], 10);
+            y = parseInt(splitted[2], 10);
+            date = new Date(y, m - 1, d);
+
+            return (date.getFullYear() === y &&
+                    date.getMonth() + 1 === m &&
+                    date.getDate() === d);
+        }
     }]);
 }).call(this);
