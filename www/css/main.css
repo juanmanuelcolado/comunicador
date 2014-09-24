@@ -9,11 +9,7 @@
 }
 
 .form-buttons {
-    padding-top: 20px;
-}
-
-.form-buttons #accept {
-    float: right;
+    margin: 20px 10px;
 }
 
 .action-sheet {
@@ -132,6 +128,24 @@ form .item {
 
 form .input-label {
   font-weight: normal;
+}
+
+form .item-image {
+  width: 36%;
+  margin: 30px auto 35px auto;
+}
+
+form .item-checkbox {
+  background: none;
+  border: none;
+  display: inline-block;
+  padding-left: 50px;
+}
+
+form .item-checkbox .checkbox .checkbox-icon::before {
+  border: 2px solid #FFF;
+  background: none;
+  border-radius: 0;
 }
 
 /* tables */
