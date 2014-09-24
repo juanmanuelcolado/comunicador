@@ -16,10 +16,6 @@
     float: right;
 }
 
-.list-search-input {
-  margin: 2%;
-}
-
 .action-sheet {
   background: rgba(74, 74, 74, 0.9);
   padding: 0 5px;
@@ -77,6 +73,14 @@
 
 .view .menu-content .bar-header .icon {
   color: #00fead;
+}
+
+.view .menu-content .bar-header .plus-icon {
+  background-image: url('../img/plus-icon.png');
+  width: 31px;
+  height: 31px;
+  background-size: 31px 31px;
+  margin-right: 7px;
 }
 
 .view .menu-content .bar-header h1 {
@@ -230,6 +234,23 @@ form .input-label {
     text-transform: uppercase;
 }
 
+.pattern-lock h4 {
+  text-align: center;
+}
+
+.pattern-lock #lock {
+  background: rgba(0,0,0,0.3);
+}
+
+.list-search-input {
+  margin: 2%;
+}
+
+.list-search-input input::-webkit-input-placeholder {
+  color: rgba(0, 254, 173, 0.9);
+  font-family: Montserrat;
+}
+
 /*  ==========================================================================
   Level Single Card
   ========================================================================== */
@@ -255,15 +276,53 @@ form .input-label {
 }
 
 /*  ==========================================================================
-  Level Cards
+  Cards
   ========================================================================== */
 
-.pattern-lock h4 {
-  text-align: center;
+.search-icon {
+  background-image: url('../img/search-icon.png');
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  height: 15px;
+  width: 15px;
+  margin: 0 7px;
 }
 
-.pattern-lock #lock {
-  background: rgba(0,0,0,0.3);
+.pic-list .list .item {
+  min-height: 80px;
+}
+
+.pic-list .list .item .item-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 80px;
+}
+
+.pic-list .list .item .item-content img {
+  top: 0;
+  left: 0;
+}
+
+.pic-list .list .item .item-content .text-area {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.pic-list .list .item .item-content .icon {
+  background-image: url("../img/tick-icon.png");
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  margin-top: 23px;
+}
+
+.pic-list .list .item.disabled .item-content p {
+  color: #FFF;
+}
+
+.pic-list .list .item.disabled .item-content .icon {
+  background-image: url("../img/tick-disabled-icon.png");
 }
 
 /*  ==========================================================================

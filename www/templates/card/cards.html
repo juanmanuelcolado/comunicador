@@ -1,25 +1,25 @@
-<ion-view title='Pictogramas'>
+<ion-view title='PICTOGRAMAS'>
 
   <ion-nav-buttons side='right'>
     <a ui-sref='app.singleCard'
-      class='button button-icon icon ion-plus-circled'
+      class='button button-icon plus-icon'
       ng-hide='eraser.showConfirmAndHideAddButton'>
     </a>
   </ion-nav-buttons>
 
-  <ion-content class='has-header'>
+  <ion-content class='has-header pic-list'>
 
     <label class="item item-input list-search-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Búsqueda" ng-model='search'>
+      <i class="icon search-icon"></i>
+      <input type="text" placeholder="BUSQUEDA" ng-model='search'>
     </label>
 
     <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
-      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' modelToDelete='card' cm-deletegestures>
+      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' modelToDelete='card' cm-deletegestures ng-class='{"disabled": card.enabled === "false"}'>
         <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(card)'></ion-delete-button>
         <img ng-src='{{card.img}}'>
         <p class='text-area angular-center-container angular-centered normal-item' ng-class="eraser.currentCSSClass(card)">{{card.title}}</p>
-        <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
+        <i class='icon'></i>
       </ion-item>
     </ion-list>
   </ion-content>

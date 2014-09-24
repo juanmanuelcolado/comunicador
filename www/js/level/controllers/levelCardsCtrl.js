@@ -2,7 +2,7 @@ communicatorApp.controller('levelCardsCtrl', function($scope, $stateParams, card
 
     registryService.pickedLevelNumber = parseInt($stateParams.levelNumber, 10);
 
-    cardDbService.selectEnabled().then(function(results) {
+    cardDbService.find().then(function(results) {
         $scope.cards = results;
     });
 
