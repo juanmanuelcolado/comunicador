@@ -3,13 +3,13 @@
     <ion-content class='has-header'>
       <div class='list list-inset'>
         <label class='item item-input'>
-          <input type='text' name='name' ng-model='user.name' placeholder='Nombre *' validator='required'>
+          <input type='text' name='name' ng-model='user.name' placeholder='Nombre *' validator='required, inRange'>
         </label>
         <label class='item item-input'>
-          <input type='text' name='lastName' ng-model='user.lastName' placeholder='Apellido *' validator='required'>
+          <input type='text' name='lastName' ng-model='user.lastName' placeholder='Apellido *' validator='required, inRange'>
         </label>
         <label class='item item-input'>
-          <input type='text' name='birthdate' ng-model='user.birthdate' placeholder='Fecha de nacimiento *' validator='required'>
+          <input type='text' name='birthdate' ng-model='user.birthdate' placeholder='Fecha de nacimiento dd/mm/yyyy *' validator='required, validDate'>
         </label>
         <div class='form-buttons'>
           <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>

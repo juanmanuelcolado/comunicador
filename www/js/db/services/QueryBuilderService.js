@@ -55,6 +55,9 @@ communicatorApp.service('QueryBuilderService', function(dbService) {
         this.tableName = tableName;
     };
     QueryBuilder.prototype = {
+        prop: function(record) {
+            return this.tableName + '.' + record;
+        },
         selectAll: function() {
             return this.execute({
                 query: 'SELECT * FROM ' + this.tableName
@@ -84,12 +87,6 @@ communicatorApp.service('QueryBuilderService', function(dbService) {
             return this.execute({
                 query: 'UPDATE ' + this.tableName + ' SET ' + queryModel.coulmnNames(' = ?, ') + ' = ? WHERE id = ?',
                 args: queryModel.args({ id: true })
-            });
-        },
-        selectEnabled: function() {
-            return this.execute({
-                query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = ?',
-                args: [true]
             });
         },
         define: function(name, transactionFunction) {

@@ -37,6 +37,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('app.statistics', {
+        url: '/statistics',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/statistic/statistics.html',
+                controller: 'statisticsCtrl'
+            }
+        }
+    })
     .state('app.levelCards', {
         url: '/levelCards/:levelNumber',
         views: {

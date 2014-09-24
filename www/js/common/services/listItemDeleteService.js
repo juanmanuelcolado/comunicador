@@ -19,6 +19,7 @@ communicatorApp.service('listItemDeleteService', function($rootScope, $timeout, 
                         touchedDeleteButton = false;
                     } else {
                         eraser.showConfirmAndHideAddButton = false;
+                        eraser.showDelete = false;
                         eraser.deleteCanceled();
                     }
                 } else {

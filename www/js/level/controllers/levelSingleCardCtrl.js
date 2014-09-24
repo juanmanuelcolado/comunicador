@@ -28,5 +28,6 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
     };
     $ionicPlatform.ready(function() {
         document.addEventListener('menubutton', $scope.menuButtonPressed, false);
+        document.getElementById('menu').addEventListener('click', $scope.menuButtonPressed, false);
     });
 });

@@ -19,7 +19,7 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 			user = results[0];
 			card = results[1][0];
 			relationshipName = results[2];
-			delete registry['receiver'];
+			delete registry.receiver;
 			serverService.send(makeExchangePackage());
 		});
 	};
