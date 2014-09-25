@@ -91,6 +91,10 @@
     color: #666;
 }
 
+.receiver-edit-pattern-button {
+  display: none;
+}
+
 .receiver-pattern-edit ion-content {
   padding: 0 10px;
 }

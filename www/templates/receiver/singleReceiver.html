@@ -25,7 +25,7 @@
         <div class="button button-block" ng-click="editPattern()">
           <i class="icon ion-edit"></i>
           Editar patrón de bloqueo
-          <span name="pattern" ng-model="receiver.pattern" validator="required"></span>
+          <input class="receiver-edit-pattern-button" name="pattern" ng-model="receiver.pattern" validator="required"></input>
         </div>
         <div class='form-buttons'>
           <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
