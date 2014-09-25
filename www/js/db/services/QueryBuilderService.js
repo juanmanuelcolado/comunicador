@@ -63,6 +63,12 @@ communicatorApp.service('QueryBuilderService', function(dbService) {
                 query: 'SELECT * FROM ' + this.tableName
             });
         },
+        selectEnabled: function() {
+            return this.execute({
+               query: 'SELECT * FROM ' + this.tableName + ' WHERE enabled = ?',
+                args: [true]
+           });
+        },
         find: function(id) {
             return this.execute({
                 query: 'SELECT * FROM ' + this.tableName + ' WHERE id = ?',

@@ -1,4 +1,4 @@
-communicatorApp.controller('homeCtrl', function($scope, levelDbService) {
+communicatorApp.controller('homeCtrl', function($scope, levelDbService, $ionicPopup) {
     levelDbService.selectAll().then(function(results) {
         $scope.levels = results;
         var lastLevel = 0;
@@ -25,12 +25,21 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService) {
                     $scope.selectedLevel = level;
                 }
             }
+            if(!levelEnabled){
+                levels[0].selected = true;
+                $scope.selectedLevel = levels[0];
+                showPopUp();
+            }
         });
-        //if the selected level is disabeld then we select the first level
-        if(!levelEnabled){
-            levels[0].selected = true;
-            $scope.selectedLevel = levels[0];
-            //TODO: message "El nivel seleccionado no se encuentra disponible"
-        }
     };
+
+    function showPopUp(){
+        var alertPopup = $ionicPopup.alert({
+             title: 'Próximamente',
+             template: 'El nivel seleccionado todavía no se encuentra habilitado'
+        });
+        alertPopup.then(function(res) {
+            console.log('Nivel no habilitado');
+        });
+    }
 });

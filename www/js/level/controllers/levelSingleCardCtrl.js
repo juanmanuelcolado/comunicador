@@ -1,4 +1,4 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $state, cardDbService, registryService) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicGesture, $state, cardDbService, registryService) {
     $scope.card = {
         id: $stateParams.id,
         title: '',
@@ -25,10 +25,25 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
                 return true;
             }
         });
-
     };
+
     $ionicPlatform.ready(function() {
         document.addEventListener('menubutton', $scope.menuButtonPressed, false);
-        document.getElementById('menu').addEventListener('click', $scope.menuButtonPressed, false);
     });
+});
+
+communicatorApp.directive('detectGestures', function($ionicGesture) {
+  return {
+    link : function(scope, elem, attrs) {
+      
+      var gestureType = attrs.gestureType;
+
+      switch(gestureType) {
+        case 'hold':
+          $ionicGesture.on('hold', scope.menuButtonPressed, elem);
+          break;
+      }
+
+    }
+  };
 });
