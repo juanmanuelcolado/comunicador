@@ -1,5 +1,8 @@
 <form name="receiverForm" novalidate>
-  <ion-view title='{{creating? "Nuevo receptor" : "Editar receptor"}}'>
+  <ion-view hide-nav-bar="true">
+    <div class="bar bar-header bar-stable">
+      <h1 class="title">{{creating? "Nuevo receptor" : "Editar receptor"}}</h1>
+    </div>
     <ion-content class='has-header'>
       <div class='list list-inset'>
         <label class='item item-input' ng-click="takePicture()">
@@ -25,6 +28,7 @@
         <div class="button button-block" ng-click="editPattern()">
           <i class="icon ion-edit"></i>
           Editar patrón de bloqueo
+          <input class="receiver-edit-pattern-button" name="pattern" ng-model="receiver.pattern" validator="required"></input>
         </div>
         <div class='form-buttons'>
           <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>

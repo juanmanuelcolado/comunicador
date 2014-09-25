@@ -18,6 +18,7 @@ communicatorApp.controller('receiverPatternEditCtrl', function($scope, $state, $
 	function validatePattern (pattern) {
 		if (pattern.length > 3) {
 			$scope.receiver.pattern = pattern;
+			$scope.patternError = false;	
 			$scope.closeModal();
 		} else {
 			showShortPatternError();

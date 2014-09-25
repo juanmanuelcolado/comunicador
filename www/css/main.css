@@ -91,6 +91,10 @@
     color: #666;
 }
 
+.receiver-edit-pattern-button {
+  display: none;
+}
+
 .receiver-pattern-edit ion-content {
   padding: 0 10px;
 }
@@ -162,4 +166,8 @@ p.validation-invalid {
 
 form p.validation-invalid {
   white-space: normal;
+}
+
+form .button .validation-container p {
+  display: inline;
 }
