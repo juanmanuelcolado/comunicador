@@ -163,3 +163,7 @@ p.validation-invalid {
 form p.validation-invalid {
   white-space: normal;
 }
+
+form .button .validation-container p {
+  display: inline;
+}
