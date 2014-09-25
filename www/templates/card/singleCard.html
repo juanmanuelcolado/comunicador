@@ -1,41 +1,29 @@
 <form name = "cardForm" novalidate>
   <ion-view title='{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}'>
     <ion-content class='has-header'>
+      <div id= 'image' class='item item-image card' ng-class="{empty: !card.img}" ng-click="uploadImage()">
+        <img ng-src='{{card.img}}'>
+        <input ng-show='false' type='text' name='photoSrc' ng-model='card.img' validator="photoRequired">
+      </div>
 
-        <div id= 'image' class='item item-image card'>
-          <img ng-src='{{card.img || defaultImg}}'>
-          <input ng-show='false' type='text' name='photoSrc' ng-model='card.img' validator="photoRequired">
-        </div>
+      <div class='item item-input card'>
+        <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange, inList">
+      </div>
 
-        <div class='form-buttons card'>
-          <a ng-show='cameraIsEnabled' class='button button-positive' ng-click="takePicture()">
-            Tomar foto
-          </a>
-          <a class='button button-positive' ng-click="pictureFromDevice()">
-            Elegir existente
-          </a>
-        </div>
-
-        <div class='item item-input card'>
-          <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange, inList">
-        </div>
-
-        <div>
-          <ion-checkbox ng-model="card.enabled" ng-checked="card.enabled">
-            <h3>Habilitado</h3>
-          </ion-checkbox>
-        </div>
-
-        <div class='form-buttons'>
-        <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
-          <a id='accept'
-            class='button icon-left button-positive button-block'
-            ng-click='save();'
-            validation-submit="cardForm">
-              Aceptar
-          </a>
-        </div>
-
+      <div>
+        <ion-checkbox ng-model="card.enabled" ng-checked="card.enabled">
+          <h3>Habilitado</h3>
+        </ion-checkbox>
+      </div>
     </ion-content>
+    <div class='form-buttons'>
+    <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
+      <a id='accept'
+        class='button icon-left button-positive button-block'
+        ng-click='save();'
+        validation-submit="cardForm">
+          Aceptar
+      </a>
+    </div>
   </ion-view>
 </form>

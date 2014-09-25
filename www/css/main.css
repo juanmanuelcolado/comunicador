@@ -9,7 +9,10 @@
 }
 
 .form-buttons {
-    margin: 20px 10px;
+  margin: 20px 10px 0px 10px;
+  bottom: 0;
+  position: absolute;
+  width: calc(100% - 20px);
 }
 
 .action-sheet {
@@ -40,7 +43,7 @@
   font-size: 16px;
 }
 
-.popup .button:first-child {
+.popup .button.button-default {
   background: rgba(47, 47, 47, 0.9);
 }
 
@@ -131,21 +134,38 @@ form .input-label {
 }
 
 form .item-image {
-  width: 36%;
+  width: 40%;
   margin: 30px auto 35px auto;
+}
+
+form .item-image.empty {
+  background-image: url('../img/plus-icon-filled.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  min-height: 165px;
 }
 
 form .item-checkbox {
   background: none;
   border: none;
   display: inline-block;
-  padding-left: 50px;
+  padding-left: 45px;
+}
+
+form .item-checkbox .checkbox {
+  left: 2.5px;
 }
 
 form .item-checkbox .checkbox .checkbox-icon::before {
   border: 2px solid #FFF;
   background: none;
   border-radius: 0;
+}
+
+form .item-checkbox .checkbox .checkbox-icon::after {
+  top: 2px;
+  left: 7px;
 }
 
 /* tables */
