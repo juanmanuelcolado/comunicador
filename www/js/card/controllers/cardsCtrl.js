@@ -1,5 +1,6 @@
 communicatorApp.controller('cardsCtrl', function($scope, cardDbService, listItemDeleteService) {
     $scope.cards = [];
+    $scope.loaded = false;
     $scope.eraser = listItemDeleteService;
     $scope.redirectState = "app.singleCard";
     $scope.eraser.showDelete = false;
@@ -7,6 +8,7 @@ communicatorApp.controller('cardsCtrl', function($scope, cardDbService, listItem
     cardDbService.selectAll().then(function(results) {
         $scope.cards = results;
         $scope.$parent.items = $scope.cards;
+        $scope.loaded = true;
     });
 
     $scope.goBack = function() {

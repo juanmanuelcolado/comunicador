@@ -22,6 +22,11 @@
         <i class='icon ion-checkmark-round' ng-show='card.enabled'></i>
       </ion-item>
     </ion-list>
+
+    <div ng-show='loaded && !cards.length'>
+      <h4 class="empty-notice">Aún no agregaste ningún pictograma. Presioná el botón "+" de arriba a la derecha para agregar uno nuevo.</h4>
+    </div>
+
   </ion-content>
 
   <div ng-include="'templates/common/delete_bar.html'" ng-controller="deleteBarCtrl"></div>
