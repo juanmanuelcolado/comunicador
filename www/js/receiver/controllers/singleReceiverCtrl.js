@@ -1,4 +1,4 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, $ionicPopup, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
 
@@ -6,14 +6,9 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         name: '',
         lastName: '',
         relationshipId: 0,
-        avatar: imageUploaderService.defaultSrc,
+        avatar: '',
         advanced: false,
         pattern: ''
-    };
-
-    var updateReceiverAvatar = function(newImageSrc) {
-        $scope.receiver.avatar = newImageSrc;
-        $scope.$apply();
     };
 
     if (!$scope.creating) {
@@ -27,6 +22,47 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
     relationshipDbService.selectAll().then(function(relationships){
         $scope.relationships = relationships;
     });
+
+    $scope.uploadImage = function() {
+        if (imageUploaderService.cameraIsEnabled) {
+            showUploadImagePopup();
+        } else {
+            takePictureFromWebview();
+        }
+    };
+
+    var showUploadImagePopup = function() {
+        $ionicPopup.show({
+            template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
+            title: 'Subir foto',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>Tomar foto</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        imageUploaderService.takePicture(updateReceiverAvatar);
+                    }
+                },
+                {
+                    text: '<b>Abrir galería</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
+                    }
+                }
+            ]
+        });
+    };
+
+    var takePictureFromWebview = function() {
+        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
+    };
+
+    var updateReceiverAvatar = function(newImageSrc) {
+        $scope.receiver.avatar = newImageSrc;
+        $scope.$apply();
+    };
 
     $ionicModal.fromTemplateUrl('templates/receiver/receiverPatternEdit.html', {
         scope: $scope,
@@ -45,14 +81,6 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
 
     $scope.editPattern = function() {
         $scope.patternModal.show();
-    };
-
-    $scope.takePicture = function() {
-        imageUploaderService.takePicture(updateReceiverAvatar);
-    };
-
-    $scope.pictureFromDevice = function() {
-        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
     };
 
     $scope.goBack = function() {

@@ -123,6 +123,10 @@
 }
 
 /* forms */
+form ion-content {
+  background: rgba(0,0,0,0.2);
+}
+
 form .item {
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid #FFF;
@@ -133,12 +137,12 @@ form .input-label {
   font-weight: normal;
 }
 
-form .item-image {
+form .item.item-image {
   width: 40%;
   margin: 30px auto 35px auto;
 }
 
-form .item-image.empty {
+form .item.item-image.empty {
   background-image: url('../img/plus-icon-filled.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -146,11 +150,12 @@ form .item-image.empty {
   min-height: 165px;
 }
 
-form .item-checkbox {
+form .item.item-checkbox {
   background: none;
   border: none;
   display: inline-block;
   padding-left: 45px;
+  margin: 0;
 }
 
 form .item-checkbox .checkbox {
@@ -166,6 +171,52 @@ form .item-checkbox .checkbox .checkbox-icon::before {
 form .item-checkbox .checkbox .checkbox-icon::after {
   top: 2px;
   left: 7px;
+}
+
+form .item-select {
+  padding: 0;
+}
+
+form .item-select select {
+  color: #FFF;
+  width: 100%;
+  position: relative;
+  max-width: 100%;
+  padding: 10px 45px 10px 5px;
+  direction: ltr;
+}
+
+form .item-select option {
+  background: rgb(187, 214, 211);
+  color: rgb(0, 0, 0);
+}
+
+form .item-select .select-placeholder {
+  position: absolute;
+  padding: 10px;
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+form .item-select::after {
+  color: #00ffae;
+  background-image: url('../img/chevron-down-icon.png');
+  width: 20px;
+  border-left: 1px solid rgb(255, 255, 255);
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  padding: 0 20px;
+  background-position: center;
+  top: 3px;
+  height: 100%;
+  right: 0;
+}
+
+form .button.form-button {
+  margin: 0 2%;
 }
 
 /* tables */
@@ -322,27 +373,27 @@ form .item-checkbox .checkbox .checkbox-icon::after {
   margin: 0 7px;
 }
 
-.pic-list .list .item {
+.item-list .list .item {
   min-height: 80px;
 }
 
-.pic-list .list .item .item-content {
+.item-list .list .item .item-content {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 80px;
 }
 
-.pic-list .list .item .item-content img {
+.item-list .list .item .item-content img {
   top: 0;
   left: 0;
 }
 
-.pic-list .list .item .item-content .text-area {
+.item-list .list .item .item-content .text-area {
   font-size: 20px;
   margin-top: 30px;
 }
 
-.pic-list .list .item .item-content .icon {
+.item-list .list .item .item-content .icon {
   background-image: url("../img/tick-icon.png");
   background-repeat: no-repeat;
   background-size: 30px 30px;
@@ -351,11 +402,11 @@ form .item-checkbox .checkbox .checkbox-icon::after {
   margin-top: 23px;
 }
 
-.pic-list .list .item.disabled .item-content p {
+.item-list .list .item.disabled .item-content p {
   color: #FFF;
 }
 
-.pic-list .list .item.disabled .item-content .icon {
+.item-list .list .item.disabled .item-content .icon {
   background-image: url("../img/tick-disabled-icon.png");
 }
 
@@ -427,6 +478,10 @@ form .item-checkbox .checkbox .checkbox-icon::after {
 
 form .validation-container {
   margin-right: 4px;
+}
+
+form .item-select .validation-container {
+  margin-right: 60px;
 }
 
 p.validation-valid {
