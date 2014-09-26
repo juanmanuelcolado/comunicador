@@ -56,7 +56,7 @@
   color: #000;
 }
 
-.view, .pane {
+.view, .pane, .modal {
     background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
     background-image: linear-gradient(top, #198b95, #9cc7a3);
 }
@@ -66,7 +66,7 @@
   border-right: none;
 }
 
-.view .menu-content .bar-header {
+.bar-header, .view .menu-content .bar-header {
   border-bottom-width: 2px;
 }
 
@@ -320,7 +320,7 @@ form .button.form-button {
 }
 
 .pattern-lock h4 {
-  text-align: center;
+  padding-left: 15px;
 }
 
 .pattern-lock #lock {
@@ -421,12 +421,8 @@ form .button.form-button {
     color: #666;
 }
 
-.receiver-pattern-edit ion-content {
-  padding: 0 10px;
-}
-
 .receiver-pattern-error {
-  color: #EF4E3A;
+  color: #B70000;
   font-weight: bold;
 }
 
@@ -486,11 +482,11 @@ form .item-select .validation-container {
 
 p.validation-valid {
   font-size: 1.1em;
-  color: green;
+  color: #00751F;
 }
 
 p.validation-invalid {
-  color: #bb1f34;
+  color: #B70000;
 }
 
 form p.validation-invalid {
