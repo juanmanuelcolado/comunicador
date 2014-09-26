@@ -12,7 +12,7 @@
                     return validDate(value);
                 },
                 inRange: function(value) {
-                    return value.length >= 2 && value.length <= 50;
+                    return value.length >= 2 && value.length <= 32;
                 },
                 inList: function(value,scope) {
                     var equalItems = scope.$parent.$parent.equalItems;
@@ -38,7 +38,7 @@
                     success: '✓'
                 },
                 inRange: {
-                    error: '✖ Debe tener entre 2 y 50 caracteres',
+                    error: '✖ Debe tener entre 2 y 32 caracteres',
                     success: '✓'
                 },
                 number: {
