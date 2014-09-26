@@ -1,5 +1,5 @@
 <form name="userForm" novalidate>
-  <ion-view title='Usuario'>
+  <ion-view title='USUARIO'>
     <ion-content class='has-header'>
       <div class='list list-inset'>
         <label class='item item-input'>
@@ -11,11 +11,10 @@
         <label class='item item-input'>
           <input type='text' name='birthdate' ng-model='user.birthdate' placeholder='Fecha de nacimiento dd/mm/yyyy *' validator='required, validDate'>
         </label>
-        <div class='form-buttons'>
-          <a id='cancel' class='button icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-          <button id='accept' validation-submit="userForm" ng-click="save()" class='button icon-left ion-checkmark-round button-balanced'>Aceptar</button>
-        </div>
       </div>
     </ion-content>
+    <div class='form-buttons'>
+      <button id='accept' validation-submit="userForm" ng-click="save()" class='button button-block button-positive'>Aceptar</button>
+    </div>
   </ion-view>
 </form>

@@ -1,13 +1,14 @@
-<ion-view title='Receptores'>
+<ion-view title='RECEPTORES DE LA COMUNICACION'>
   <ion-nav-buttons side='right'>
-    <a ui-sref='app.singleReceiver' class='button button-icon icon ion-plus-circled'></a>
+    <a ui-sref='app.singleReceiver' class='button button-icon icon plus-icon'></a>
   </ion-nav-buttons>
 
-  <ion-content class='has-header receiver-list'>
+  <ion-content class='has-header receiver-list item-list'>
     <div ng-show='receivers.length'>
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Búsqueda" ng-model='search'>
+
+      <label class="item item-input list-search-input">
+        <i class="icon search-icon"></i>
+        <input type="text" placeholder="BUSQUEDA" ng-model='search'>
       </label>
 
       <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
@@ -15,7 +16,6 @@
           <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(receiver)'></ion-delete-button>
           <img width="50" ng-src='{{receiver.avatar}}' alt="Receptor photo" >
           <p class='text-area angular-center-container angular-centered' ng-class="eraser.currentCSSClass(receiver)">{{receiver.name}} {{receiver.lastName}}</p>
-          <i class='icon ion-checkmark-round' ng-show='receiver.advanced'></i>
         </ion-item>
       </ion-list>
     </div>

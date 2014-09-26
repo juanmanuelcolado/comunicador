@@ -2,13 +2,240 @@
   Common
   ========================================================================== */
 
-.form-buttons {
-    padding-top: 20px;
+.button {
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
-.form-buttons #accept {
-    float: right;
+.form-buttons {
+  margin: 20px 10px 0px 10px;
+  bottom: 0;
+  position: absolute;
+  width: calc(100% - 20px);
 }
+
+.action-sheet {
+  background: rgba(74, 74, 74, 0.9);
+  padding: 0 5px;
+}
+
+.action-sheet-group {
+  background: rgba(74, 74, 74, 0.9);
+}
+
+.action-sheet-group .action-sheet-title {
+  font-size: 16px;
+  font-family: montserrat;
+  text-transform: uppercase;
+}
+
+.action-sheet-group:first-child .button {
+  background: #00fead;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.action-sheet-group:nth-child(2) .button {
+  background: rgba(40, 40, 40, 0.9);
+  font-size: 16px;
+}
+
+.popup .button.button-default {
+  background: rgba(47, 47, 47, 0.9);
+}
+
+.popup .item-radio .item-content {
+  background: rgba(47, 47, 47, 0.9);
+}
+
+.popup .item-radio input:checked ~ .item-content {
+  background: #00fead;
+  color: #000;
+}
+
+.view, .pane, .modal {
+    background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
+    background-image: linear-gradient(top, #198b95, #9cc7a3);
+}
+
+.view .menu-content {
+  border-left: none;
+  border-right: none;
+}
+
+.bar-header, .view .menu-content .bar-header {
+  border-bottom-width: 2px;
+}
+
+.view .menu-content .bar-header .icon {
+  color: #00fead;
+}
+
+.view .menu-content .bar-header .plus-icon {
+  background-image: url('../img/plus-icon.png');
+  width: 31px;
+  height: 31px;
+  background-size: 31px 31px;
+  margin-right: 7px;
+}
+
+.view .menu-content .bar-header h1 {
+  text-align: left;
+  margin-left: 0;
+}
+
+.menu .bar-header {
+  border-bottom-width: 2px;
+}
+
+.menu .list .item {
+  background: rgba(0, 0, 0, 0.3);
+  color: #00ffae;
+  margin: 2%;
+}
+
+.menu .item-content {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu .bar-header {
+  background-color: rgba(0,0,0,0);
+}
+
+/* lists */
+.list .item {
+  margin: 2%;
+}
+
+.list .item .item-content {
+  background: rgba(0,0,0,0);
+}
+
+.list .item .item-content p {
+  color: #00ffae;
+}
+
+.list .item.activated {
+  color: #0C585A;
+}
+
+/* forms */
+form ion-content {
+  background: rgba(0,0,0,0.2);
+}
+
+form .item {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
+  color: #FFF;
+}
+
+form .input-label {
+  font-weight: normal;
+}
+
+form .item.item-image {
+  width: 40%;
+  margin: 30px auto 35px auto;
+}
+
+form .item.item-image.empty {
+  background-image: url('../img/plus-icon-filled.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  min-height: 165px;
+}
+
+form .item.item-checkbox {
+  background: none;
+  border: none;
+  display: inline-block;
+  padding-left: 45px;
+  margin: 0;
+}
+
+form .item-checkbox .checkbox {
+  left: 2.5px;
+}
+
+form .item-checkbox .checkbox .checkbox-icon::before {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+}
+
+form .item-checkbox .checkbox .checkbox-icon::after {
+  top: 2px;
+  left: 7px;
+}
+
+form .item-select {
+  padding: 0;
+}
+
+form .item-select select {
+  color: #FFF;
+  width: 100%;
+  position: relative;
+  max-width: 100%;
+  padding: 10px 45px 10px 5px;
+  direction: ltr;
+}
+
+form .item-select option {
+  background: rgb(187, 214, 211);
+  color: rgb(0, 0, 0);
+}
+
+form .item-select .select-placeholder {
+  position: absolute;
+  padding: 10px;
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+form .item-select::after {
+  color: #00ffae;
+  background-image: url('../img/chevron-down-icon.png');
+  width: 20px;
+  border-left: 1px solid rgb(255, 255, 255);
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  padding: 0 20px;
+  background-position: center;
+  top: 3px;
+  height: 100%;
+  right: 0;
+}
+
+form .button.form-button {
+  margin: 0 2%;
+}
+
+form .button.button-large {
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+form .item.info-label {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: normal;
+  text-align: center;
+  font-size: 12px;
+  font-family: muli;
+}
+
+/* tables */
 
 .table > .col {
     border: 1px solid #000;
@@ -33,36 +260,58 @@
 /*  ==========================================================================
   Home
   ========================================================================== */
-
-#home-page .title {
-    text-align: center;
-    margin-top: 5%;
+#home-page .level-item {
+  font-size: 12px;
+  padding-right: 0;
+  padding-left: 0;
 }
 
-.level-list {
-    height: 180px;
-    border-bottom: 2px solid #CCC;
-    width: 80%;
-    margin: 0 auto;
-    margin-top:20%
+#home-page .level-item.activated {
+  background: rgba(0,0,0,0.3);
+  color: #00FFAE;
 }
 
-.level-list .list .item.selected {
-    background-color: #CCC;
+#home-page .level-item .level-main {
+  position: relative;
+  width: 100%;
+  padding-left: 15px;
 }
 
-#home-page .button {
-    border-radius: 40px;
-    margin-top: 10%;
+#home-page .level-item .level-main .level-name {
+  color: #FFF;
+  font-size: 16px;
+  margin-left: 4%;
 }
 
-#home-page .button-container {
-    text-align: center;
+#home-page .level-item .level-main i {
+  font-size: 22px;
 }
 
+#home-page .level-item .level-detail {
+  position: relative;
+  padding: 13px 15px 0 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 13px;
+  white-space: normal;
+}
+
+#home-page .level-item .level-detail .level-init-date {
+  color: #FFF;
+}
+
+#home-page .level-item .level-detail label {
+  width: calc(100% - 70px);
+  display: inline-block;
+}
+
+#home-page .level-item .level-detail .button {
+  margin-top: 0;
+  padding: 25px;
+  line-height: 15px;
+}
 
 /*  ==========================================================================
-  Cards
+  Level Cards
   ========================================================================== */
 
 .card-list .list {
@@ -72,12 +321,109 @@
 
 .card-list .list .item {
     margin-bottom: 25px;
+    color: #000;
+    font-family: Montserrat;
+}
+
+.card-list .list .item .item-content {
+  padding: 10px;
+  background: #FFF;
 }
 
 .card-list .list .item .card-title {
-    border-top: 1px solid #CCC;
-    padding: 10px;
     margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.pattern-lock h4 {
+  padding-left: 15px;
+}
+
+.pattern-lock #lock {
+  background: rgba(0,0,0,0.3);
+}
+
+.list-search-input {
+  margin: 2%;
+}
+
+.list-search-input input::-webkit-input-placeholder {
+  color: rgba(0, 254, 173, 0.9);
+  font-family: Montserrat;
+}
+
+/*  ==========================================================================
+  Level Single Card
+  ========================================================================== */
+
+.level-single-card {
+  background: #FFF;
+}
+
+.level-single-card .card {
+  margin: 0;
+  box-shadow: none;
+}
+
+.level-single-card .card .item-image {
+  margin: 0;
+}
+
+.level-single-card .card .item-divider {
+  text-align: center;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  background: #FFF;
+}
+
+/*  ==========================================================================
+  Cards
+  ========================================================================== */
+
+.search-icon {
+  background-image: url('../img/search-icon.png');
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  height: 15px;
+  width: 15px;
+  margin: 0 7px;
+}
+
+.item-list .list .item {
+  min-height: 80px;
+}
+
+.item-list .list .item .item-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 80px;
+}
+
+.item-list .list .item .item-content img {
+  top: 0;
+  left: 0;
+}
+
+.item-list .list .item .item-content .text-area {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.item-list .list .item .item-content .icon {
+  background-image: url("../img/tick-icon.png");
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  margin-top: 23px;
+}
+
+.item-list .list .item.disabled .item-content p {
+  color: #FFF;
+}
+
+.item-list .list .item.disabled .item-content .icon {
+  background-image: url("../img/tick-disabled-icon.png");
 }
 
 /*  ==========================================================================
@@ -95,12 +441,8 @@
   display: none;
 }
 
-.receiver-pattern-edit ion-content {
-  padding: 0 10px;
-}
-
 .receiver-pattern-error {
-  color: #EF4E3A;
+  color: #B70000;
   font-weight: bold;
 }
 
@@ -124,7 +466,6 @@
   ========================================================================== */
 
 .list .item-content .normal-item {
-    color:black;
     margin-top: 25px;
     font-size: 20px;
     min-height: 2px;
@@ -155,13 +496,17 @@ form .validation-container {
   margin-right: 4px;
 }
 
+form .item-select .validation-container {
+  margin-right: 60px;
+}
+
 p.validation-valid {
   font-size: 1.1em;
-  color: green;
+  color: #00751F;
 }
 
 p.validation-invalid {
-  color: #bb1f34;
+  color: #B70000;
 }
 
 form p.validation-invalid {
@@ -170,4 +515,42 @@ form p.validation-invalid {
 
 form .button .validation-container p {
   display: inline;
+}
+
+/*  ==========================================================================
+  Credits
+  ========================================================================== */
+
+.credits .list {
+  background: rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  border-radius: 10px;
+  padding-bottom: 30px;
+}
+
+.credits .list .item {
+  background: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #FFF;
+  padding-left: 120px;
+  min-height: 100px;
+}
+
+.credits .list h5.item {
+  white-space: normal;
+  text-align: center;
+  font-size: 14px;
+  line-height: 30px;
+  color: #00ffae;
+  padding-left: 10px;
+}
+
+.credits .list .item img {
+    max-width: 90px;
+    max-height: 70px;
+}
+
+.credits .list .item p {
+    color: #FFF;
+    white-space: normal;
 }

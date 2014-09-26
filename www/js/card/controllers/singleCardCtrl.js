@@ -1,7 +1,6 @@
-communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, cardDbService, imageUploaderService) {
+communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicPopup, cardDbService, imageUploaderService) {
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
-    $scope.defaultImg = imageUploaderService.defaultSrc;
     
     $scope.card = {
         title: '',
@@ -29,17 +28,45 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         $scope.goBack();
     };
 
+    $scope.uploadImage = function() {
+        if (imageUploaderService.cameraIsEnabled) {
+            showUploadImagePopup();
+        } else {
+            takePictureFromWebview();
+        }
+    };
+
+    var showUploadImagePopup = function() {
+        $ionicPopup.show({
+            template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
+            title: 'Subir foto',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>Tomar foto</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        imageUploaderService.takePicture(updateCardImage);
+                    }
+                },
+                {
+                    text: '<b>Abrir galería</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        imageUploaderService.pictureFromDevice(updateCardImage);
+                    }
+                }
+            ]
+        });
+    };
+
+    var takePictureFromWebview = function() {
+        imageUploaderService.pictureFromDevice(updateCardImage);
+    };
+
     var updateCardImage = function(newImageSrc) {
         $scope.card.img = newImageSrc;
         $scope.$apply();
-    };
-
-    $scope.takePicture = function() {
-        imageUploaderService.takePicture(updateCardImage);
-    };
-
-    $scope.pictureFromDevice = function() {
-        imageUploaderService.pictureFromDevice(updateCardImage);
     };
 
     $scope.equalItems = function(value,card){
