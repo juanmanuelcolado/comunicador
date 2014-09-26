@@ -1,4 +1,4 @@
-communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNavBarDelegate, serverService) {
+communicatorApp.controller('configurationsServerCtrl', function($scope, serverService) {
     $scope.lastSyncTime = '';
     $scope.autoSyncEnabled = false;
     $scope.baseURL = '';
@@ -20,10 +20,6 @@ communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNa
         serverService.sync().then(function(syncTime) {
             $scope.lastSyncTime = syncTime;
         });
-    };
-
-    $scope.goBack = function() {
-        $ionicNavBarDelegate.back();
     };
 
     $scope.save = function() {
