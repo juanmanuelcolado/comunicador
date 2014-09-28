@@ -8,9 +8,16 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         enabled: true
     };
 
+    $scope.last = {
+        title: '',
+        img: '',
+        enabled: true
+    };
+
     if (!$scope.creating) {
         cardDbService.find($stateParams.id).then(function(results) {
             $scope.card = results[0];
+            $scope.last = jQuery.extend(true, {}, $scope.card);
             $scope.card.enabled = $scope.card.enabled === 'true' ? true : false;
         });
     }

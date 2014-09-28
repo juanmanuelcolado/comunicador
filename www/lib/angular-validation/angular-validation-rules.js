@@ -17,7 +17,9 @@
                 inList: function(value,scope) {
                     var equalItems = scope.$parent.$parent.equalItems;
                     var items = scope.$parent.$parent.$parent.items;
-                    return items.every(function(element, index, array){ return !equalItems(value,element); });
+                    console.log(scope.$parent.$parent.card);
+                    console.log(scope.$parent.$parent.last);
+                    return items.every(function(element, index, array){ return !equalItems(value,element); }) || equalItems(value,scope.$parent.$parent.last);
                 },
                 photoRequired: function(value,scope) {
                     return value !== '' && value !== scope.$parent.$parent.defaultImg;
