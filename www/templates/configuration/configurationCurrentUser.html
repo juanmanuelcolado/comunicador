@@ -11,10 +11,10 @@
         <label class='item item-input'>
           <input type='text' name='birthdate' ng-model='user.birthdate' placeholder='Fecha de nacimiento dd/mm/yyyy *' validator='required, validDate'>
         </label>
+        <div class='form-buttons'>
+          <button id='accept' validation-submit="userForm" ng-click="save()" class='button button-block button-positive'>Aceptar</button>
+        </div>
       </div>
     </ion-content>
-    <div class='form-buttons'>
-      <button id='accept' validation-submit="userForm" ng-click="save()" class='button button-block button-positive'>Aceptar</button>
-    </div>
   </ion-view>
 </form>

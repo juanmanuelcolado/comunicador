@@ -9,10 +9,8 @@
 }
 
 .form-buttons {
-  margin: 20px 10px 0px 10px;
+  margin: 10px 5px 0px 5px;
   bottom: 0;
-  position: absolute;
-  width: calc(100% - 20px);
 }
 
 .action-sheet {
@@ -25,7 +23,7 @@
 }
 
 .action-sheet-group .action-sheet-title {
-  font-size: 16px;
+  font-size: 1em;
   font-family: montserrat;
   text-transform: uppercase;
 }
@@ -35,12 +33,12 @@
   color: #000;
   border: none;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .action-sheet-group:nth-child(2) .button {
   background: rgba(40, 40, 40, 0.9);
-  font-size: 16px;
+  font-size: 1em;
 }
 
 .popup .button.button-default {
@@ -84,6 +82,9 @@
 
 .view .menu-content .bar-header h1 {
   text-align: left;
+}
+
+.view .menu-content .bar-header .left-buttons + h1 {
   margin-left: 0;
 }
 
@@ -112,6 +113,7 @@
 
 .list .item .item-content {
   background: rgba(0,0,0,0);
+  white-space: normal;
 }
 
 .list .item .item-content p {
@@ -125,6 +127,10 @@
 /* forms */
 form ion-content {
   background: rgba(0,0,0,0.2);
+}
+
+form .list:last-child {
+  margin-bottom: 20px;
 }
 
 form .item {
@@ -264,6 +270,8 @@ form .item.info-label {
   font-size: 12px;
   padding-right: 0;
   padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 #home-page .level-item.activated {
@@ -274,17 +282,18 @@ form .item.info-label {
 #home-page .level-item .level-main {
   position: relative;
   width: 100%;
-  padding-left: 15px;
+  padding-left: 1em;
 }
 
 #home-page .level-item .level-main .level-name {
   color: #FFF;
-  font-size: 16px;
-  margin-left: 4%;
+  font-size: 1.2em;
+  margin-left: 0.5em;
 }
 
 #home-page .level-item .level-main i {
-  font-size: 22px;
+  font-size: 1.7em;
+  right: 0.3em;
 }
 
 #home-page .level-item .level-detail {
@@ -337,6 +346,7 @@ form .item.info-label {
 
 .pattern-lock h4 {
   padding-left: 15px;
+  font-size: 1.2em;
 }
 
 .pattern-lock #lock {
@@ -389,6 +399,10 @@ form .item.info-label {
   margin: 0 7px;
 }
 
+.item-list .list {
+  margin-bottom: 20px;
+}
+
 .item-list .list .item {
   min-height: 80px;
 }
@@ -397,6 +411,7 @@ form .item.info-label {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 80px;
+  display: table;
 }
 
 .item-list .list .item .item-content img {
@@ -406,7 +421,9 @@ form .item.info-label {
 
 .item-list .list .item .item-content .text-area {
   font-size: 20px;
-  margin-top: 30px;
+  display: table-cell;
+  vertical-align: middle;
+  white-space: normal;
 }
 
 .item-list .list .item .item-content .icon {
@@ -466,17 +483,16 @@ form .item.info-label {
   ========================================================================== */
 
 .list .item-content .normal-item {
-    margin-top: 25px;
-    font-size: 20px;
-    min-height: 2px;
+  font-size: 20px;
+  min-height: 2px;
 }
 
 .list .item-content .selected-to-delete {
-    color:#909090;
-    margin-top: 25px;
-    font-size: 20px;
-    min-height: 25px;
-    text-decoration: line-through;
+  color:#909090;
+  margin-top: 25px;
+  font-size: 20px;
+  min-height: 25px;
+  text-decoration: line-through;
 }
 
 /*  ==========================================================================

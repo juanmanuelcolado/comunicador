@@ -18,15 +18,15 @@
           <label>Habilitado</label>
         </ion-checkbox>
       </div>
+      <div class='form-buttons'>
+      <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
+        <a id='accept'
+          class='button icon-left button-positive button-block'
+          ng-click='save();'
+          validation-submit="cardForm">
+            Aceptar
+        </a>
+      </div>
     </ion-content>
-    <div class='form-buttons'>
-    <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
-      <a id='accept'
-        class='button icon-left button-positive button-block'
-        ng-click='save();'
-        validation-submit="cardForm">
-          Aceptar
-      </a>
-    </div>
   </ion-view>
 </form>

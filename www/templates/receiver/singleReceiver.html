@@ -30,11 +30,11 @@
           Editar patrón de bloqueo
           <input class="receiver-edit-pattern-button" name="pattern" ng-model="receiver.pattern" validator="required"></input>
         </div>
+        <div class='form-buttons'>
+        <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
+          <button id='accept' validation-submit="receiverForm" ng-click="save()" class='button button-positive button-block'>Aceptar</button>
+        </div>
       </div>
     </ion-content>
-    <div class='form-buttons'>
-    <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
-      <button id='accept' validation-submit="receiverForm" ng-click="save()" class='button button-positive button-block'>Aceptar</button>
-    </div>
   </ion-view>
 </form>

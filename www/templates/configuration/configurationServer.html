@@ -11,10 +11,10 @@
           <input type='text' name="baseURL" ng-model='baseURL' placeholder='Server base URL'>
         </label>
         <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
+        <div class='form-buttons'>
+          <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
+        </div>
       </div>
     </ion-content>
-    <div class='form-buttons'>
-      <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
-    </div>
   </ion-view>
 </form>
