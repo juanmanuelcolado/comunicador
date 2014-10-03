@@ -1,4 +1,4 @@
-communicatorApp.controller('configurationsCurrentUserCtrl', function($scope, currentUserService) {
+communicatorApp.controller('configurationsCurrentUserCtrl', function($scope, $ionicNavBarDelegate, currentUserService) {
     $scope.user = {
         name: '',
         lastName: '',
@@ -8,6 +8,10 @@ communicatorApp.controller('configurationsCurrentUserCtrl', function($scope, cur
     currentUserService.get().then(function(user) {
         $scope.user = user;
     });
+    
+    $scope.goBack = function() {
+        $ionicNavBarDelegate.back();
+    };
 
     $scope.save = function() {
         currentUserService.set($scope.user);
