@@ -1,7 +1,9 @@
 communicatorApp.controller('statisticsCtrl', function($scope, statisticService) {
     $scope.loaded = false;
+    $scope.hasExchanges = false;
+    $scope.exchanges = {};
     $scope.exchangeCountByReceiver = [];
-    $scope.exchanges = undefined;
+    
     $scope.score = {
         withHelp: '✖',
         withPartialHelp: '-',
@@ -9,7 +11,10 @@ communicatorApp.controller('statisticsCtrl', function($scope, statisticService) 
     };
 
     statisticService.exchanges().then(function(result) {
-        $scope.exchanges = result;
+        if (Object.keys(result).length > 0) {
+            $scope.hasExchanges = true;
+            $scope.exchanges = result;
+        }
         $scope.loaded = true;
     });
 
