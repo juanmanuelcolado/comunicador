@@ -60,10 +60,6 @@
             var date = Date.parse(text);
             var splitted, m, d, y;
 
-            if (isNaN(date)) {
-                return false;
-            }
-
             splitted = text.search('/') > -1 ? text.split('/') : text.split('-');
 
             if (splitted.length !== 3) {
@@ -77,7 +73,8 @@
 
             return (date.getFullYear() === y &&
                     date.getMonth() + 1 === m &&
-                    date.getDate() === d);
+                    date.getDate() === d &&
+                    y > 1950);
         }
     }]);
 }).call(this);
