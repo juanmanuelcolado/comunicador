@@ -31,8 +31,6 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService, $ionicPo
              title: 'Próximamente',
              template: 'El nivel seleccionado todavía no se encuentra habilitado'
         });
-        alertPopup.then(function(res) {
-            console.log('Nivel no habilitado');
-        });
+        alertPopup.then(function(res) { });
     }
 });
