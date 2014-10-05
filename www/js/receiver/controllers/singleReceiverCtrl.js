@@ -83,10 +83,6 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         $scope.patternModal.show();
     };
 
-    $scope.goBack = function() {
-        $ionicNavBarDelegate.back();
-    };
-
     $scope.save = function() {
         if ($scope.creating) {
             $scope.receiver.uuid = uuidService.generate();
@@ -94,8 +90,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         } else {
             receiverDbService.update($scope.receiver);
         }
-
-        $scope.goBack();
+        $ionicNavBarDelegate.back();
     };
 
     $scope.checkIfAdvancedByDefault = function() {

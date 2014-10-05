@@ -8,9 +8,6 @@
         <label class='item item-image' ng-class='{empty: !receiver.avatar}' ng-click="uploadImage()">
           <img ng-src='{{receiver.avatar}}'>
         </label>
-        <label ng-show='cameraIsEnabled' class='item item-input' ng-click="pictureFromDevice()">
-          <a class='button button-positive'>From device</a>
-        </label>
         <label class='item item-input'>
           <input type='text' name="name" ng-model='receiver.name' placeholder='Nombre *' validator="required, inRange">
         </label>
@@ -31,7 +28,6 @@
           <input class="receiver-edit-pattern-button" name="pattern" ng-model="receiver.pattern" validator="required"></input>
         </div>
         <div class='form-buttons'>
-        <!-- Reemplazar función de "cancelar" por el evento "back button pressed" que dispare goBack() -->
           <button id='accept' validation-submit="receiverForm" ng-click="save()" class='button button-positive button-block'>Aceptar</button>
         </div>
       </div>

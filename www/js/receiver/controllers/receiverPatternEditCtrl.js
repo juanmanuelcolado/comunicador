@@ -32,7 +32,7 @@ communicatorApp.controller('receiverPatternEditCtrl', function($scope, $state, $
 	}
 
 	function getMarginSize () {
-		var containerSize = window.innerWidth - 80;
+		var containerSize = window.innerWidth - 65;
 		var columnSize = containerSize/3;
 		var extraSpace = columnSize - 50;
 		var marginSize = extraSpace / 2;
