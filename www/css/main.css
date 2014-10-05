@@ -178,7 +178,7 @@ form .item-checkbox .checkbox .checkbox-icon::before {
 }
 
 form .item-checkbox .checkbox .checkbox-icon::after {
-  top: 2px;
+  top: 6px;
   left: 7px;
 }
 
@@ -399,6 +399,7 @@ form .item.info-label {
   height: 15px;
   width: 15px;
   margin: 0 7px;
+  display: inline-block;
 }
 
 .item-list .list {
@@ -413,12 +414,15 @@ form .item.info-label {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 80px;
+  height: 80px;
   display: table;
+  width: 100%;
 }
 
 .item-list .list .item .item-content img {
   top: 0;
   left: 0;
+  height: 80px;
 }
 
 .item-list .list .item .item-content .text-area {
@@ -426,6 +430,7 @@ form .item.info-label {
   display: table-cell;
   vertical-align: middle;
   white-space: normal;
+  height: 80px;
 }
 
 .item-list .list .item .item-content .icon {
@@ -435,6 +440,7 @@ form .item.info-label {
   width: 30px;
   height: 30px;
   margin-top: 23px;
+  display: inline-block;
 }
 
 .item-list .list .item.disabled .item-content p {
@@ -486,7 +492,6 @@ form .item.info-label {
 
 .list .item-content .normal-item {
   font-size: 20px;
-  min-height: 2px;
 }
 
 .list .item-content .selected-to-delete {
