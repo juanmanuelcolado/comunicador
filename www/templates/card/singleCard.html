@@ -4,13 +4,13 @@
       <h1 class="title">{{creating? "Nuevo Pictograma" : "Editar Pictograma"}}</h1>
     </div>
     <ion-content class='has-header'>
-      <div id='image' class='item item-image card' ng-class="{empty: !card.img}" ng-click="uploadImage()">
-        <img ng-src='{{card.img}}'>
-        <input ng-show='false' type='text' name='photoSrc' ng-model='card.img' validator="photoRequired">
-      </div>
-
       <div class='item item-input card'>
         <input type='text' name='cardTitle' ng-model='card.title' placeholder='Nombre del Pictograma' validator="required, inRange, inList">
+      </div>
+
+      <div id='image' class='item item-image card' ng-click="uploadImage()">
+        <img ng-src='{{card.img}}'>
+        <input ng-show='false' type='text' name='photoSrc' ng-model='card.img' validator="photoRequired">
       </div>
 
       <div>

@@ -100,7 +100,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
 
     $scope.checkIfHasCustomName = function() {
         var relationship = getRelationshipById($scope.receiver.relationshipId);
-        $scope.showRelationshipName = relationship.hasCustomName === 'true';
+        $scope.showRelationshipName = relationship && relationship.hasCustomName === 'true';
     };
 
     var getRelationshipById = function(relationshipId) {
