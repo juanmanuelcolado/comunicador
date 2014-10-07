@@ -5,8 +5,8 @@ communicatorApp.controller('statisticsCtrl', function($scope, statisticService) 
     $scope.exchangeCountByReceiver = [];
     
     $scope.score = {
-        withHelp: '✖',
-        withPartialHelp: '-',
+        withHelp: 'AT',
+        withPartialHelp: 'AP',
         withoutHelp: '✓'
     };
 
