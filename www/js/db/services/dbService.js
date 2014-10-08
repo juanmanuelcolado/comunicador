@@ -1,11 +1,9 @@
-communicatorApp.service('dbService', function(dbMigrationsService, $q) {
+communicatorApp.service('dbService', function($q, dbMigrationsService, appService) {
     var dbService = {};
 
     var db = window.openDatabase('comunicatorDB', '1.0', 'comunicator database', 2*1024*1024);
 
-    var dbOnSuccess = function(tx, results) {
-        // yay!
-    };
+    var dbOnSuccess = function(tx, results) { };
 
     var dbOnError = function(tx, error) {
         console.log('DB ERROR! \nThe following transaction failed: ', error);
@@ -13,12 +11,20 @@ communicatorApp.service('dbService', function(dbMigrationsService, $q) {
     };
 
     // Run migrations
-    dbMigrationsService.eachTransaction(function(transaction) {
-        db.transaction(function(tx) {
-            tx.executeSql(transaction);
-            // si se quiere logear los errores, ignorar los errores de 'duplicate column'
-        }); 
-    });
+    // if (!appService.schemaExists()) {
+        dbMigrationsService.eachTransaction(function(transaction) {
+            db.transaction(function(tx) {
+                tx.executeSql(transaction);
+            }); 
+        });
+    //     appService.schemaCreated();
+    // }
+
+    // Initialize data
+    // appService.uninitialized().then(function() {
+        
+    //     appService.initialize();
+    // });
 
     // Transactions
     dbService.executeTransaction = function(transaction) {
