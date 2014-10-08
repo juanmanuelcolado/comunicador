@@ -2,7 +2,10 @@ communicatorApp.service('dbSeedsService', function(TableMigrationService, uuidSe
     return [
         // new TableMigrationService('Card'),
 
-        // new TableMigrationService('Receiver'),
+        new TableMigrationService('Receiver')
+            .insertValues(['uuid', 'name', 'lastName', 'pattern', 'internal'], [
+                ["'"+uuidService.generate()+"'", "'Usuario'", "'Prueba'", "'1236'", 1]
+            ]),
 
         new TableMigrationService('Level')
             .insertValues(['levelNumber', 'description', 'initDate', 'enabled'], [

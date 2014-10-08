@@ -12,6 +12,7 @@ communicatorApp.service('dbMigrationsService', function(TableMigrationService) {
             .addColumn('avatar TEXT')
             .addColumn('pattern TEXT')
             .addColumn('advanced BOOLEAN')
+            .addColumn('internal BOOLEAN DEFAULT 0')
             .addColumn('relationshipId INTEGER')
             .addColumn('relationshipName TEXT'),
         
