@@ -22,13 +22,6 @@ communicatorApp.service('dbService', function($q, dbMigrationsService, dbSeedsSe
         }
     };
 
-    // Run migrations
-    dbSetup.eachTransaction(function(transaction) {
-        db.transaction(function(tx) {
-            tx.executeSql(transaction);
-        }); 
-    });
-
     // Transactions
     dbService.executeTransaction = function(transaction) {
         // start a promise
@@ -57,7 +50,6 @@ communicatorApp.service('dbService', function($q, dbMigrationsService, dbSeedsSe
     };
 
     var parseResults = function(results, isInsertQuery) {
-        
         if (isInsertQuery) {
             return results.insertId;
         }
@@ -71,6 +63,16 @@ communicatorApp.service('dbService', function($q, dbMigrationsService, dbSeedsSe
         }
         return set;
     };
+
+    // Run setup
+    if (!appService.schemaExists()) {
+        dbSetup.eachTransaction(function(transaction) {
+            db.transaction(function(tx) {
+                tx.executeSql(transaction);
+            }); 
+        });
+        appService.schemaCreated();
+    }
 
     return dbService;
 });
