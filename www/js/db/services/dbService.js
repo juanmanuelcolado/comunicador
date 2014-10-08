@@ -1,4 +1,4 @@
-communicatorApp.service('dbService', function($q, dbMigrationsService, appService) {
+communicatorApp.service('dbService', function($q, dbMigrationsService, dbSeedsService, appService) {
     var dbService = {};
 
     var db = window.openDatabase('comunicatorDB', '1.0', 'comunicator database', 2*1024*1024);
@@ -10,21 +10,24 @@ communicatorApp.service('dbService', function($q, dbMigrationsService, appServic
         throw(error);
     };
 
-    // Run migrations
-    // if (!appService.schemaExists()) {
-        dbMigrationsService.eachTransaction(function(transaction) {
-            db.transaction(function(tx) {
-                tx.executeSql(transaction);
-            }); 
-        });
-    //     appService.schemaCreated();
-    // }
+    var dbSetup = {
+        migrations: dbMigrationsService,
+        seeds: dbSeedsService,
+        eachTransaction: function(fn) {
+            var runFn = function(dbService) {
+                dbService.transactions.forEach(fn);
+            };
+            this.migrations.forEach(runFn);
+            this.seeds.forEach(runFn);
+        }
+    };
 
-    // Initialize data
-    // appService.uninitialized().then(function() {
-        
-    //     appService.initialize();
-    // });
+    // Run migrations
+    dbSetup.eachTransaction(function(transaction) {
+        db.transaction(function(tx) {
+            tx.executeSql(transaction);
+        }); 
+    });
 
     // Transactions
     dbService.executeTransaction = function(transaction) {
