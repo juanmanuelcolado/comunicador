@@ -19,20 +19,24 @@ communicatorApp.service('TableMigrationService', function() {
             this.transactions.push('CREATE ' + indexType + ' INDEX IF NOT EXISTS ' + indexName + ' ON ' + this.tableName + ' (' + column + ')');
             return this;
         },
-        insertValues: function(columns, values) {
-            var commaSeparatedColumns = columns.join(',');
-            var commaSeparatedValues = values.join(',');
+        insertValues: function(columns, valuesArray) {
+            var commaSeparatedColumns = columns.join(', ');
 
-            var query = 'INSERT INTO ' + this.tableName + '('+ commaSeparatedColumns +') SELECT '+ commaSeparatedValues;
-            query += ' WHERE NOT EXISTS (SELECT 1 FROM ' + this.tableName + ' WHERE ';
+            valuesArray.forEach(function(values) {
+                var commaSeparatedValues = values.join(', ');
 
-            for (var i = 0; i < columns.length; i++) {
-                query += columns[i] + ' = ' + values[i] + ' and ';
-            }
-            query = query.replace(/and\s$/, '');
-            query += ')';
+                var query = 'INSERT INTO ' + this.tableName + '(' + commaSeparatedColumns + ') SELECT '+ commaSeparatedValues +
+                            ' WHERE NOT EXISTS (SELECT 1 FROM ' + this.tableName + ' WHERE ';
+
+                query += columns.map(function(column, index) {
+                    return column + ' = ' + values[index];
+                }).join(' and ');
+
+                query += ')';
+                
+                this.transactions.push(query);
+            }, this);
             
-            this.transactions.push(query);
             return this;
         }
     };
