@@ -77,6 +77,9 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         setAutoSync: function(value) {
             configurationService.set("autosync_enabled", !!value);
         },
+        clearSyncData: function() {
+            configurationService.deleteByKey("data_to_sync");
+        },
         getCurrentConfiguration: function() {
             return configurationService.getMultiple({
                 "server_last_sync_time": "lastSyncTime",
