@@ -46,6 +46,8 @@ communicatorApp.service('imageUploaderService', function() {
             navigator.camera.getPicture(success, error, {
                 destinationType: Camera.DestinationType[destinationType],
                 sourceType: Camera.PictureSourceType[sourceType],
+                encodingType: Camera.EncodingType.JPEG,
+                correctOrientation: true,
                 saveToPhotoAlbum: true
             });
         }
