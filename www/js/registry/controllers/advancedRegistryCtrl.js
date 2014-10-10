@@ -4,7 +4,7 @@ communicatorApp.controller('advancedRegistryCtrl', function($scope, currentRecei
 
 	$scope.registry = {
 		receiver: currentReceiverService.receiver,
-		pick: '',
+		pick: 'withHelp',
 		reach: '',
 		drop: ''
 	};
