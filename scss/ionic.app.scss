@@ -42,11 +42,22 @@ $item-default-active-bg:          rgba(255, 255, 255, 0.5) !default;
 
 /* INPUTS */
 $input-color:                     #FFF !default;
-$input-label-color:               #FFF !default;
+$input-label-color:               $positive !default;
 $input-color-placeholder:         rgba(255, 255, 255, 0.45) !default;
 $input-bg:						  rgba(255,255,255, 0.15) !default;
 $input-border-width: 			  2px !default;
 $input-border:					  #FFF !default;
+
+/* TOGGLE */
+$toggle-border-radius:			  2px !default;
+$toggle-border-width:             0 !default;
+$toggle-handle-radius:            2px !default;
+$toggle-width:					  75px !default;
+$toggle-handle-width:             35px !default;
+$toggle-handle-on-bg-color:		  $positive !default;
+$toggle-handle-off-bg-color:      #AAA !default;
+$toggle-on-positive-bg:           rgba(122, 122, 122, 0.5) !default;
+$toggle-off-bg-color:             rgba(122, 122, 122, 0.5) !default;
 
 /* COMMON */
 $base-color:                      #FFF !default;

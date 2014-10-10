@@ -9,6 +9,12 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 		drop: true
 	};
 
+	$scope.showInfo = {
+		pick: false,
+		reach: false,
+		drop: false
+	};
+
 	$scope.saveRegistry = function() {
 		checkForDefaultScores().then(function(){
 			$scope.registry.pick = basicScoreValues[$scope.registry.pick];
@@ -47,5 +53,9 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 			deferred.resolve();
 		}
 		return deferred.promise;
+	};
+
+	$scope.toggleInfo = function(step) {
+		$scope.showInfo[step] = !$scope.showInfo[step];
 	};
 });

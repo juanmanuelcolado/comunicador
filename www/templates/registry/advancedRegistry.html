@@ -1,22 +1,18 @@
 <form name="registryForm" novalidate>
-  <ion-view title='Registro del intercambio'>
+  <ion-view title='REGISTRO DEL INTERCAMBIO'>
     <ion-content class='has-header' id="advancedRegistry">
-      <div class="list list-inset">
+      <div class="list list-inset registry">
         <label class="item item-input">
           <div class="input-label">
-            Receptor
+            RECEPTOR
           </div>
           <div class="receiverName">
             {{registry.receiver.name + " " + registry.receiver.lastName}}
           </div>
         </label>
-        <div class="item item-divider">
-          Intercambio
-        </div>
         <label class="item item-input item-stacked-label">
           <div class="input-label">
-            <i class="icon ion-android-arrow-up-left"></i>
-            Recojer
+            RECOJER
           </div>
           <input type="text" style="display: none;" name="pick" validator="required" ng-model="registry.pick">
           <div class="button-bar">
@@ -27,8 +23,7 @@
         </label>
         <label class="item item-input item-stacked-label">
           <div class="input-label">
-            <i class="icon ion-android-arrow-up-right"></i>
-            Alcanzar
+            ALCANZAR
           </div>
           <input type="text" style="display: none;" name="reach" validator="required" ng-model="registry.reach">
           <div class="button-bar">
@@ -39,8 +34,7 @@
         </label>
         <label class="item item-input item-stacked-label">
           <div class="input-label">
-            <i class="icon ion-android-arrow-down-right"></i>
-            Dejar
+            DEJAR
           </div>
           <input type="text" style="display: none;" name="drop" validator="required" ng-model="registry.drop">
           <div class="button-bar">
@@ -49,9 +43,8 @@
             <a class="button" ng-class="{'button-positive': isScore('drop', 'withHelp')}" ng-click="changeScore('drop', 'withHelp')">Ayuda total</a>
           </div>
         </label>
-        <div class='registry-form-buttons'>
-          <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-          <a id='accept' validation-submit="registryForm" class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='saveRegistry();'>Aceptar</a>
+        <div class='form-buttons'>
+          <a id='accept' validation-submit="registryForm" class='button button-block padding-right button-positive' ng-click='saveRegistry();'>Aceptar</a>
         </div>
       </div>
     </ion-content>
