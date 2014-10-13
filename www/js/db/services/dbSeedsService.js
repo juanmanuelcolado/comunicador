@@ -10,7 +10,7 @@ communicatorApp.service('dbSeedsService', function(TableMigrationService, uuidSe
 
         new TableMigrationService('Receiver')
             .insertValues(['uuid', 'name', 'lastName', 'pattern', 'internal'], [
-                ["'"+uuidService.generate()+"'", "'Usuario'", "'Prueba'", "'1236'", 1]
+                ["'"+uuidService.generate()+"'", "'Usuario de'", "'prueba'", "'123'", 1]
             ]),
 
         new TableMigrationService('Level')
