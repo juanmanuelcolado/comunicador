@@ -22,6 +22,10 @@ communicatorApp.controller('configurationsServerCtrl', function($scope, serverSe
         });
     };
 
+    $scope.clear = function() {
+        serverService.clearSyncData();
+    };
+
     $scope.save = function() {
         serverService.setBaseURL($scope.baseURL);
         $scope.goBack();
