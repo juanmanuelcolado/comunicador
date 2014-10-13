@@ -26,6 +26,9 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
                         if (autoSyncEnabled === "true" && !navigator.onLine) {
                             self.sync();
                         }
+                        if(self.getDataToSyncCount() >= 50) {
+                            self.clearSyncData();
+                        }
                     });
                 }
             });
@@ -79,6 +82,15 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         },
         clearSyncData: function() {
             configurationService.deleteByKey("data_to_sync");
+        },
+        getDataToSyncCount: function() {
+            var count = localStorage.getItem('data_to_sync_count');
+            if (count === null) {
+                configurationService.find("data_to_sync").then(function(configurations) {
+                    localStorage.setItem('data_to_sync_count', configurations.length);
+                });
+            }
+            return count;
         },
         getCurrentConfiguration: function() {
             return configurationService.getMultiple({
