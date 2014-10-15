@@ -370,12 +370,22 @@ form .item.info-label {
   ========================================================================== */
 
 .level-single-card {
-  background: #FFF;
+  display: -webkit-box;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center; 
+  justify-content: center;
 }
 
 .level-single-card .card {
   margin: 0;
   box-shadow: none;
+  padding: 0;
+}
+
+.level-single-card .card .col {
+  padding: 0;
 }
 
 .level-single-card .card .item-image {
@@ -386,7 +396,7 @@ form .item.info-label {
   text-align: center;
   font-family: Montserrat;
   text-transform: uppercase;
-  background: #FFF;
+  background: transparent;
 }
 
 /*  ==========================================================================
