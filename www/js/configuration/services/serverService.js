@@ -13,8 +13,10 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             return promise;
         },
         setBaseURL: function(baseURL) {
-            this.baseURL = baseURL;
-            configurationService.set("server_base_url", baseURL);
+            if(baseURL !== undefined) {
+                this.baseURL = baseURL;
+                configurationService.set("server_base_url", baseURL);
+            }
         },
         send: function(json) {
             var self = this;
