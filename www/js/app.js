@@ -37,6 +37,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialHome', {
+        url: '/tutorial',
+        parent: 'app.home'
+    })
     .state('app.statistics', {
         url: '/statistics',
         views: {

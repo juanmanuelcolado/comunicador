@@ -11,7 +11,7 @@
           <label class="level-init-date" ng-show='level.initDate != null'>Iniciado el {{level.initDate}}</label>
           <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</label>
-          <a class="button button-positive" href='#/app/levelCards/{{selectedLevel.levelNumber}}'>Ir</a>
+          <a class="button button-positive" ui-sref="app.levelCards({ levelNumber: {{selectedLevel.levelNumber}} })">Ir</a>
         </div>
       </ion-item>
     </ion-list>
