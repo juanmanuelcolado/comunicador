@@ -38,9 +38,9 @@
           </div>
           <input type="text" style="display: none;" name="drop" validator="required" ng-model="registry.drop">
           <div class="button-bar">
-            <a class="button" ng-class="{'button-positive': isScore('drop', 'withoutHelp')}" ng-click="changeScore('drop', 'withoutHelp')">Sin ayuda</a>
-            <a class="button" ng-class="{'button-positive': isScore('drop', 'withPartialHelp')}" ng-click="changeScore('drop', 'withPartialHelp')">Ayuda parcial</a>
             <a class="button" ng-class="{'button-positive': isScore('drop', 'withHelp')}" ng-click="changeScore('drop', 'withHelp')">Ayuda total</a>
+            <a class="button" ng-class="{'button-positive': isScore('drop', 'withPartialHelp')}" ng-click="changeScore('drop', 'withPartialHelp')">Ayuda parcial</a>
+            <a class="button" ng-class="{'button-positive': isScore('drop', 'withoutHelp')}" ng-click="changeScore('drop', 'withoutHelp')">Sin ayuda</a>
           </div>
         </label>
         <div class='form-buttons'>

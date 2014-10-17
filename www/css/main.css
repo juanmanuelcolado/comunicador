@@ -541,7 +541,7 @@ form .item.info-label {
  border-right: none;
 }
 
-.registry .button-bar .button:first-child {
+.registry .button-bar .button:last-child {
   line-height: 35px;
 }
 
