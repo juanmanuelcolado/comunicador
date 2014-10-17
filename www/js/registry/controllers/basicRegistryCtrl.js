@@ -1,4 +1,4 @@
-communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiverService, registryService, $q, $ionicPopup) {
+communicatorApp.controller('basicRegistryCtrl', function($scope, $q, $ionicPopup, tutorialService, currentReceiverService, registryService) {
 
 	var basicScoreValues = { true: 'withoutHelp', false: 'withHelp' };
 	
@@ -58,4 +58,6 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, currentReceiver
 	$scope.toggleInfo = function(step) {
 		$scope.showInfo[step] = !$scope.showInfo[step];
 	};
+
+	tutorialService.showIfActive();
 });

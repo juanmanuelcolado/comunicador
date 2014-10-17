@@ -1,4 +1,4 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicGesture, $state, cardDbService, registryService) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicGesture, $state, tutorialService, cardDbService, registryService) {
     $scope.card = {
         id: $stateParams.id,
         title: '',
@@ -29,6 +29,8 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
     $ionicPlatform.ready(function() {
         document.addEventListener('menubutton', $scope.menuButtonPressed, false);
     });
+
+    tutorialService.showIfActive();
 });
 
 communicatorApp.directive('detectGestures', function($ionicGesture) {

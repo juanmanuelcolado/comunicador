@@ -1,5 +1,4 @@
-communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, receiverDbService, currentReceiverService) {
-	
+communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, tutorialService, receiverDbService, currentReceiverService) {
 	var lock = new PatternLock("#lock", { 
 		margin: 15,
 		onDraw: validatePattern
@@ -74,4 +73,6 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
     		]
      	});
 	}
+
+    tutorialService.showIfActive();
 });
