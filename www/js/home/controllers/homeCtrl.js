@@ -1,4 +1,4 @@
-communicatorApp.controller('homeCtrl', function($scope, $state, $ionicPopup, $stateParams, levelDbService) {
+communicatorApp.controller('homeCtrl', function($scope, $ionicPopup, $stateParams, tutorialService, levelDbService) {
     levelDbService.selectAll().then(function(results) {
         $scope.levels = results;
         var lastLevel = 0;
@@ -29,22 +29,5 @@ communicatorApp.controller('homeCtrl', function($scope, $state, $ionicPopup, $st
         }
     };
 
-    if ($state.is('tutorialHome')) {
-        $ionicPopup.confirm({
-            title: 'Primer paso',
-            template: 'Este tutorial te llevará a través de las funciones básicas de la aplicación.<br/>Puedes iniciarlo desde menú -> configuración.<br/><br/>Para comenzar una actividad se debe presionar IR',
-            buttons: [{
-                text: 'Terminar',
-                onTap: function() {
-                    $state.transitionTo("app.home");
-                }
-            }, {
-                text: 'Siguiente',
-                type: 'button-positive',
-                onTap: function() {
-                    console.log("yaay");
-                }
-            }]
-        });
-    }
+    tutorialService.showIfActive();
 });

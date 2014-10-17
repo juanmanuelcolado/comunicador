@@ -59,6 +59,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialLevelCards', {
+        url: '/tutorial',
+        parent: 'app.levelCards'
+    })
     .state('app.levelSingleCard', {
         url: '/levelSingleCard/:id',
         views: {
