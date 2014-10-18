@@ -100,8 +100,32 @@
   margin: 2%;
 }
 
+.menu .list .item .icon {
+  font-size: 25px;
+  position: absolute;
+  left: 15px;
+  top: calc(50% - 14px);
+}
+
+
+.menu .list .item .icon.icon-receivers {
+  background-image: url(../img/menu-receivers-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px 29px;
+  top: 0;
+  width: 25px;
+  height: 100%;
+}
+
 .menu .item-content {
   background: rgba(0, 0, 0, 0.3);
+  padding-left: 50px;
+}
+
+.menu .list .item:nth-child(3) .item-content {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .menu .bar-header {
