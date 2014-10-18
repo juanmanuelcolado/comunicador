@@ -324,7 +324,7 @@ form .item.info-label {
 
 #home-page .level-item .level-detail {
   position: relative;
-  padding: 13px 15px 0 15px;
+  padding: 13px 90px 0 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   margin-top: 13px;
   white-space: normal;
@@ -335,7 +335,6 @@ form .item.info-label {
 }
 
 #home-page .level-item .level-detail label {
-  width: calc(100% - 70px);
   display: inline-block;
 }
 
