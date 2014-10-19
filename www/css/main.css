@@ -54,6 +54,12 @@
   color: #000;
 }
 
+.popup .closeTutorial {
+  right: 0px;
+  position: absolute;
+  width: 40px;
+}
+
 .view, .pane, .modal {
     background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
     background-image: linear-gradient(top, #198b95, #9cc7a3);

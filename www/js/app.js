@@ -42,6 +42,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialHome', {
+        url: '/tutorial',
+        parent: 'app.home'
+    })
     .state('app.statistics', {
         url: '/statistics',
         views: {
@@ -60,6 +64,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialLevelCards', {
+        url: '/tutorial',
+        parent: 'app.levelCards'
+    })
     .state('content.levelSingleCard', {
         url: '/levelSingleCard/:id',
         views: {
@@ -68,6 +76,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
                 controller: 'levelSingleCardCtrl'
             }
         }
+    })
+    .state('tutorialLevelSingleCard', {
+        url: '/tutorial',
+        parent: 'content.levelSingleCard'
     })
     .state('app.patternLock', {
         url: '/patternLock',
@@ -78,6 +90,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialPatternLock', {
+        url: '/tutorial',
+        parent: 'app.patternLock'
+    })
     .state('app.basicRegistry', {
         url: '/basicRegistry',
         views: {
@@ -86,6 +102,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
                 controller: 'basicRegistryCtrl'
             }
         }
+    })
+    .state('tutorialBasicRegistry', {
+        url: '/tutorial',
+        parent: 'app.basicRegistry',
     })
     .state('app.advancedRegistry', {
         url: '/advancedRegistry',
