@@ -22,20 +22,20 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
         showIfActive: function() {
             switch($state.current.name) {
                 case 'tutorialHome':
-                    this.step('Iniciar nivel.', 'Este tutorial te llevará a través de las funciones básicas de la aplicación.<br/><br/>Para comenzar una actividad se debe presionar IR', {
+                    this.step('Iniciar nivel.', 'Este tutorial te llevará a través de las funciones básicas de la aplicación.<br/><br/>Para comenzar una actividad se debe presionar IR.', {
                         back: { state: "app.home" },
                         next: { state: "tutorialLevelCards", params: { levelNumber: 1 } }
                     });
                     closeEvent.attach();
                     break;
                 case 'tutorialLevelCards':
-                    this.step('Seleccionar pictograma', 'Al comenzar un intercambio se debe seleccionar un pictograma de la lista.<br/>En esta sección solo se mostraran los pictogramas habilitados', {
+                    this.step('Seleccionar pictograma', 'Al comenzar un intercambio se debe seleccionar un pictograma de la lista.<br/>En esta sección solo se mostrarán los pictogramas habilitados.', {
                         back: { state: "tutorialHome" },
                         next: { state: "tutorialLevelSingleCard", params: { id: 1 } }
                     });
                     break;
                 case 'tutorialLevelSingleCard':
-                    this.step('Intercambio', 'Se muestra el pictograma para que pueda ser visto claramente y entregado al receptor por el usuario.<br /><br />Para puntuar el intercambio, puede presionarce el botón de menú o mantener precionado sobre la imagen', {
+                    this.step('Intercambio', 'Se muestra el pictograma para que pueda ser visto claramente y entregado al receptor por el usuario.<br /><br />Para puntuar el intercambio, puede presionarce el botón de menú o mantener presionado sobre la imagen.', {
                         back: { state: "tutorialLevelCards", params: { levelNumber: 1 } },
                         next: { state: "tutorialPatternLock" }
                     });
@@ -47,11 +47,11 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
                             $state.transitionTo("app.home").then(function() {
                                 var lastPopup = $ionicPopup.alert({
                                     title: 'Fin!',
-                                    template: 'Eso es todo ya puedes realizar intercambios! <br />Para ver el tutorial nuevamente, puedes iniciarlo desde Menú -> Configuración.'
+                                    template: 'Eso es todo, ya puedes realizar intercambios! <br />Para ver el tutorial nuevamente, puedes iniciarlo desde Menú -> Configuración.'
                                 });
                                 $timeout(function() {
                                     lastPopup.close(); 
-                                }, 3000);
+                                }, 5000);
 
                                 closeEvent.remove();
                             });
