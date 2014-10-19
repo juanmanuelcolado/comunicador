@@ -1,4 +1,4 @@
-communicatorApp.controller('homeCtrl', function($scope, $ionicPopup, $stateParams, tutorialService, levelDbService) {
+communicatorApp.controller('homeCtrl', function($scope, $ionicPopup, $state, $stateParams, tutorialService, levelDbService, appService) {
     levelDbService.selectAll().then(function(results) {
         $scope.levels = results;
         var lastLevel = 0;
@@ -29,5 +29,11 @@ communicatorApp.controller('homeCtrl', function($scope, $ionicPopup, $stateParam
         }
     };
 
-    tutorialService.showIfActive();
+    appService.uninitialized().then(function() {
+        $state.transitionTo('tutorialHome').then(function() {
+            tutorialService.showIfActive();
+        });
+    }, function() {
+        tutorialService.showIfActive();
+    });
 });

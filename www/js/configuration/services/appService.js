@@ -1,11 +1,27 @@
-communicatorApp.service('appService', function() {
-    var schemaKey = "app_schema_exists";
+communicatorApp.service('appService', function($q, configurationService) {
+    var initKey = "app_initialized";
     return {
-        schemaExists: function() {
-            return !!localStorage.getItem(schemaKey);
+        uninitialized: function() {
+            var self = this;
+            var deferred = $q.defer();
+            if (!localStorage.getItem(initKey)) {
+                configurationService.get(initKey).then(function(value) {
+                    if (value) {
+                        deferred.reject();
+                        localStorage.setItem(initKey, true);
+                    } else {
+                        deferred.resolve();
+                        self.initialize();
+                    }
+                });
+            } else {
+                deferred.reject();
+            }
+            return deferred.promise;
         },
-        schemaCreated: function() {
-            localStorage.setItem(schemaKey, true);
+        initialize: function() {
+            configurationService.set(initKey, true);
+            localStorage.setItem(initKey, true);
         }
     };
 });

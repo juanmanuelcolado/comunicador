@@ -1,4 +1,4 @@
-communicatorApp.service('configurationService', function(configurationDbService, $q) {
+communicatorApp.service('configurationService', function($q, configurationDbService) {
     var db = configurationDbService;
     var addToPartialResult = function(keyName) {
         var returnValue = {};
