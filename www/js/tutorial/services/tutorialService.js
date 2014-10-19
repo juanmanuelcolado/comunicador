@@ -18,11 +18,11 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
     };
 
     return {
-        closeHTML: '&nbsp;<span class="closeTutorial">close</span>',
+        closeHTML: '&nbsp;<span class="closeTutorial">X</span>',
         showIfActive: function() {
             switch($state.current.name) {
                 case 'tutorialHome':
-                    this.step('Iniciar nivel.', 'Este tutorial te llevará a través de las funciones básicas de la aplicación.<br/><br/>Para comenzar una actividad se debe presionar IR.', {
+                    this.step('Iniciar nivel', 'Este tutorial te llevará a través de las funciones básicas de la aplicación.<br/><br/>Para comenzar una actividad se debe presionar IR.', {
                         back: { state: "app.home" },
                         next: { state: "tutorialLevelCards", params: { levelNumber: 1 } }
                     });
