@@ -48,7 +48,7 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
                     break;
                 case 'tutorialBasicRegistry':
                     this.step('Registrar intercambio', 'Al registrar un intercabio se deben seleccionar los comportamientos que ocurrieron durante el mismo.', {
-                        back: { state: "tutorialLevelSingleCard", params: { id: 1 } },
+                        back: { state: "tutorialPatternLock" },
                         next: function() {
                             $state.transitionTo("app.home").then(function() {
                                 var lastPopup = $ionicPopup.alert({
