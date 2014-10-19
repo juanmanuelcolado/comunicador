@@ -28,6 +28,11 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
         abstract: true,
         templateUrl: 'templates/home/menu.html'
     })
+    .state('content', {
+        url: '/content',
+        abstract: true,
+        templateUrl: 'templates/home/content.html'
+    })
     .state('app.home', {
         url: '/home',
         views: {
@@ -55,10 +60,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
-    .state('app.levelSingleCard', {
+    .state('content.levelSingleCard', {
         url: '/levelSingleCard/:id',
         views: {
-            'menuContent': {
+            'content': {
                 templateUrl: 'templates/level/levelSingleCard.html',
                 controller: 'levelSingleCardCtrl'
             }
