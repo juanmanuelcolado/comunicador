@@ -270,17 +270,32 @@ form .item.info-label {
 /* tables */
 
 .table > .col {
-    border: 1px solid #000;
-    border-right: 0;
-    text-align: center;
+  border-right: 0;
+  text-align: center;
+  font-family: TradeGothicLight;
+  font-size: 14px;
 }
 
-.table > .col:last-child {
-    border-right: 1px solid #000;
+.table-title > .col {
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+  font-family: montserrat;
+  font-size: 14px;
+  padding: 15px;
 }
 
 .table-header > .col {
-    font-weight: bold;
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+  font-family:montserrat;
+  font-size: 10px;
+  margin-right: 1px;
+  margin-top: 1px;
+  padding: 5px 0;
+}
+
+.table-header > .col:last-child {
+  margin-right: 0;
 }
 
 .empty-notice {
@@ -615,11 +630,75 @@ form .item.info-label {
   Statistics
   ========================================================================== */
 
-.statistic-title {
-    text-align: center;
-    text-decoration: underline;
+.exchange-count .table:not(.table-header):not(.table-title) .col {
+  text-align: left;
+  max-height: 50px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0;
 }
 
+.exchange-count .table:not(.table-header):not(.table-title) .col:first-child {
+  justify-content: flex-start;
+  -webkit-box-pack: initial;
+}
+
+.exchange-count .table:not(.table-header):not(.table-title) .col span {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  height: 50px;
+}
+
+.exchange-count .table .col .table-avatar {
+  width: 50px;
+  margin-right: 10px;
+  font-size: 50px;
+}
+
+.exchange-history .table:not(.table-header):not(.table-title) .col {
+  background: rgba(0,0,0,0.3);
+  margin-bottom: 5px;
+}
+
+.exchange-history .col-tick {
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+
+.exchange-history .tick-icon {
+  background-image: url("../img/tick-icon.png");
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.exchange-history .tick-icon.withHelp {
+  background-image: url("../img/tick-disabled-icon.png");
+}
+  
+.exchange-history .tick-icon.withPartialHelp {
+  width: 12.5px;
+}
+
+.exchange-history .tick-icon.second-halve {
+  background-image: url("../img/tick-disabled-icon.png");
+  width: 12.5px;
+  background-position: -12.5px 0;
+  margin-left: -4px;
+}
 /*  ==========================================================================
   Validations
   ========================================================================== */

@@ -27,12 +27,16 @@ $dark:                            #444 !default;
   src: url("../font/Montserrat/Montserrat-Regular.ttf") format("truetype"); }
 
 @font-face {
-  font-family: "Gotham";
-  src: url("../font/Gotham/Gotham-Medium.otf") format("truetype"); }
-
-@font-face {
   font-family: "Muli";
   src: url("../font/Muli/Muli-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "TradeGothic";
+  src: url("../font/TradeGothic/TradeGothicLTStd.otf") format("opentype"); }
+
+@font-face {
+  font-family: "TradeGothicLight";
+  src: url("../font/TradeGothic/TradeGothicLTStd-Light.otf") format("opentype"); }
 
 /*!
   Ionicons, v1.4.1

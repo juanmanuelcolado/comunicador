@@ -73,13 +73,13 @@ $popup-background-color:		  rgba(74,74,74,0.9);
 }
 
 @font-face {
-    font-family: "Gotham";
-    src: url("../font/Gotham/Gotham-Medium.otf") format("truetype");
+    font-family: "Muli";
+    src: url("../font/Muli/Muli-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Muli";
-    src: url("../font/Muli/Muli-Regular.ttf") format("truetype");
+    font-family: "TradeGothicLight";
+    src: url("../font/TradeGothic/TradeGothicLTStd-Light.otf") format("opentype");
 }
 
 $headings-font-family:            "Montserrat" !default;

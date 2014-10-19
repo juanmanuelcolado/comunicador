@@ -2,8 +2,9 @@ communicatorApp.service('statisticService', function($q,
                                                     receiverDbService, exchangeDbService,
                                                     exchangeByCardDbService, cardDbService,
                                                     scoreByExchangeDbService, scoreDbService,
-                                                    stepDbService) {
+                                                    stepDbService, relationshipDbService) {
     var r   = receiverDbService;
+    var rl  = relationshipDbService;
     var e   = exchangeDbService;
     var ebc = exchangeByCardDbService;
     var c   = cardDbService;
@@ -11,12 +12,15 @@ communicatorApp.service('statisticService', function($q,
     var s   = scoreDbService;
     var sp  = stepDbService;
 
+    var receiverRelationshipField = 'CASE relationshipId WHEN NULL THEN ' + r.prop('relationshipName') + ' ELSE '+ rl.prop('name') +' END as receiverRelationship';
+
     receiverDbService
         .define("exchangeCountByReceiver", function(key) {
             return {
-                query: 'SELECT name as receiverName, COUNT(receiverId) as count FROM ' + this.tableName +
+                query: 'SELECT avatar as receiverAvatar, '+ receiverRelationshipField +', COUNT(receiverId) as count FROM ' + this.tableName +
                        ' LEFT JOIN ' + e.tableName + ' ON ' + this.prop('id') + ' = receiverId' +
-                       ' GROUP BY receiverId, name',
+                       ' LEFT JOIN ' + rl.tableName + ' ON ' + this.prop('relationshipId') + ' = ' + rl.prop('id') +
+                       ' GROUP BY receiverId, ' + r.prop('name'),
                 args: []
             };
         });
@@ -27,18 +31,19 @@ communicatorApp.service('statisticService', function($q,
                 query: 'SELECT ' +
                             e.prop('id')    + ' as id,' +
                             e.prop('date')  + ' as date,' +
-                            r.prop('name')  + ' as receiverName,' +
+                            receiverRelationshipField + ',' +
                             c.prop('title') + ' as cardTitle,' +
                             s.prop('name')  + ' as scoreName,' +
                             sp.prop('name') + ' as stepName' +
                         ' FROM ' + this.tableName +
                        ' JOIN ' + r.tableName   + ' ON ' + r.prop('id') +           ' = ' + this.prop('receiverId') +
+                       ' LEFT JOIN ' + rl.tableName + ' ON ' + r.prop('relationshipId') + ' = ' + rl.prop('id') +
                        ' JOIN ' + ebc.tableName + ' ON ' + ebc.prop('exchangeId') + ' = ' + this.prop('id') +
                        ' JOIN ' + c.tableName   + ' ON ' + c.prop('id') +           ' = ' + ebc.prop('cardId') +
                        ' JOIN ' + sbe.tableName + ' ON ' + sbe.prop('exchangeId') + ' = ' + this.prop('id') +
                        ' JOIN ' + s.tableName   + ' ON ' + s.prop('id') +           ' = ' + sbe.prop('scoreId') +
                        ' JOIN ' + sp.tableName  + ' ON ' + sp.prop('id') +          ' = ' + sbe.prop('stepId') +
-                       ' GROUP BY stepId, id, date, receiverName, cardTitle, scoreName, stepName',
+                       ' GROUP BY stepId, id, date, ' + r.prop('name') +', cardTitle, scoreName, stepName',
                 args: []
             };
         });
