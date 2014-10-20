@@ -14,10 +14,8 @@ communicatorApp.service('dbSeedsService', function(TableMigrationService, uuidSe
             ]),
 
         new TableMigrationService('Level')
-            .insertValues(['levelNumber', 'description', 'initDate', 'enabled'], [
-                [1, "'Cómo comunicarse'", '"25/08/2014"', '"true"'],
-            ])
             .insertValues(['levelNumber', 'description', 'enabled'], [
+            	[1, "'Cómo comunicarse'", '"true"'],
                 [2, '"Distancia y persistencia"', '"false"'],
                 [3, '"Discriminar imágenes"', '"false"'],
                 [4, '"Estructura oración"', '"false"'],
