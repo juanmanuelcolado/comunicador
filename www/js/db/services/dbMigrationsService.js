@@ -59,7 +59,7 @@ communicatorApp.service('dbMigrationsService', function() {
                 .addColumn('description TEXT')
                 .addColumn('initDate TEXT')
                 .addColumn('enabled BOOLEAN')
-                .insertValues(['levelNumber', 'description', 'initDate', 'enabled'], [1, "'Cómo comunicarse'", '"25/08/2014"', '"true"'])
+                .insertValues(['levelNumber', 'description', 'enabled'], [1, "'Cómo comunicarse'", '"true"'])
                 .insertValues(['levelNumber', 'description', 'enabled'], [2, '"Distancia y persistencia"', '"false"'])
                 .insertValues(['levelNumber', 'description', 'enabled'], [3, '"Discriminar imágenes"', '"false"'])
                 .insertValues(['levelNumber', 'description', 'enabled'], [4, '"Estructura oración"', '"false"'])
