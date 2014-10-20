@@ -15,13 +15,11 @@
           <div id="lock"></div>
         </div>
       </div>
-      <div class="receiver-pattern-error" ng-show="patternError">Se debe ingresar una combinación de al menos 4 items</div>
+      <div class="receiver-pattern-error" ng-show="patternError">Se debe ingresar una combinación de al menos 3 items</div>
+      <div class='form-buttons'>
+        <button id='accept' ng-click="save()" class='button button-positive button-block'>Aceptar</button>
+      </div>
     </ion-content>
   </div>
 
-  <!-- <ion-header-bar>
-    <h1 class="title"></h1>
-  </ion-header-bar>
-  <ion-content>
-   </ion-content>-->
 </ion-modal-view>

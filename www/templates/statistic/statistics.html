@@ -1,36 +1,51 @@
-<ion-view title='Estadísticas'>
+<ion-view title='ESTADÍSTICAS'>
   <ion-content class='has-header'>
 
     <div class="statistics" ng-show="hasExchanges">
       <div class="exchange-count">
-        <h4 class="statistic-title">Intercambios por receptor</h4>
+        <div class="row table table-title">
+          <div class="col">INTERCAMBIOS POR RECEPTOR</div>
+        </div>
         <div class="row table table-header">
-          <div class="col">Receptor</div>
-          <div class="col">Intercambio</div>
+          <div class="col">RECEPTOR</div>
+          <div class="col">INTERCAMBIOS</div>
         </div>
         <div class="row table" ng-repeat='exchange in exchangeCountByReceiver' ng-show="exchange.count > 0">
-          <div class="col">{{ exchange.receiverName }}</div>
+          <div class="col">
+            <img class="table-avatar" ng-src="{{exchange.receiverAvatar}}" ng-if="exchange.receiverAvatar"></img>
+            <i class="table-avatar icon ion-android-social-user" ng-if="!exchange.receiverAvatar"></i>
+            <span>{{ exchange.receiverRelationship || 'Otro' }}</span>
+          </div>
           <div class="col">{{ exchange.count }}</div>
         </div>
       </div>
       
       <div class="exchange-history">
-        <h4 class="statistic-title">Historial de intercambios</h4>
+        <div class="row table table-title"><div class="col">HISTORIAL DE INTERCAMBIOS</div></div>
         <div class="row table table-header">
-          <div class="col">Fecha</div>
-          <div class="col">Receptor</div>
-          <div class="col">Pictorgrama</div>
-          <div class="col col-10">Recoger</div>
-          <div class="col col-10">Alcanzar</div>
-          <div class="col col-10">Dejar</div>
+          <div class="col">FECHA</div>
+          <div class="col col-20">RECEPTOR</div>
+          <div class="col col-33">PICTORGRAMA</div>
+          <div class="col col-10">REC</div>
+          <div class="col col-10">ALC</div>
+          <div class="col col-10">DE</div>
         </div>
         <div class="row table" ng-repeat="(id, exchange) in exchanges">
-          <div class="col">{{ exchange.date | date:'dd-MM-yy' }}</div>
-          <div class="col">{{ exchange.receiverName }}</div>
-          <div class="col">{{ exchange.cardTitle }}</div>
-          <div class="col col-10">{{ score[exchange.pick] }}</div>
-          <div class="col col-10">{{ score[exchange.reach] }}</div>
-          <div class="col col-10">{{ score[exchange.drop] }}</div>
+          <div class="col">{{ exchange.date | date:'dd/MM' }}</div>
+          <div class="col col-20">{{ exchange.receiverRelationship || 'Otro' }}</div>
+          <div class="col col-33">{{ exchange.cardTitle }}</div>
+          <div class="col col-10 col-tick">
+            <i class="tick-icon {{exchange.pick}}"></i>
+            <i class="tick-icon second-halve" ng-show="exchange.pick === 'withPartialHelp'"></i>
+          </div>
+          <div class="col col-10 col-tick">
+            <i class="tick-icon {{exchange.reach}}"></i>
+            <i class="tick-icon second-halve" ng-show="exchange.reach === 'withPartialHelp'"></i>
+          </div>
+          <div class="col col-10 col-tick">
+            <i class="tick-icon {{exchange.drop}}"></i>
+            <i class="tick-icon second-halve" ng-show="exchange.drop === 'withPartialHelp'"></i>
+          </div>
         </div>
       </div>
     </div>

@@ -13,8 +13,10 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             return promise;
         },
         setBaseURL: function(baseURL) {
-            this.baseURL = baseURL;
-            configurationService.set("server_base_url", baseURL);
+            if(baseURL !== undefined) {
+                this.baseURL = baseURL;
+                configurationService.set("server_base_url", baseURL);
+            }
         },
         send: function(json) {
             var self = this;
@@ -25,6 +27,9 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
                     configurationService.insert({ key: "data_to_sync", value: JSON.stringify(json) }).then(function() {
                         if (autoSyncEnabled === "true" && !navigator.onLine) {
                             self.sync();
+                        }
+                        if(self.getDataToSyncCount() >= 50) {
+                            self.clearSyncData();
                         }
                     });
                 }
@@ -76,6 +81,18 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         },
         setAutoSync: function(value) {
             configurationService.set("autosync_enabled", !!value);
+        },
+        clearSyncData: function() {
+            configurationService.deleteByKey("data_to_sync");
+        },
+        getDataToSyncCount: function() {
+            var count = localStorage.getItem('data_to_sync_count');
+            if (count === null) {
+                configurationService.find("data_to_sync").then(function(configurations) {
+                    localStorage.setItem('data_to_sync_count', configurations.length);
+                });
+            }
+            return count;
         },
         getCurrentConfiguration: function() {
             return configurationService.getMultiple({

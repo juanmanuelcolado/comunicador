@@ -11,11 +11,11 @@
 
     <label class="item item-input list-search-input">
       <i class="icon search-icon"></i>
-      <input type="text" placeholder="BÚSQUEDA" ng-model='search'>
+      <input type="text" placeholder="BÚSQUEDA" ng-model='search.title'>
     </label>
 
     <ion-list class='list' show-delete="eraser.showDelete" ng-model="eraser.showDelete">
-      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter: search' modelToDelete='card' cm-deletegestures ng-class='{"disabled": card.enabled === "false"}'>
+      <ion-item class='item-thumbnail-left item-icon-right' ng-repeat='card in cards | filter:search' modelToDelete='card' cm-deletegestures ng-class='{"disabled": card.enabled === "false"}'>
         <ion-delete-button class="ion-minus-circled" ng-click='eraser.selectToDelete(card)'></ion-delete-button>
         <img ng-src='{{card.img}}'>
         <p class='text-area angular-center-container angular-centered normal-item' ng-class="eraser.currentCSSClass(card)">{{card.title}}</p>
@@ -24,7 +24,7 @@
     </ion-list>
 
     <div ng-show='loaded && !cards.length'>
-      <h4 class="empty-notice">Aún no agregaste ningún pictograma. Presioná el botón "+" de arriba a la derecha para agregar uno nuevo.</h4>
+      <h4 class="empty-notice">Aún no has agregado ningún pictograma. Presiona el botón "+" de arriba a la derecha para agregar uno nuevo.</h4>
     </div>
 
   </ion-content>

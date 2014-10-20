@@ -1,4 +1,4 @@
-communicatorApp.service('configurationService', function(configurationDbService, $q) {
+communicatorApp.service('configurationService', function($q, configurationDbService) {
     var db = configurationDbService;
     var addToPartialResult = function(keyName) {
         var returnValue = {};
@@ -65,6 +65,13 @@ communicatorApp.service('configurationService', function(configurationDbService,
             });
             return deferred.promise;
         },
-        delete: db.delete.bind(db)
+        delete: db.delete.bind(db),
+        deleteByKey: function(key) {
+            db.find(key).then(function(configurations) {
+                configurations.forEach(function(configuration, index) {
+                    db.delete(configuration.id);
+                });
+            });
+        }
     };
 });

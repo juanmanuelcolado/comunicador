@@ -28,6 +28,11 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
         abstract: true,
         templateUrl: 'templates/home/menu.html'
     })
+    .state('content', {
+        url: '/content',
+        abstract: true,
+        templateUrl: 'templates/home/content.html'
+    })
     .state('app.home', {
         url: '/home',
         views: {
@@ -36,6 +41,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
                 controller: 'homeCtrl'
             }
         }
+    })
+    .state('tutorialHome', {
+        url: '/tutorial',
+        parent: 'app.home'
     })
     .state('app.statistics', {
         url: '/statistics',
@@ -55,14 +64,22 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
-    .state('app.levelSingleCard', {
+    .state('tutorialLevelCards', {
+        url: '/tutorial',
+        parent: 'app.levelCards'
+    })
+    .state('content.levelSingleCard', {
         url: '/levelSingleCard/:id',
         views: {
-            'menuContent': {
+            'content': {
                 templateUrl: 'templates/level/levelSingleCard.html',
                 controller: 'levelSingleCardCtrl'
             }
         }
+    })
+    .state('tutorialLevelSingleCard', {
+        url: '/tutorial',
+        parent: 'content.levelSingleCard'
     })
     .state('app.patternLock', {
         url: '/patternLock',
@@ -73,6 +90,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
+    .state('tutorialPatternLock', {
+        url: '/tutorial',
+        parent: 'app.patternLock'
+    })
     .state('app.basicRegistry', {
         url: '/basicRegistry',
         views: {
@@ -81,6 +102,10 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
                 controller: 'basicRegistryCtrl'
             }
         }
+    })
+    .state('tutorialBasicRegistry', {
+        url: '/tutorial',
+        parent: 'app.basicRegistry',
     })
     .state('app.advancedRegistry', {
         url: '/advancedRegistry',

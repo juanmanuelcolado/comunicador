@@ -2,16 +2,21 @@
   <ion-view title='CONEXIÓN AL SERVIDOR'>
     <ion-content class='has-header'>
       <label class="item info-label">
-        ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime ? lastSyncTime : "AÚN NO SE HA REALIZADO UNA SINCRONIZACIÓN" }}
+        ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime ? lastSyncTime : "AÚN NO SE HA REALIZADO" }}
       </label>
       <div class='list list-inset' ng-controller="configurationsServerCtrl">
-        <button class="button button-large button-positive" ng-click='sync();'>Sincronizar ahora</button>
-        <label class='item item-input'>
-          <!-- Just for testing -->
-          <input type='text' name="baseURL" ng-model='baseURL' placeholder='Server base URL'>
-        </label>
+        <button class="button button-large button-positive button-centered" ng-click='sync();'>Sincronizar ahora</button>
         <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
+        <label class="item info-label">
+          HERRAMIENTAS DE DESARROLLADOR
+        </label>
+        <label class='item item-input'>
+          <input type='text' name="baseURL" ng-model='baseURL' placeholder='URL del servidor'>
+        </label>
+        <br />
+        <button class="button button-medium button-assertive button-centered" ng-click='clear();'>Borrar datos no sincronizados</button>
         <div class='form-buttons'>
+          <br/>
           <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
         </div>
       </div>

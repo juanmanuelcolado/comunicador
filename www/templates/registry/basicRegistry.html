@@ -1,56 +1,49 @@
-<ion-view title='Registro del intercambio'>
-  <ion-content class='has-header'>
-    <div class="list list-inset">
+<ion-view title='REGISTRO DEL INTERCAMBIO'>
+  <ion-content class='has-header' >
+    <div class="list list-inset registry">
       <label class="item item-input">
         <div class="input-label">
-          Receptor
+          RECEPTOR:
         </div>
-        <div class="receiverName">
+        <div class="receiver-name">
           {{registry.receiver.name + " " + registry.receiver.lastName}}
         </div>
       </label>
-      <div class="item item-divider">
-        Intercambio
-      </div>
       <label class="item item-input item-toggle">
         <div class="input-label">
-          <i class="icon ion-android-arrow-up-left"></i>
-          Recojer
+          RECOGER:
         </div>
         <label class="toggle toggle-positive">
           <input type="checkbox" ng-model="registry.pick">
           <div class="track">
-            <div class="handle"></div>
+            <div class="handle">{{registry.pick? 'SÍ': 'NO'}}</div>
           </div>
         </label>
       </label>
       <label class="item item-input item-toggle">
         <div class="input-label">
-          <i class="icon ion-android-arrow-up-right"></i>
-          Alcanzar
+          ALCANZAR:
         </div>
         <label class="toggle toggle-positive">
           <input type="checkbox" ng-model="registry.reach">
           <div class="track">
-            <div class="handle"></div>
+            <div class="handle">{{registry.reach? 'SÍ': 'NO'}}</div>
           </div>
         </label>
       </label>
       <label class="item item-input item-toggle">
         <div class="input-label">
-          <i class="icon ion-android-arrow-down-right"></i>
-          Dejar
+          DEJAR:
         </div>
         <label class="toggle toggle-positive">
           <input type="checkbox" ng-model="registry.drop">
           <div class="track">
-            <div class="handle"></div>
+            <div class="handle">{{registry.drop? 'SÍ': 'NO'}}</div>
           </div>
         </label>
       </label>
       <div class='form-buttons'>
-        <a id='cancel' class='button padding-left icon-left ion-close-round button-assertive' ng-click='goBack();'>Cancelar</a>
-        <a id='accept' class='button padding-right icon-left ion-checkmark-round button-balanced' ng-click='saveRegistry();'>Aceptar</a>
+        <a id='accept' class='button padding-right button-positive button-block' ng-click='saveRegistry();'>Aceptar</a>
       </div>
     </div>
   </ion-content>

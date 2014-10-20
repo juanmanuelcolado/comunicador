@@ -1,15 +1,15 @@
 <ion-view hide-nav-bar="true">
   <ion-content class="level-single-card" class='has-header'>
-    <div detect-gestures gesture-type="hold" class='list card' >
-      <div class='item item-image'>
-        <img ng-src='{{card.img}}' alt='{{card.title}}'>
-      </div>
+    <div detect-gestures gesture-type="hold" class="list card row">
+      <div class="col">
+        <div class='item item-image'>
+          <img ng-src='{{card.img}}' alt='{{card.title}}'>
+        </div>
 
-      <div class='item item-divider'>
-        {{card.title}}
+        <div class='item item-divider'>
+          {{card.title}}
+        </div>
       </div>
-      <h1 id="menu">menu</h1>
-
     </div>
   </ion-content>
 </ion-view>

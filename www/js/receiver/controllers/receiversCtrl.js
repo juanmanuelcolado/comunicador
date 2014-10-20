@@ -5,7 +5,7 @@ communicatorApp.controller('receiversCtrl', function($scope, $state, $timeout, r
     $scope.redirectState = "app.singleReceiver";
     $scope.eraser.showDelete = false;
 
-    receiverDbService.selectAll().then(function(results) {
+    receiverDbService.notInternal().then(function(results) {
         $scope.receivers = results;
         $scope.loaded = true;
     });

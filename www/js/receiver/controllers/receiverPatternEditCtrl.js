@@ -1,12 +1,12 @@
 communicatorApp.controller('receiverPatternEditCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, receiverDbService, currentReceiverService) {
 	
 	$scope.lock = {};
-
+	$scope.tempPattern = '';
 	$scope.patternError = false;
 
 	$scope.$on('modal.shown', function() {
 		$scope.lock = new PatternLock("#lock", { 
-			margin: getMarginSize(),
+			margin: 15,
 			onDraw: validatePattern
 		});
 	});
@@ -15,27 +15,32 @@ communicatorApp.controller('receiverPatternEditCtrl', function($scope, $state, $
 		$scope.patternModal.hide();
 	};
 
-	function validatePattern (pattern) {
-		if (pattern.length > 3) {
-			$scope.receiver.pattern = pattern;
-			$scope.patternError = false;	
+	$scope.save = function () {
+		if (!$scope.patternError) {
+			if ($scope.tempPattern) {
+				$scope.receiver.pattern = $scope.tempPattern;
+			}
 			$scope.closeModal();
+		}
+	};
+
+	function validatePattern (pattern) {
+		$scope.tempPattern = pattern;
+		if (pattern.length >= 3) {
+			hideShortPatternError();
 		} else {
 			showShortPatternError();
 		}
+	}
+
+	function hideShortPatternError () {
+		$scope.patternError = false;	
+		$scope.$apply();	
 	}
 
 	function showShortPatternError () {
 		$scope.lock.error();
 		$scope.patternError = true;	
 		$scope.$apply();
-	}
-
-	function getMarginSize () {
-		var containerSize = window.innerWidth - 65;
-		var columnSize = containerSize/3;
-		var extraSpace = columnSize - 50;
-		var marginSize = extraSpace / 2;
-		return marginSize;
 	}
 });

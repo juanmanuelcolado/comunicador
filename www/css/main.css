@@ -54,6 +54,12 @@
   color: #000;
 }
 
+.popup .closeTutorial {
+  right: 0px;
+  position: absolute;
+  width: 40px;
+}
+
 .view, .pane, .modal {
     background-image: -webkit-linear-gradient(top, #198b95, #9cc7a3);
     background-image: linear-gradient(top, #198b95, #9cc7a3);
@@ -87,6 +93,7 @@
 .view .menu-content .bar-header .left-buttons + h1 {
   margin-left: 0;
   left: 50px;
+  right: 0 !important;
 }
 
 .menu .bar-header {
@@ -99,8 +106,32 @@
   margin: 2%;
 }
 
+.menu .list .item .icon {
+  font-size: 25px;
+  position: absolute;
+  left: 15px;
+  top: calc(50% - 14px);
+}
+
+
+.menu .list .item .icon.icon-receivers {
+  background-image: url(../img/menu-receivers-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px 29px;
+  top: 0;
+  width: 25px;
+  height: 100%;
+}
+
 .menu .item-content {
   background: rgba(0, 0, 0, 0.3);
+  padding-left: 50px;
+}
+
+.menu .list .item:nth-child(3) .item-content {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .menu .bar-header {
@@ -134,6 +165,11 @@ form ion-content .scroll {
   padding-bottom: 20px;
 }
 
+form .input-label {
+  font-weight: normal;
+  font-family: montserrat;
+}
+
 form .list:last-child {
   padding-bottom: 10px;
 }
@@ -143,10 +179,6 @@ form .item {
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 0;
   color: #FFF;
-}
-
-form .input-label {
-  font-weight: normal;
 }
 
 form .item.item-image {
@@ -226,7 +258,7 @@ form .button.form-button {
   margin: 3% 2%;
 }
 
-form .button.button-large {
+form .button.button-centered {
   margin: 0 auto 20px auto;
   display: block;
 }
@@ -244,17 +276,32 @@ form .item.info-label {
 /* tables */
 
 .table > .col {
-    border: 1px solid #000;
-    border-right: 0;
-    text-align: center;
+  border-right: 0;
+  text-align: center;
+  font-family: TradeGothicLight;
+  font-size: 14px;
 }
 
-.table > .col:last-child {
-    border-right: 1px solid #000;
+.table-title > .col {
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+  font-family: montserrat;
+  font-size: 14px;
+  padding: 15px;
 }
 
 .table-header > .col {
-    font-weight: bold;
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+  font-family:montserrat;
+  font-size: 10px;
+  margin-right: 1px;
+  margin-top: 1px;
+  padding: 5px 0;
+}
+
+.table-header > .col:last-child {
+  margin-right: 0;
 }
 
 .empty-notice {
@@ -298,7 +345,7 @@ form .item.info-label {
 
 #home-page .level-item .level-detail {
   position: relative;
-  padding: 13px 15px 0 15px;
+  padding: 13px 90px 0 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   margin-top: 13px;
   white-space: normal;
@@ -309,7 +356,6 @@ form .item.info-label {
 }
 
 #home-page .level-item .level-detail label {
-  width: calc(100% - 70px);
   display: inline-block;
 }
 
@@ -351,6 +397,7 @@ form .item.info-label {
 
 .pattern-lock #lock {
   background: rgba(0,0,0,0.3);
+  margin: 0 auto;
 }
 
 .list-search-input {
@@ -367,23 +414,49 @@ form .item.info-label {
   ========================================================================== */
 
 .level-single-card {
-  background: #FFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  align-content:stretch;;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-single-card > div {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1 1 auto;
+  align-self: center;
 }
 
 .level-single-card .card {
   margin: 0;
   box-shadow: none;
+  padding: 0;
+}
+
+.level-single-card .card .col {
+  padding: 0;
 }
 
 .level-single-card .card .item-image {
   margin: 0;
+  min-height: 50px;
 }
 
 .level-single-card .card .item-divider {
   text-align: center;
   font-family: Montserrat;
   text-transform: uppercase;
-  background: #FFF;
+  background: transparent;
 }
 
 /*  ==========================================================================
@@ -473,15 +546,74 @@ form .item.info-label {
   Registry
   ========================================================================== */
 
+.registry .input-label {
+  font-size: 15px;
+  font-family: montserrat;
+  font-weight: normal;
+}
+
+.registry .receiver-name {
+  text-align: right;
+  color: #FFF;
+  width: 65%;
+  padding-right: 15px;
+}
+
+.registry .item-input {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  padding-right: 8px;
+}
+
+.registry .button-bar {
+  height: 35px;
+}
+
+.registry .button-bar .button {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  font-weight: normal;
+  font-size: 12px;
+  padding: 0 7px;
+  line-height: 1.5;
+  white-space: normal;
+  min-height: 35px;
+}
+
+.registry .button-bar .button:last-child {
+ border-right: none;
+}
+
+.registry .button-bar .button:last-child {
+  line-height: 35px;
+}
+
+.registry .button-bar .button.button-positive {
+  background: #00FEAD;
+}
+
 #lock {
     width: 100%;
 }
 
-#advancedRegistry .validation-container {
+.registry .validation-container {
   display: inline-block;
   float: right;
   margin-right: 5px;
   margin-top: 7px;
+}
+
+.item-toggle .toggle .handle {
+  text-align: center;
+  line-height: 32px;
+  height: 30px;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.item-toggle .toggle input:checked + .track .handle {
+  color: #000;
 }
 
 /*  ==========================================================================
@@ -504,11 +636,75 @@ form .item.info-label {
   Statistics
   ========================================================================== */
 
-.statistic-title {
-    text-align: center;
-    text-decoration: underline;
+.exchange-count .table:not(.table-header):not(.table-title) .col {
+  text-align: left;
+  max-height: 50px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0;
 }
 
+.exchange-count .table:not(.table-header):not(.table-title) .col:first-child {
+  justify-content: flex-start;
+  -webkit-box-pack: initial;
+}
+
+.exchange-count .table:not(.table-header):not(.table-title) .col span {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  height: 50px;
+}
+
+.exchange-count .table .col .table-avatar {
+  width: 50px;
+  margin-right: 10px;
+  font-size: 50px;
+}
+
+.exchange-history .table:not(.table-header):not(.table-title) .col {
+  background: rgba(0,0,0,0.3);
+  margin-bottom: 5px;
+}
+
+.exchange-history .col-tick {
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+
+.exchange-history .tick-icon {
+  background-image: url("../img/tick-icon.png");
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.exchange-history .tick-icon.withHelp {
+  background-image: url("../img/tick-disabled-icon.png");
+}
+  
+.exchange-history .tick-icon.withPartialHelp {
+  width: 12.5px;
+}
+
+.exchange-history .tick-icon.second-halve {
+  background-image: url("../img/tick-disabled-icon.png");
+  width: 12.5px;
+  background-position: -12.5px 0;
+  margin-left: -4px;
+}
 /*  ==========================================================================
   Validations
   ========================================================================== */

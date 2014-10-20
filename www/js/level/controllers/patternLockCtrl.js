@@ -1,7 +1,6 @@
-communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, receiverDbService, currentReceiverService) {
-	
+communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicPopup, tutorialService, receiverDbService, currentReceiverService) {
 	var lock = new PatternLock("#lock", { 
-		margin: getMarginSize(),
+		margin: 15,
 		onDraw: validatePattern
 	});
 
@@ -75,11 +74,5 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
      	});
 	}
 
-	function getMarginSize () {
-		var containerSize = window.innerWidth - 80;
-		var columnSize = containerSize/3;
-		var extraSpace = columnSize - 50;
-		var marginSize = extraSpace / 2;
-		return marginSize;
-	}
+    tutorialService.showIfActive();
 });

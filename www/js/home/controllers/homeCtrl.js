@@ -1,4 +1,4 @@
-communicatorApp.controller('homeCtrl', function($scope, levelDbService, $ionicPopup) {
+communicatorApp.controller('homeCtrl', function($scope, $ionicPopup, $state, $stateParams, tutorialService, levelDbService, appService) {
     levelDbService.selectAll().then(function(results) {
         $scope.levels = results;
         var lastLevel = 0;
@@ -21,16 +21,19 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService, $ionicPo
                 level.selected = true;
                 $scope.selectedLevel = level;
             } else {
-                showPopUp();
+                $ionicPopup.alert({
+                    title: 'Próximamente',
+                    template: 'El nivel seleccionado todavía no se encuentra disponible'
+                });
             }
         }
     };
 
-    function showPopUp(){
-        var alertPopup = $ionicPopup.alert({
-             title: 'Próximamente',
-             template: 'El nivel seleccionado todavía no se encuentra disponible'
+    appService.uninitialized().then(function() {
+        $state.transitionTo('tutorialHome').then(function() {
+            tutorialService.showIfActive();
         });
-        alertPopup.then(function(res) { });
-    }
+    }, function() {
+        tutorialService.showIfActive();
+    });
 });
