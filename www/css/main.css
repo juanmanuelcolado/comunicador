@@ -533,6 +533,13 @@ form .item.info-label {
     color: #666;
 }
 
+.receiver-list .avatar-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 80px;
+}
+
 .receiver-edit-pattern-button {
   display: none;
 }
