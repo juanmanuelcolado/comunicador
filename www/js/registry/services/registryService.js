@@ -1,4 +1,4 @@
-communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService, registryServerService) {
+communicatorApp.service('registryService', function($q, exchangeDbService, stepDbService, scoreDbService, scoreByExchangeDbService, exchangeByCardDbService, registryServerService, levelDbService) {
 	var registryService = {};
 
 	registryService.pickedCardId = 0;
@@ -15,12 +15,18 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		scores = results;
 	});
 
+	var levels = [];
+	levelDbService.selectAll().then(function(results){
+		levels = results;
+	});
+
 	registryService.saveRegistry = function(registryInfo) {
 		insertNewExchange(registryInfo).then(function(exchangeId) {
 			steps.forEach(function(step) {
 				insertNewScore(exchangeId, step.id, registryInfo[step.name]);
 			});
 			insertNewExchangeByCard(exchangeId);
+			setLevelInitDate(registryService.pickedLevelNumber);
 			registryServerService.sendExchangeToServer(registryInfo, registryService.pickedLevelNumber, registryService.pickedCardId);
 		});
 	};
@@ -48,6 +54,22 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		});
 	}
 
+	function setLevelInitDate (levelNumber) {
+		var initDate = getLevelDate(levelNumber);
+		if (initDate === null)
+		{
+			var date = new Date();
+			var today =  date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString().substr(2,2);
+			levelDbService.update({
+				id: getLevelId(levelNumber),
+				levelNumber: levelNumber,
+				description: getLevelDescription(levelNumber),
+				initDate: today,
+				enabled: getLevelEnabled(levelNumber)
+			});
+		}
+	}
+
 	function getStepId (stepName) {
 		return steps.filter(function(step) { 
 			return step.name === stepName; 
@@ -70,6 +92,30 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 		return scores.filter(function(score) { 
 			return score.id === scoreId; 
 		})[0].name;
+	}
+
+	function getLevelDate(levelNumber){
+		return levels.filter(function(level) {
+			return level.levelNumber === levelNumber;
+		})[0].initDate;
+	}
+
+	function getLevelId (levelNumber){
+		return levels.filter(function(level) {
+			return level.levelNumber === levelNumber;
+		})[0].id;
+	}
+
+	function getLevelDescription (levelNumber){
+		return levels.filter(function(level) {
+			return level.levelNumber === levelNumber;
+		})[0].description;
+	}
+
+	function getLevelEnabled(levelNumber) {
+		return levels.filter(function(level) {
+			return level.levelNumber === levelNumber;
+		})[0].enabled;
 	}
 
 	return registryService;
