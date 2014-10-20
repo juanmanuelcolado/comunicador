@@ -14,13 +14,13 @@ communicatorApp.service('dbSeedsService', function(TableMigrationService, uuidSe
             ]),
 
         new TableMigrationService('Level')
-            .insertValues(['levelNumber', 'description', 'enabled'], [
-            	[1, "'Cómo comunicarse'", '"true"'],
-                [2, '"Distancia y persistencia"', '"false"'],
-                [3, '"Discriminar imágenes"', '"false"'],
-                [4, '"Estructura oración"', '"false"'],
-                [5, '"Responder preguntas"', '"false"'],
-                [6, '"Comentar"', '"false"']
+            .insertValues(['levelNumber', 'title', 'description', 'enabled'], [
+            	[1, "'Cómo comunicarse'", "'Al ver un objeto muy preferido el alumno recogerá el celular con una imagen del objeto, alcanzará al receptor comunicativo y dejará el dispositivo con la imagen en la mano de este.'" , '"true"'],
+                [2, '"Distancia y persistencia"', "''", '"false"'],
+                [3, '"Discriminar imágenes"', "''", '"false"'],
+                [4, '"Estructura oración"', "''", '"false"'],
+                [5, '"Responder preguntas"', "''", '"false"'],
+                [6, '"Comentar"', "''", '"false"']
             ]),
             
         new TableMigrationService('Step')

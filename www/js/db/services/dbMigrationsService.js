@@ -18,6 +18,7 @@ communicatorApp.service('dbMigrationsService', function(TableMigrationService) {
         
         new TableMigrationService('Level')
             .addColumn('levelNumber INTEGER')
+            .addColumn('title TEXT')
             .addColumn('description TEXT')
             .addColumn('initDate TEXT')
             .addColumn('enabled BOOLEAN'),

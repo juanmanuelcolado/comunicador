@@ -4,13 +4,12 @@
       <ion-item class="item-icon-right level-item" ng-repeat='level in levels'>
         <div class="level-main" ng-click='selectLevel(level)'>
           NIVEL {{level.levelNumber}}
-          <label class="level-name">{{level.description.toUpperCase()}}</label>
+          <label class="level-name">{{level.title.toUpperCase()}}</label>
           <i class="icon ion-chevron-down"></i>
         </div>
         <div class="level-detail item-button-right" ng-show="level.selected">
           <label class="level-init-date" ng-show='level.initDate != null'>Iniciado el {{level.initDate}}</label>
-          <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.</label>
+          <label>{{level.description}}</label>
           <a class="button button-positive" ui-sref="app.levelCards({ levelNumber: {{selectedLevel.levelNumber}} })">Ir</a>
         </div>
       </ion-item>
