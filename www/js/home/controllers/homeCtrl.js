@@ -29,7 +29,7 @@ communicatorApp.controller('homeCtrl', function($scope, levelDbService, $ionicPo
     function showPopUp(){
         var alertPopup = $ionicPopup.alert({
              title: 'Próximamente',
-             template: 'El nivel seleccionado todavía no se encuentra habilitado'
+             template: 'El nivel seleccionado todavía no se encuentra disponible'
         });
         alertPopup.then(function(res) { });
     }
