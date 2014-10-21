@@ -1,59 +1,79 @@
 (function() {
     angular.module('validation.rules', ['validation']).config(['$validationProvider', function($validationProvider) {
+
         $validationProvider
             .setExpression({
-                required: function(value) {
-                    return !!value;
+                required: function() {
+                    return validateExpression(function(value){
+                        return !!value;
+                    }, arguments);
                 },
-                requiredSelect: function(value) {
-                    return !!value && value !== "?";
+                requiredSelect: function() {
+                    return validateExpression(function(value){
+                        return !!value && value !== "?";
+                    }, arguments);
                 },
-                validDate: function(value) {
-                    return validDate(value);
+                validDate: function() {
+                    return validateExpression(validDate, arguments);
                 },
                 inRange: function(value) {
-                    return value.length >= 2 && value.length <= 32;
+                    return validateExpression(function(value){
+                        return value.length >= 2 && value.length <= 32;
+                    }, arguments);
                 },
-                inList: function(value,scope) {
-                    var equalItems = scope.$parent.$parent.equalItems;
-                    var items = scope.$parent.$parent.$parent.items;
-                    return items.every(function(element, index, array){ return !equalItems(value,element); }) || equalItems(value,scope.$parent.$parent.last);
+                inList: function() {
+                    return validateExpression(function(value, scope){
+                        var equalItems = scope.$parent.$parent.equalItems;
+                        var items = scope.$parent.$parent.$parent.items;
+                        return items.every(function(element, index, array){ return !equalItems(value,element); }) || equalItems(value,scope.$parent.$parent.last);
+                    }, arguments);
                 },
-                photoRequired: function(value,scope) {
-                    return value !== '' && value !== scope.$parent.$parent.defaultImg;
-                },
-                number: /^\d+$/
+                photoRequired: function() {
+                    return validateExpression(function(value){
+                        return value !== '';
+                    }, arguments);
+                }
             })
             .setDefaultMsg({
                 required: {
-                    error: '✖ Campo requerido',
-                    success: '✓'
+                    error: 'Campo requerido',
+                    success: ''
                 },
                 requiredSelect: {
-                    error: '✖',
-                    success: '✓'
+                    error: 'Campo requerido',
+                    success: ''
                 },
                 validDate: {
-                    error: '✖ Fecha inválida',
-                    success: '✓'
+                    error: 'Fecha inválida',
+                    success: ''
                 },
                 inRange: {
-                    error: '✖ Debe tener entre 2 y 32 caracteres',
-                    success: '✓'
+                    error: 'Debe tener entre 2 y 32 caracteres',
+                    success: ''
                 },
                 number: {
-                    error: '✖ Debe ser un Número',
-                    success: '✓'
+                    error: 'Debe ser un Número',
+                    success: ''
                 },
                 inList: {
-                    error: '✖ Debe ser distinto a otros nombres',
-                    success: '✓'
+                    error: 'Debe ser distinto a otros nombres',
+                    success: ''
                 },
                 photoRequired: {
-                    error: '✖ Debe seleccionar una imagen',
-                    success: '✓'
+                    error: 'Debe seleccionar una imagen',
+                    success: ''
                 }
+            })
+            .setErrorHTML(function(msg) {
+                return '<p class="validation-invalid"><i class="icon ion-close-circled"></i>  '+ msg +'</p class="validation-invalid">';
             });
+
+        function validateExpression (expression, args) {
+            var element = args[2];
+            var result = expression.apply(expression, args);
+            element.parent().toggleClass('invalid-item', !result);
+            return result;
+        }
 
         // To be extracted
         function validDate(text) {

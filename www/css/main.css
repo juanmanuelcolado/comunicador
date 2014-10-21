@@ -179,6 +179,7 @@ form .item {
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 0;
   color: #FFF;
+  overflow: visible;
 }
 
 form .item.item-image {
@@ -547,6 +548,7 @@ form .item.info-label {
 .receiver-pattern-error {
   color: #B70000;
   font-weight: bold;
+  margin: 0 15px;
 }
 
 /*  ==========================================================================
@@ -608,7 +610,7 @@ form .item.info-label {
   display: inline-block;
   float: right;
   margin-right: 5px;
-  margin-top: 7px;
+  margin-top: 25px;
 }
 
 .item-toggle .toggle .handle {
@@ -716,29 +718,52 @@ form .item.info-label {
   Validations
   ========================================================================== */
 
-form .validation-container {
-  margin-right: 4px;
+.validation-container {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 0;
 }
 
-form .item-select .validation-container {
-  margin-right: 60px;
+.item-image .validation-container {
+  top: 128px;
 }
 
-p.validation-valid {
-  font-size: 1.1em;
-  color: #00751F;
+.item.invalid-item {
+  margin-bottom: 25px;
+  border: 2px solid rgba(183, 0, 1, 0.65);
+}
+
+form .form-button.invalid-item {
+  border: 2px solid rgba(183, 0, 1, 0.65);
+  margin-bottom: 25px;
+}
+
+form .form-button.invalid-item .validation-container {
+  top: 35px;
+}
+
+form .form-button.invalid-item .validation-container .validation-invalid {
+  font-size: 0.9em;
+}
+
+form .form-button.invalid-item .validation-container .icon:before {
+  font-size: 0.8em;
+}
+
+form .item-select.invalid-item::after {
+  border-color: rgba(183, 0, 1, 0.65);
 }
 
 p.validation-invalid {
   color: #B70000;
+  font-size: 0.8em;
+  font-family: muli;
 }
 
 form p.validation-invalid {
   white-space: normal;
-}
-
-form .button .validation-container p {
-  display: inline;
+  text-transform: none;
 }
 
 /*  ==========================================================================
