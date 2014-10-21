@@ -18,6 +18,15 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
+        // Force a plugins object and mock insomnia so it won't cause errors if it's not present
+        if (!window.plugins) {
+            window.plugins = {
+                insomnia: {
+                    allowSleepAgain: function() {},
+                    keepAwake: function() {}
+                }
+            };
+        }
     });
 })
 
