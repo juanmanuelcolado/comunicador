@@ -74,5 +74,12 @@ communicatorApp.controller('patternLockCtrl', function($scope, $state, $ionicNav
      	});
 	}
 
+    $scope.ask = function() {
+        $ionicPopup.alert({
+            title: 'Ayuda',
+            template: 'Para usar un receptor de la comunicación de prueba se deben unir los puntos 1-2-3. La puntuación del intercambio no quedará registrada.'
+        });
+    };
+
     tutorialService.showIfActive();
 });
