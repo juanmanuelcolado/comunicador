@@ -16,6 +16,10 @@ communicatorApp.controller('basicRegistryCtrl', function($scope, $q, $ionicPopup
 	};
 
 	$scope.saveRegistry = function() {
+		if ($scope.registry.receiver.internal) {
+			$scope.goBack();
+			return;
+		}
 		checkForDefaultScores().then(function(){
 			$scope.registry.pick = basicScoreValues[$scope.registry.pick];
 			$scope.registry.reach = basicScoreValues[$scope.registry.reach];
