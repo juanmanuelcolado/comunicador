@@ -1,4 +1,14 @@
 communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicPopup, cardDbService, imageUploaderService) {
+    var popup;
+
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('closeTutorial')) {
+        document.removeEventListener('click', this.event);
+        if(popup)
+            popup.close();
+        }
+    }, false);
+
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
     
@@ -44,9 +54,9 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
     };
 
     var showUploadImagePopup = function() {
-        $ionicPopup.show({
+        popup = $ionicPopup.show({
             template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
-            title: 'Subir foto',
+            title: 'Subir foto' + '&nbsp;<span class="closeTutorial">X</span>',
             scope: $scope,
             buttons: [
                 {

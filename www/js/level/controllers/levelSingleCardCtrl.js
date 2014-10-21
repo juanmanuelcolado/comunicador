@@ -1,4 +1,4 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicGesture, $state, tutorialService, cardDbService, registryService) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicNavBarDelegate, $ionicGesture, $state, tutorialService, cardDbService, registryService) {
     $scope.card = {
         id: $stateParams.id,
         title: '',
@@ -16,6 +16,9 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
             ],
             titleText: 'Tarjeta \''+ $scope.card.title +'\'',
             cancelText: 'Cancelar',
+            cancel: function() {
+                $ionicNavBarDelegate.back();
+            },
             buttonClicked: function(index) {
                 if (index === 0) {
                     registryService.pickedCardId = $scope.card.id;

@@ -1,4 +1,14 @@
 communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, $ionicPopup, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
+    var popup;
+
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('closeTutorial')) {
+        document.removeEventListener('click', this.event);
+        if(popup)
+            popup.close();
+        }
+    }, false);
+
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
 
@@ -24,17 +34,17 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
     });
 
     $scope.uploadImage = function() {
-        if (imageUploaderService.cameraIsEnabled) {
+    if (imageUploaderService.cameraIsEnabled) {
             showUploadImagePopup();
         } else {
-            takePictureFromWebview();
+           takePictureFromWebview();
         }
     };
 
     var showUploadImagePopup = function() {
-        $ionicPopup.show({
+        popup = $ionicPopup.show({
             template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
-            title: 'Subir foto',
+            title: 'Subir foto' + '&nbsp;<span class="closeTutorial">X</span>',
             scope: $scope,
             buttons: [
                 {
