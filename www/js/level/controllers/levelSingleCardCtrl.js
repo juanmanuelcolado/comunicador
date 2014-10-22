@@ -5,11 +5,19 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
         img: ''
     };
 
+    var actionSheetUp = false;
+
     cardDbService.find($stateParams.id).then(function(results) {
         $scope.card = results[0];
     });
 
     $scope.menuButtonPressed = function() {
+        if (!actionSheetUp) {
+            showActionSheet();
+        }
+    };
+
+    var showActionSheet = function() {
         $ionicActionSheet.show({
             buttons: [
                 { text: 'Puntuar' }
@@ -17,6 +25,7 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
             titleText: 'Tarjeta \''+ $scope.card.title +'\'',
             cancelText: 'Cancelar',
             cancel: function() {
+                actionSheetUp = false;
                 $ionicNavBarDelegate.back();
             },
             buttonClicked: function(index) {
@@ -27,11 +36,10 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
                 return true;
             }
         });
+        actionSheetUp = true;
     };
 
-    $ionicPlatform.ready(function() {
-        document.addEventListener('menubutton', $scope.menuButtonPressed, false);
-    });
+    $scope.$on('menuButtonPressed', $scope.menuButtonPressed);
 
     tutorialService.showIfActive();
 });
