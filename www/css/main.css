@@ -100,8 +100,7 @@
 
 .view .menu-content .bar-header .left-buttons + h1 {
   margin-left: 0;
-  left: 50px;
-  right: 0 !important;
+  left: 50px!important;
 }
 
 .menu .bar-header {

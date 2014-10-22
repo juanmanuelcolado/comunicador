@@ -7,7 +7,7 @@
 var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 'validation.rules'])
 
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -27,6 +27,8 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
                 }
             };
         }
+
+        document.addEventListener('menubutton', function() { $rootScope.$broadcast('menuButtonPressed'); }, false);
     });
 })
 
@@ -198,4 +200,7 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
-});
+})
+
+
+;
