@@ -35,19 +35,3 @@ communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams,
 
     tutorialService.showIfActive();
 });
-
-communicatorApp.directive('detectGestures', function($ionicGesture) {
-  return {
-    link : function(scope, elem, attrs) {
-      
-      var gestureType = attrs.gestureType;
-
-      switch(gestureType) {
-        case 'hold':
-          $ionicGesture.on('hold', scope.menuButtonPressed, elem);
-          break;
-      }
-
-    }
-  };
-});
