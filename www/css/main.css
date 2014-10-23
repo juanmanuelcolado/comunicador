@@ -262,22 +262,35 @@ form .button.form-button {
   border: 2px solid rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.3);
   color: #FFF;
+  padding: 0 5px;
+  display: block;
 }
 
-form .button.button-centered {
-  margin: 0 auto 20px auto;
-  display: block;
+form .button.button-assertive {
+  background: rgba(255, 0, 0, 0.3);
+  border: 2px solid rgba(255, 0, 0, 0.3);
+}
+
+form .item.info-label:first-child {
+  margin: 0;
+  margin-bottom: -15px;
+  border-top: none;
 }
 
 form .item.info-label {
   background: none;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   white-space: normal;
   text-align: center;
   font-size: 12px;
   font-family: muli;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
+form .item.info-label
 
 /* tables */
 
@@ -294,6 +307,7 @@ form .item.info-label {
   font-family: montserrat;
   font-size: 14px;
   padding: 15px;
+  text-align: center;
 }
 
 .table-header > .col {
@@ -304,6 +318,7 @@ form .item.info-label {
   margin-right: 1px;
   margin-top: 1px;
   padding: 5px 0;
+  text-align: center;
 }
 
 .table-header > .col:last-child {
