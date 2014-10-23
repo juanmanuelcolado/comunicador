@@ -30,7 +30,7 @@
           <div class="col col-10">ALC</div>
           <div class="col col-10">DE</div>
         </div>
-        <div class="row table" ng-repeat="(id, exchange) in exchanges">
+        <div class="row table" ng-repeat="(id, exchange) in exchanges | objectToArray | orderBy:'date':true">
           <div class="col">{{ exchange.date | date:'dd/MM' }}</div>
           <div class="col col-20">{{ exchange.receiverRelationship || 'Otro' }}</div>
           <div class="col col-33">{{ exchange.cardTitle }}</div>
