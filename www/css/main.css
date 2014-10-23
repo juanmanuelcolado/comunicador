@@ -245,25 +245,23 @@ form .item-select .select-placeholder {
   font-size: 14px;
 }
 
+form .item-select .ion-chevron-down {
+  position: absolute;
+  right: 10px;
+  height: 40px;
+  padding: 10px 0 10px 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+
 form .item-select::after {
-  color: #00ffae;
-  background-image: url('../img/chevron-down-icon.png');
-  width: 20px;
-  border-left: 1px solid rgb(255, 255, 255);
-  border-top-width: 0;
-  border-right-width: 0;
-  border-bottom-width: 0;
-  background-size: 15px;
-  background-repeat: no-repeat;
-  padding: 0 20px;
-  background-position: center;
-  top: 3px;
-  height: 100%;
-  right: 0;
+  content: none;
 }
 
 form .button.form-button {
   margin: 3% 2%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+  color: #FFF;
 }
 
 form .button.button-centered {
@@ -758,7 +756,7 @@ form .form-button.invalid-item .validation-container .icon:before {
   font-size: 0.8em;
 }
 
-form .item-select.invalid-item::after {
+form .item-select.invalid-item .ion-chevron-down {
   border-color: rgba(183, 0, 1, 0.65);
 }
 

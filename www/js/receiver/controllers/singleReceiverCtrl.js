@@ -21,17 +21,18 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         pattern: ''
     };
 
+    relationshipDbService.selectAll().then(function(relationships){
+        $scope.relationships = relationships;
+    });
+
     if (!$scope.creating) {
         receiverDbService.find($stateParams.id).then(function(results) {
             $scope.receiver = results[0];
             $scope.receiver.advanced = $scope.receiver.advanced === 'true' ? true : false;
             $scope.receiver.avatar = $scope.receiver.avatar;
+            $scope.checkIfHasCustomName();
         });
     }
-
-    relationshipDbService.selectAll().then(function(relationships){
-        $scope.relationships = relationships;
-    });
 
     $scope.uploadImage = function() {
     if (imageUploaderService.cameraIsEnabled) {
