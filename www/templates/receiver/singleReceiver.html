@@ -11,14 +11,6 @@
         <label class='item item-input'>
           <input type='text' name="lastName" ng-model='receiver.lastName' placeholder='Apellido *' validator="required, inRange">
         </label>
-        <label class="item item-input item-select">
-          <div class="select-placeholder" ng-show="!receiver.relationshipId">Vínculo *</div>
-          <select name='relationshipId' ng-model="receiver.relationshipId" ng-options="relationship.id as relationship.name for relationship in relationships" ng-change="checkIfAdvancedByDefault(); checkIfHasCustomName();" validator="requiredSelect"></select>
-        </label>
-        <label class='item item-input' ng-show="showRelationshipName">
-          <input type='text' ng-model='receiver.relationshipName' placeholder='Nombre del vínculo'>
-        </label>
-        <ion-checkbox ng-model="receiver.advanced">Registro avanzado</ion-checkbox>
         <label class='item item-image' ng-class='{empty: !receiver.avatar}' ng-click="uploadImage()">
           <img ng-src='{{receiver.avatar}}'>
         </label>
@@ -27,6 +19,15 @@
           Editar patrón de bloqueo
           <input class="receiver-edit-pattern-button" name="pattern" ng-model="receiver.pattern" validator="required"></input>
         </div>
+        <label class="item item-input item-select">
+          <div class="select-placeholder" ng-show="!receiver.relationshipId">Vínculo *</div>
+          <select name='relationshipId' ng-model="receiver.relationshipId" ng-options="relationship.id as relationship.name for relationship in relationships" ng-change="checkIfAdvancedByDefault(); checkIfHasCustomName();" validator="requiredSelect"></select>
+          <i class="icon ion-chevron-down"></i>
+        </label>
+        <label class='item item-input' ng-show="showRelationshipName">
+          <input type='text' name="relationshipName" ng-model='receiver.relationshipName' placeholder='Nombre del vínculo'>
+        </label>
+        <ion-checkbox ng-model="receiver.advanced">Registro avanzado</ion-checkbox>
         <div class='form-buttons'>
           <button id='accept' validation-submit="receiverForm" ng-click="save()" class='button button-positive button-block'>Aceptar</button>
         </div>

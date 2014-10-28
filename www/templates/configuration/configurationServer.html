@@ -5,7 +5,9 @@
         ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime ? lastSyncTime : "AÚN NO SE HA REALIZADO" }}
       </label>
       <div class='list list-inset' ng-controller="configurationsServerCtrl">
-        <button class="button button-large button-positive button-centered" ng-click='sync();'>Sincronizar ahora</button>
+        <div class="button form-button button-centered" ng-click='sync();'>
+          Sincronizar ahora
+        </div>
         <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
         <label class="item info-label">
           HERRAMIENTAS DE DESARROLLADOR
@@ -13,10 +15,8 @@
         <label class='item item-input'>
           <input type='text' name="baseURL" ng-model='baseURL' placeholder='URL del servidor'>
         </label>
-        <br />
-        <button class="button button-medium button-assertive button-centered" ng-click='clear();'>Borrar datos no sincronizados</button>
+        <button class="button button-centered button-assertive form-button" ng-click='clear();'>Borrar datos no sincronizados</button>
         <div class='form-buttons'>
-          <br/>
           <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
         </div>
       </div>

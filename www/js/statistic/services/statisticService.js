@@ -12,7 +12,7 @@ communicatorApp.service('statisticService', function($q,
     var s   = scoreDbService;
     var sp  = stepDbService;
 
-    var receiverRelationshipField = 'CASE relationshipId WHEN NULL THEN ' + r.prop('relationshipName') + ' ELSE '+ rl.prop('name') +' END as receiverRelationship';
+    var receiverRelationshipField = 'CASE WHEN '+ r.prop('relationshipName') + ' IS NULL THEN ' + rl.prop('name') + ' ELSE '+ r.prop('relationshipName') +' END as receiverRelationship';
 
     receiverDbService
         .define("exchangeCountByReceiver", function(key) {
