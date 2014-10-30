@@ -55,10 +55,6 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
                                     title: 'Fin!',
                                     template: 'Eso es todo, ya puedes realizar intercambios! <br />Para ver el tutorial nuevamente, puedes iniciarlo desde Menú -> Configuración.'
                                 });
-                                $timeout(function() {
-                                    lastPopup.close(); 
-                                }, 5000);
-
                                 closeEvent.remove();
                             });
                         }
