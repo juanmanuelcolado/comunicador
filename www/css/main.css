@@ -705,7 +705,11 @@ form .item.info-label
 .exchange-count .table .col .table-avatar {
   width: 50px;
   margin-right: 10px;
-  font-size: 50px;
+  font-size: 40px;
+}
+
+.exchange-count .table .col .table-avatar.icon {
+  padding: 5px;
 }
 
 .exchange-history .table:not(.table-header):not(.table-title) .col {
