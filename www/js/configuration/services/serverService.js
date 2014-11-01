@@ -14,7 +14,7 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         },
         setBaseURL: function(baseURL) {
             if(baseURL !== undefined) {
-                this.baseURL = baseURL;
+                this.baseURL = baseURL.search(/^(https?:\/\/)/) !== -1 ? baseURL : "http://" + baseURL;
                 configurationService.set("server_base_url", baseURL);
             }
         },
@@ -59,7 +59,7 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             return deferred.promise;
         },
         post: function(configuration) {
-            var stringifiedData = JSON.stringify(configuration.value);
+            var stringifiedData = typeof(configuration.value) === "string" ? configuration.value : JSON.stringify(configuration.value);
             this.getBaseURL().then(function(baseURL) {
                 if (!baseURL) {
                     return;
