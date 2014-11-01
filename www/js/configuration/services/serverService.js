@@ -14,7 +14,7 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         },
         setBaseURL: function(baseURL) {
             if(baseURL !== undefined) {
-                this.baseURL = baseURL.search(/^(https?:\/\/)/) !== -1 ? baseURL : "http://" + baseURL;
+                this.baseURL = baseURL;
                 configurationService.set("server_base_url", baseURL);
             }
         },
@@ -64,17 +64,11 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
                 if (!baseURL) {
                     return;
                 }
+                baseURL = baseURL.search(/^(https?:\/\/)/) !== -1 ? baseURL : "http://" + baseURL;
 
-                $.ajax({
-                    url: baseURL + "/exchanges" ,
-                    method: "POST",
-                    data: {
-                        data: stringifiedData
-                    },
-                    success: function() {
-                        if (configuration.id) {
-                            configurationService.delete(configuration);
-                        }
+                $.post(baseURL + "/exchanges", { data: stringifiedData }).complete(function() {
+                    if (configuration.id) {
+                        configurationService.delete(configuration);
                     }
                 });
             });
