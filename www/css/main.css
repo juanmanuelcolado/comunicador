@@ -297,7 +297,9 @@ form .item.info-label {
   margin-bottom: 15px;
 }
 
-form .item.info-label
+form .margened {
+  margin: 2%;
+}
 
 /* tables */
 
@@ -341,6 +343,7 @@ form .item.info-label
 /*  ==========================================================================
   Home
   ========================================================================== */
+
 #home-page .level-item {
   font-size: 12px;
   padding-right: 0;
@@ -745,6 +748,7 @@ form .item.info-label
   background-position: -12.5px 0;
   margin-left: -4px;
 }
+
 /*  ==========================================================================
   Validations
   ========================================================================== */

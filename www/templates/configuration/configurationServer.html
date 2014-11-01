@@ -12,6 +12,11 @@
         <label class="item info-label">
           HERRAMIENTAS DE DESARROLLADOR
         </label>
+        <div ng-show="!userSet" class="margened">
+          <label>Recuerde agregar un usuario en:</label>
+          <br>
+          <label>Configuración -> Configurar Usuario</label>
+        </div>
         <label class='item item-input'>
           <input type='text' name="baseURL" ng-model='baseURL' placeholder='URL del servidor'>
         </label>
