@@ -1,4 +1,4 @@
-communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicPlatform, $ionicActionSheet, $ionicNavBarDelegate, $ionicGesture, $state, tutorialService, cardDbService, registryService) {
+communicatorApp.controller('levelSingleCardCtrl', function($scope, $stateParams, $ionicActionSheet, $ionicNavBarDelegate, $state, tutorialService, cardDbService, registryService) {
     $scope.card = {
         id: $stateParams.id,
         title: '',
