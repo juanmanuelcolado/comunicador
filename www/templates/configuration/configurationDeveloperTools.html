@@ -1,0 +1,23 @@
+<form name="developerToolsForm">
+  <ion-view title='HERRAMIENTAS DE DESARROLLADOR'>
+    <ion-content class='has-header'>
+      <label class="item info-label">
+        CONEXIÓN AL SERVIDOR
+      </label>
+      <div class='list list-inset' ng-controller="configurationDeveloperToolsCtrl">
+        <label class='item item-input'>
+          <input type='text' name="baseURL" ng-model='baseURL' placeholder='URL del servidor'>
+        </label>
+        <div ng-show="!userSet" class="margened">
+          <label>Recuerde agregar un usuario en:</label>
+          <br>
+          <label>Configuración -> Configurar Usuario</label>
+        </div>
+        <div class="button button-centered button-assertive form-button" ng-click='clear();'>Borrar datos no sincronizados</div>
+        <div class='form-buttons'>
+          <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>
+</form>

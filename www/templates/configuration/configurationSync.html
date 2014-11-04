@@ -1,0 +1,18 @@
+<form name="syncForm">
+  <ion-view title='SINCRONIZACIÓN'>
+    <ion-content class='has-header'>
+      <label class="item info-label" ng-if="lastSyncTime">
+        ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime.getTime() | date:"dd/MM/yyyy hh:mm:ssa"}}
+      </label>
+      <div class='list list-inset' ng-controller="configurationSyncCtrl">
+        <div class="button form-button button-centered" ng-click='sync();'>
+          {{shouldSync ? "Sincronizar ahora" : "No hay datos para sincronizar" }}
+        </div>
+        <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
+        <div class='form-buttons'>
+          <a id='accept' class='button button-block button-positive' ng-click='save();'>Aceptar</a>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>
+</form>

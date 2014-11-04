@@ -180,12 +180,21 @@ var communicatorApp = angular.module('communicatorApp', ['ionic', 'validation', 
             }
         }
     })
-    .state('app.configurationServer', {
-        url: '/configuration/server',
+    .state('app.configurationSync', {
+        url: '/configuration/sync',
         views: {
             'menuContent': {
-                templateUrl: 'templates/configuration/configurationServer.html',
-                controller: 'configurationsServerCtrl'
+                templateUrl: 'templates/configuration/configurationSync.html',
+                controller: 'configurationSyncCtrl'
+            }
+        }
+    })
+    .state('app.configurationDeveloperTools', {
+        url: '/configuration/developerTools',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/configuration/configurationDeveloperTools.html',
+                controller: 'configurationDeveloperToolsCtrl'
             }
         }
     })
