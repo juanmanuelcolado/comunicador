@@ -38,7 +38,6 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         sync: function() {
             var self = this;
             var deferred = $q.defer();
-            var syncTime = new Date().toString();
 
             if (navigator.onLine) {
                 this.timeout = 20;
@@ -48,9 +47,10 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
                             self.post(configuration);
                         }, index * 20);
                     });
+                    if (configurations.length) {
+                        deferred.resolve(self.syncTime());
+                    }
                 });
-                configurationService.set("server_last_sync_time", syncTime);
-                deferred.resolve(syncTime);
             } else {
                 setTimeout(this.sync.bind(this), this.timeout);
                 this._incrementTimeout();
@@ -59,19 +59,23 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             return deferred.promise;
         },
         post: function(configuration) {
+            var self = this;
             var stringifiedData = typeof(configuration.value) === "string" ? configuration.value : JSON.stringify(configuration.value);
-            this.getBaseURL().then(function(baseURL) {
-                if (!baseURL) {
-                    return;
-                }
-                baseURL = baseURL.search(/^(https?:\/\/)/) !== -1 ? baseURL : "http://" + baseURL;
 
-                $.post(baseURL + "/exchanges", { data: stringifiedData }).complete(function() {
+            this.getBaseURL().then(function(baseURL) {
+                if (!baseURL) { return; }
+
+                $.post(self._addProtocol(baseURL) + "/exchanges", { data: stringifiedData }).complete(function() {
                     if (configuration.id) {
                         configurationService.delete(configuration);
                     }
                 });
+
+                configurationService.set("server_last_sync_time", self.syncTime());
             });
+        },
+        syncTime: function() {
+            return new Date().toString();
         },
         setAutoSync: function(value) {
             configurationService.set("autosync_enabled", !!value);
@@ -83,7 +87,8 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
             var count = localStorage.getItem('data_to_sync_count');
             if (count === null) {
                 configurationService.find("data_to_sync").then(function(configurations) {
-                    localStorage.setItem('data_to_sync_count', configurations.length);
+                    count = configurations.length;
+                    localStorage.setItem('data_to_sync_count', count);
                 });
             }
             return count;
@@ -91,13 +96,17 @@ communicatorApp.service('serverService', function($http, $q, configurationServic
         getCurrentConfiguration: function() {
             return configurationService.getMultiple({
                 "server_last_sync_time": "lastSyncTime",
-                "autosync_enabled": "autoSyncEnabled"
+                "autosync_enabled": "autoSyncEnabled",
+                "data_to_sync": "dataToSync"
             });
         },
         _incrementTimeout: function() {
             if (this.timeout < 20000) {
                 this.timeout = this.timeout * 1.5;
             }
+        },
+        _addProtocol: function(url) {
+            return url.search(/^(https?:\/\/)/) !== -1 ? url : "http://" + url;
         }
     };
 });

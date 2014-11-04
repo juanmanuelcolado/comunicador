@@ -1,6 +1,7 @@
 communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNavBarDelegate, serverService, currentUserService) {
     $scope.lastSyncTime = '';
     $scope.autoSyncEnabled = false;
+    $scope.shouldSync = true;
     $scope.baseURL = '';
     $scope.userSet = true;
 
@@ -13,8 +14,9 @@ communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNa
     });
 
     serverService.getCurrentConfiguration().then(function(configuration) {
-        $scope.lastSyncTime = configuration.lastSyncTime;
+        $scope.lastSyncTime = new Date(configuration.lastSyncTime);
         $scope.autoSyncEnabled = configuration.autoSyncEnabled === 'true' ? true : false;
+        $scope.shouldSync = configuration.dataToSync !== undefined;
     });
 
     $scope.toggleAutoSync = function(enabled) {
@@ -23,7 +25,8 @@ communicatorApp.controller('configurationsServerCtrl', function($scope, $ionicNa
 
     $scope.sync = function() {
         serverService.sync().then(function(syncTime) {
-            $scope.lastSyncTime = syncTime;
+            $scope.lastSyncTime = new Date(syncTime);
+            $scope.shouldSync = false;
         });
     };
 

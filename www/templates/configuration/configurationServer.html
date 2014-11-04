@@ -1,12 +1,12 @@
 <form name="severForm">
   <ion-view title='CONEXIÓN AL SERVIDOR'>
     <ion-content class='has-header'>
-      <label class="item info-label">
-        ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime ? lastSyncTime : "AÚN NO SE HA REALIZADO" }}
+      <label class="item info-label" ng-if="lastSyncTime">
+        ÚLTIMA SINCRONIZACIÓN: {{lastSyncTime.getTime() | date:"dd/MM/yyyy hh:mm:ssa"}}
       </label>
-      <div class='list list-inset' ng-controller="configurationsServerCtrl">
+      <div class='list list-inset'>
         <div class="button form-button button-centered" ng-click='sync();'>
-          Sincronizar ahora
+          {{shouldSync ? "Sincronizar ahora" : "No hay datos guardados" }}
         </div>
         <ion-checkbox ng-model="autoSyncEnabled" ng-change="toggleAutoSync(autoSyncEnabled);">Sinconizar automaticamente</ion-checkbox>
         <label class="item info-label">
