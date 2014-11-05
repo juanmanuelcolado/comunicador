@@ -69,7 +69,7 @@ communicatorApp.service('configurationService', function($q, configurationDbServ
         deleteByKey: function(key) {
             db.find(key).then(function(configurations) {
                 configurations.forEach(function(configuration, index) {
-                    db.delete(configuration.id);
+                    db.delete(configuration);
                 });
             });
         }
