@@ -1,13 +1,12 @@
 communicatorApp.service('registryServerService', function($q, currentUserService, cardDbService, relationshipDbService, serverService){
 	var registryServerService = {};
 
-	var promises = [],
-	user = {},
-	card = {},
-	receiver = {},
-	relationshipName = '',
-	level = 0,
-	registry = {};
+	var user = {},
+		card = {},
+		receiver = {},
+		relationshipName = '',
+		level = 0,
+		registry = {};
 
 	registryServerService.sendExchangeToServer = function(registryInfo, levelNumber, cardId) {
 		level = levelNumber;
@@ -25,6 +24,7 @@ communicatorApp.service('registryServerService', function($q, currentUserService
 	};
 
 	function getData () {
+		var promises = [];
 		promises.push(currentUserService.get());
 		promises.push(cardDbService.find(card.id));
 		promises.push(getRelationshipName());

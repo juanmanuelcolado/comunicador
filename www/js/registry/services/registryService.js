@@ -3,7 +3,7 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 
 	registryService.pickedCardId = 0;
 
-	registryService.pickedLevelNumber = 0;
+	registryService.pickedLevelNumber = 1;
 	
 	var steps = [];
 	stepDbService.selectAll().then(function(results) {
@@ -56,8 +56,7 @@ communicatorApp.service('registryService', function($q, exchangeDbService, stepD
 
 	function setLevelInitDate (levelNumber) {
 		var initDate = getLevelDate(levelNumber);
-		if (initDate === null)
-		{
+		if (initDate === null) {
 			var date = new Date();
 			var today =  date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString().substr(2,2);
 			levelDbService.update({
