@@ -1,14 +1,4 @@
 communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, $ionicPopup, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
-    var popup;
-
-    document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('closeTutorial')) {
-        document.removeEventListener('click', this.event);
-        if(popup)
-            popup.close();
-        }
-    }, false);
-
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
 
@@ -41,6 +31,17 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
            takePictureFromWebview();
         }
     };
+
+    // This should be exctracted along with the code on singleCardCtrl.js
+    var popup;
+    var popupEvent = function() {
+        if (event.target.classList.contains('closeTutorial')) {
+            if(popup) {
+                popup.close();
+            }
+        }
+    };
+    document.addEventListener('click', popupEvent, false);
 
     var showUploadImagePopup = function() {
         popup = $ionicPopup.show({
@@ -83,11 +84,13 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         $scope.patternModal = modal;
     });
 
+
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
         if ($scope.patternModal) {
             $scope.patternModal.remove();
         }
+        document.removeEventListener('click', popupEvent);
     });
 
     $scope.editPattern = function() {

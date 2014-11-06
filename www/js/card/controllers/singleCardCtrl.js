@@ -1,13 +1,4 @@
 communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicPopup, cardDbService, imageUploaderService) {
-    var popup;
-
-    document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('closeTutorial')) {
-        document.removeEventListener('click', this.event);
-        if(popup)
-            popup.close();
-        }
-    }, false);
 
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
@@ -53,6 +44,17 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         }
     };
 
+    // This should be exctracted along with the code on singleReceiverCtrl.js
+    var popup;
+    var popupEvent = function() {
+        if (event.target.classList.contains('closeTutorial')) {
+            if(popup) {
+                popup.close();
+            }
+        }
+    };
+    document.addEventListener('click', popupEvent, false);
+
     var showUploadImagePopup = function() {
         popup = $ionicPopup.show({
             template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
@@ -86,6 +88,11 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         $scope.$apply();
     };
 
-    $scope.equalItems = function(value,card){
-        return value.toLowerCase().replace(/\s+/g, '') === card.title.toLowerCase().replace(/\s+/g, '');};
+    $scope.equalItems = function(value,card) {
+        return value.toLowerCase().replace(/\s+/g, '') === card.title.toLowerCase().replace(/\s+/g, '');
+    };
+
+    $scope.$on("$destroy", function() {
+        document.removeEventListener('click', popupEvent);
+    });
 });
