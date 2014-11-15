@@ -1,4 +1,4 @@
-communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, $ionicPopup, cardDbService, imageUploaderService) {
+communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ionicNavBarDelegate, cardDbService, imageUploaderService, popupService) {
 
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
@@ -44,41 +44,6 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         }
     };
 
-    // This should be exctracted along with the code on singleReceiverCtrl.js
-    var popup;
-    var popupEvent = function() {
-        if (event.target.classList.contains('closeTutorial')) {
-            if(popup) {
-                popup.close();
-            }
-        }
-    };
-    document.addEventListener('click', popupEvent, false);
-
-    var showUploadImagePopup = function() {
-        popup = $ionicPopup.show({
-            template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
-            title: 'Subir foto' + '&nbsp;<span class="closeTutorial">X</span>',
-            scope: $scope,
-            buttons: [
-                {
-                    text: '<b>Tomar foto</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        imageUploaderService.takePicture(updateCardImage);
-                    }
-                },
-                {
-                    text: '<b>Abrir galería</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        imageUploaderService.pictureFromDevice(updateCardImage);
-                    }
-                }
-            ]
-        });
-    };
-
     var takePictureFromWebview = function() {
         imageUploaderService.pictureFromDevice(updateCardImage);
     };
@@ -92,7 +57,5 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
         return value.toLowerCase().replace(/\s+/g, '') === card.title.toLowerCase().replace(/\s+/g, '');
     };
 
-    $scope.$on("$destroy", function() {
-        document.removeEventListener('click', popupEvent);
-    });
+    popupService.start($scope, updateCardImage);
 });

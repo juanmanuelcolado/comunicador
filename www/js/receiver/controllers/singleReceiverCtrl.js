@@ -1,4 +1,4 @@
-communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, $ionicPopup, receiverDbService, relationshipDbService, imageUploaderService, uuidService) {
+communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, $state, $ionicNavBarDelegate, $ionicModal, receiverDbService, relationshipDbService, imageUploaderService, uuidService, popupService) {
     $scope.creating = !$stateParams.id;
     $scope.cameraIsEnabled = imageUploaderService.cameraIsEnabled;
 
@@ -32,41 +32,6 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         }
     };
 
-    // This should be exctracted along with the code on singleCardCtrl.js
-    var popup;
-    var popupEvent = function() {
-        if (event.target.classList.contains('closeTutorial')) {
-            if(popup) {
-                popup.close();
-            }
-        }
-    };
-    document.addEventListener('click', popupEvent, false);
-
-    var showUploadImagePopup = function() {
-        popup = $ionicPopup.show({
-            template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
-            title: 'Subir foto' + '&nbsp;<span class="closeTutorial">X</span>',
-            scope: $scope,
-            buttons: [
-                {
-                    text: '<b>Tomar foto</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        imageUploaderService.takePicture(updateReceiverAvatar);
-                    }
-                },
-                {
-                    text: '<b>Abrir galería</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        imageUploaderService.pictureFromDevice(updateReceiverAvatar);
-                    }
-                }
-            ]
-        });
-    };
-
     var takePictureFromWebview = function() {
         imageUploaderService.pictureFromDevice(updateReceiverAvatar);
     };
@@ -84,13 +49,13 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
         $scope.patternModal = modal;
     });
 
+    popupService.start($scope, updateReceiverAvatar);
 
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
         if ($scope.patternModal) {
             $scope.patternModal.remove();
         }
-        document.removeEventListener('click', popupEvent);
     });
 
     $scope.editPattern = function() {
