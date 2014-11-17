@@ -38,7 +38,7 @@ communicatorApp.controller('singleCardCtrl', function($scope, $stateParams, $ion
 
     $scope.uploadImage = function() {
         if (imageUploaderService.cameraIsEnabled) {
-            showUploadImagePopup();
+            popupService.show();
         } else {
             takePictureFromWebview();
         }

@@ -26,7 +26,7 @@ communicatorApp.controller('singleReceiverCtrl', function($scope, $stateParams, 
 
     $scope.uploadImage = function() {
     if (imageUploaderService.cameraIsEnabled) {
-            showUploadImagePopup();
+            popupService.show();
         } else {
            takePictureFromWebview();
         }
