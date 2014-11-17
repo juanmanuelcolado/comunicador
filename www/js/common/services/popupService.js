@@ -13,7 +13,7 @@ communicatorApp.service('popupService', function($ionicPopup, imageUploaderServi
         return $ionicPopup.show({
             template: '¿Desea tomar una nueva foto o subir una foto de la galería?',
             title: 'Subir foto' + '&nbsp;<span class="closeTutorial">X</span>',
-            scope: $scope,
+            scope: scope,
             buttons: [
                 {
                     text: '<b>Tomar foto</b>',
