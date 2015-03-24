@@ -5,13 +5,13 @@ Aplicación orientada a celulares (principalmente con Android) como método alte
 ## Índice
 
 * [Proyecto y tecnología utilizada](#proyecto-y-tecnología-utilizada)
-* [Preparar nuestra PC]((#preparar-nuestra PC)
-  * [En Windows](#en-Windows)
-  * [En Linux](#en-Linux)
-  * [Descargar paquetes del SDK](#descargar-paquetes-del-SDK)
+* [Preparar nuestra PC]((#preparar-nuestra-pc)
+  * [En Windows](#en-windows)
+  * [En Linux](#en-linux)
+  * [Descargar paquetes del SDK](#descargar-paquetes-del-sdk)
 * [Descargar el proyecto y unificar los javascripts](#descargar-el-proyecto-y-unificar-los-javascripts)
 * [Estructura básica del proyecto](#estructura-básica-del-proyecto)
-* [Pruebas!](#pruebas!)
+* [Pruebas!](#pruebas)
   * [En el explorador](#en-el-explorador)
   * [En el emulador](#en-el-emulador)
   * [En un celular real](#en-un-celular-real)
