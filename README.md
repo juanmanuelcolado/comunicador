@@ -5,7 +5,7 @@ Aplicación orientada a celulares (principalmente con Android) como método alte
 ## Índice
 
 * [Proyecto y tecnología utilizada](#proyecto-y-tecnología-utilizada)
-* [Preparar nuestra PC]((#preparar-nuestra-pc)
+* [Preparar nuestra PC](#preparar-nuestra-pc)
   * [En Windows](#en-windows)
   * [En Linux](#en-linux)
   * [Descargar paquetes del SDK](#descargar-paquetes-del-sdk)
