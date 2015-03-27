@@ -61,7 +61,7 @@ Para poder descargar, editar y probar este proyecto, tendremos que instalar una 
 * [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx): Este paso puede ser innecesario. Sólo se hace si en el paso siguiente ven un error por no encontrar un archivo **“VCBuild.exe”**. Si es así, seleccionar y descargar Visual Studio **“Express 2013 with Update 4 for Windows Desktop”**. Esto puede llevar bastante tiempo.
 * [q](https://www.npmjs.com/package/q): Es un paquete para realizar acciones de forma asincrónica mediante “promesas”. Descargar ejecutando `npm install q`
 * Más Dependencias: Para que funcione bien lo de gulp, tenemos que hacer lo siguiente:
-  * Descargar el proyecto en alguna carpeta (si hay dudas con este paso, ver [más abajo]() cómo hacerlo).
+  * Descargar el proyecto en alguna carpeta (si hay dudas con este paso, ver [más abajo](#descargar-el-proyecto-y-unificar-los-javascripts) cómo hacerlo).
   * Desde la consola, entrar a la carpeta del proyecto.
   * Ejecutar `npm install` y esperar.
   * Sólo deben aparecer warnings como máximo. Si aparece algún error en rojo, resolverlo, y actualizar este Readme.
