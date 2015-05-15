@@ -35,7 +35,7 @@ communicatorApp.service('tutorialService', function($state, $ionicPopup, $timeou
                     });
                     break;
                 case 'tutorialLevelSingleCard':
-                    this.step('Intercambio', 'Se muestra el pictograma para que pueda ser visto claramente y entregado al receptor por el usuario.<br /><br />Para puntuar el intercambio, puede presionarce el botón de menú o mantener presionado sobre la imagen.', {
+                    this.step('Intercambio', 'Se muestra el pictograma para que pueda ser visto claramente y entregado al receptor por el usuario.<br /><br />Para puntuar el intercambio, puede presionarse el botón de menú o mantener presionado sobre la imagen.', {
                         back: { state: "tutorialLevelCards", params: { levelNumber: 1 } },
                         next: { state: "tutorialPatternLock" }
                     });
